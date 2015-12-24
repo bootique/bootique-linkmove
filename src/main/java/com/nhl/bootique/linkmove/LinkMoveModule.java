@@ -4,7 +4,7 @@ import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import com.google.inject.Provides;
 import com.nhl.bootique.ConfigModule;
-import com.nhl.bootique.factory.FactoryConfigurationService;
+import com.nhl.bootique.config.ConfigurationFactory;
 import com.nhl.bootique.jdbc.DataSourceFactory;
 import com.nhl.link.move.runtime.LmRuntime;
 
@@ -18,10 +18,10 @@ public class LinkMoveModule extends ConfigModule {
 	}
 
 	@Provides
-	public LmRuntime createLinkMoveRuntime(FactoryConfigurationService configService,
-			DataSourceFactory dataSourceFactory, ServerRuntime targetRuntime) {
+	public LmRuntime createLinkMoveRuntime(ConfigurationFactory configFactory, DataSourceFactory dataSourceFactory,
+			ServerRuntime targetRuntime) {
 
-		return configService.factory(LinkMoveFactory.class, configPrefix).createLinkMove(dataSourceFactory,
+		return configFactory.config(LinkMoveFactory.class, configPrefix).createLinkMove(dataSourceFactory,
 				targetRuntime);
 	}
 }
