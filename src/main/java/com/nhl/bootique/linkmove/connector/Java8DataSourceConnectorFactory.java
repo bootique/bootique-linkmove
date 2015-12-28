@@ -8,6 +8,7 @@ import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 
 public class Java8DataSourceConnectorFactory implements IConnectorFactory<JdbcConnector> {
+
 	private DataSourceFactory dataSourceFactory;
 
 	public Java8DataSourceConnectorFactory(DataSourceFactory dataSourceFactory) {
@@ -16,7 +17,7 @@ public class Java8DataSourceConnectorFactory implements IConnectorFactory<JdbcCo
 
 	@Override
 	public JdbcConnector createConnector(String id) {
-		return new Java8DataSourceConnector(connectorDataSource(id));
+		return new Java8DataSourceConnector(id, connectorDataSource(id));
 	}
 
 	DataSource connectorDataSource(String id) {

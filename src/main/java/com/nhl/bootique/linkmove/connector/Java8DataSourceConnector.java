@@ -11,14 +11,14 @@ import org.apache.cayenne.java8.CayenneJava8Module;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 
 // TODO: this should be in LinkMove .. perhaps LM can dynamically detect a 
-// version of Java and install Cayenne java 8 extensions if needed
+// version of Java and install Cayenne Java 8 extensions if needed
 public class Java8DataSourceConnector implements JdbcConnector {
 
 	private ServerRuntime runtime;
 	private ObjectContext sharedContext;
 
-	public Java8DataSourceConnector(DataSource dataSource) {
-		this.runtime = ServerRuntimeBuilder.builder().addModule(new CayenneJava8Module()).dataSource(dataSource)
+	public Java8DataSourceConnector(String name, DataSource dataSource) {
+		this.runtime = ServerRuntimeBuilder.builder(name).addModule(new CayenneJava8Module()).dataSource(dataSource)
 				.build();
 		this.sharedContext = runtime.newContext();
 	}
