@@ -1,6 +1,6 @@
 0.8:
 
-#2 Upgrade BQ to 0.12 / upgrade other dependencies
+#2 Upgrade BQ to 0.12 / upgrade other dependencies 
 
 0.7:
 
