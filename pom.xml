@@ -49,6 +49,13 @@
 				<groupId>com.nhl.link.move</groupId>
 				<artifactId>link-move</artifactId>
 				<version>${linkmove-version}</version>
+				<!-- Ensure cayenne version from bootique-cayenne is used -->
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.cayenne</groupId>
+						<artifactId>cayenne-server</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>com.nhl.bootique</groupId>
