@@ -19,7 +19,7 @@
 	</description>
 
 	<properties>
-		<linkmove-version>1.5</linkmove-version>
+		<linkmove-version>1.6</linkmove-version>
 		<bootique-version>0.12-SNAPSHOT</bootique-version>
 		<bootique-jdbc-version>0.9-SNAPSHOT</bootique-jdbc-version>
 		<bootique-cayenne-version>0.12-SNAPSHOT</bootique-cayenne-version>
@@ -30,18 +30,6 @@
 		<url>https://github.com/nhl/bootique-linkmove</url>
 		<tag>HEAD</tag>
 	</scm>
-
-	<repositories>
-		<!-- TODO: remove this once 4.0.M3 Cayenne release is out... -->
-		<repository>
-			<id>bootique-dependencies</id>
-			<name>Bootique Dependencies Repo</name>
-			<url>http://maven.objectstyle.org/nexus/content/groups/bootique-upstream</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
