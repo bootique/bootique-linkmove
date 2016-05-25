@@ -7,6 +7,8 @@ import com.nhl.link.move.LmRuntimeException;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 
+//TODO: remove this hack once https://github.com/nhl/link-move/issues/71 
+//is in (or LM is switched to Java 8)
 public class Java8DataSourceConnectorFactory implements IConnectorFactory<JdbcConnector> {
 
 	private DataSourceFactory dataSourceFactory;

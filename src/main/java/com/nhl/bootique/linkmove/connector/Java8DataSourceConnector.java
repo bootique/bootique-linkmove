@@ -10,8 +10,8 @@ import org.apache.cayenne.java8.CayenneJava8Module;
 
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 
-// TODO: this should be in LinkMove .. perhaps LM can dynamically detect a 
-// version of Java and install Cayenne Java 8 extensions if needed
+// TODO: remove this hack once https://github.com/nhl/link-move/issues/71 
+// is in (or LM is switched to Java 8)
 public class Java8DataSourceConnector implements JdbcConnector {
 
 	private ServerRuntime runtime;

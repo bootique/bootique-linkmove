@@ -29,6 +29,9 @@ public class LinkMoveFactory {
 	}
 
 	protected IConnectorFactory<JdbcConnector> createJdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
+		// TODO: remove this hack once
+		// https://github.com/nhl/link-move/issues/71 is in (or LM is switched
+		// to Java 8)
 		return new Java8DataSourceConnectorFactory(dataSourceFactory);
 	}
 
