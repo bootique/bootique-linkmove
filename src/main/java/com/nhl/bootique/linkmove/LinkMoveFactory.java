@@ -1,10 +1,7 @@
 package com.nhl.bootique.linkmove;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.Objects;
 
-import com.nhl.link.move.runtime.extractor.model.ClasspathExtractorModelLoader;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import com.nhl.bootique.jdbc.DataSourceFactory;
@@ -17,7 +14,6 @@ import org.apache.commons.lang.StringUtils;
 
 public class LinkMoveFactory {
 
-	private static final String CLASS_PATH_SUFFIX = "classpath:";
 	private String extractorsDir;
 
 	public LinkMoveFactory() {
@@ -48,12 +44,7 @@ public class LinkMoveFactory {
 		if (StringUtils.isBlank(extractorsDir)) {
 			extractorsDir = ".";
 		}
-		if (extractorsDir.startsWith(CLASS_PATH_SUFFIX)) {
-			String rootClassPath = extractorsDir.substring(CLASS_PATH_SUFFIX.length());
-			builder = builder.extractorModelLoader(new BootiqueClasspathExtractorModelLoader(rootClassPath));
-		} else {
-			builder = builder.extractorModelsRoot(extractorsDir);
-		}
+		LinkMoveExtractorModelProvider.setupExtractorModels(builder, extractorsDir);
 		return builder.withConnectorFactory(JdbcConnector.class, jdbcConnectorFactory);
 	}
 }
