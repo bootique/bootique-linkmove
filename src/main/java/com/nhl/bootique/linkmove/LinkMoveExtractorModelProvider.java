@@ -2,7 +2,6 @@ package com.nhl.bootique.linkmove;
 
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
 import com.nhl.link.move.runtime.extractor.model.ClasspathExtractorModelLoader;
-import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,27 +15,15 @@ public class LinkMoveExtractorModelProvider {
     private static final String FILE_PATH_PROTOCOL = "file:";
 
     public static void setupExtractorModels(LmRuntimeBuilder runtimeBuilder, String extractorsPath) {
-        String[] pathItems = StringUtils.split(extractorsPath, ':');
         if (!extractorsPath.contains(":")) {
             runtimeBuilder.extractorModelsRoot(extractorsPath);
         } else {
             if (extractorsPath.startsWith(CLASS_PATH_PROTOCOL)) {
-                final String path = extractorsPath.substring(CLASS_PATH_PROTOCOL.length());
+                final String path = formatClassPath(extractorsPath.substring(CLASS_PATH_PROTOCOL.length()));
                 runtimeBuilder.extractorModelLoader(new ClasspathExtractorModelLoader() {
-
                     @Override
                     protected Reader getXmlSource(String name) throws IOException {
-                        return super.getXmlSource(getRoot() + name);
-                    }
-
-                    private String getRoot() {
-                        String rootPath = path.trim();
-                        if (StringUtils.isNotBlank(rootPath)) {
-                            if (!rootPath.endsWith("/")) {
-                                rootPath += "/";
-                            }
-                        }
-                        return rootPath;
+                        return super.getXmlSource(path + name);
                     }
                 });
             } else if (extractorsPath.startsWith(FILE_PATH_PROTOCOL)) {
@@ -51,5 +38,18 @@ public class LinkMoveExtractorModelProvider {
                 throw new IllegalArgumentException("Unsupported protocol is used in the value '" + extractorsPath + "' for property 'extractorDirs'");
             }
         }
+    }
+
+    private static String formatClassPath(String classPath) {
+        if (classPath == null) {
+            return "";
+        }
+        if (!classPath.isEmpty()) {
+            classPath = classPath.trim();
+            if (!classPath.endsWith("/")) {
+                classPath += "/";
+            }
+        }
+        return classPath;
     }
 }
