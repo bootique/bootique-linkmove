@@ -1,6 +1,7 @@
 0.9:
 
 #4 Upgrade to LinkMove 1.7
+#8 Load StreamConnector factory in LM runtime by default
 
 
 0.8:

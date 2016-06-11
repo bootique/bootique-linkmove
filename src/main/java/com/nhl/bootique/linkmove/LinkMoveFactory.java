@@ -6,9 +6,11 @@ import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import com.nhl.bootique.jdbc.DataSourceFactory;
 import com.nhl.bootique.linkmove.connector.Java8DataSourceConnectorFactory;
+import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
+import com.nhl.link.move.runtime.connect.URIConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 
 public class LinkMoveFactory {
@@ -25,7 +27,8 @@ public class LinkMoveFactory {
 		Objects.requireNonNull(extractorsDir);
 
 		return new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir)
-				.withConnectorFactory(JdbcConnector.class, jdbcCF).build();
+				.withConnectorFactory(JdbcConnector.class, jdbcCF)
+				.withConnectorFactory(StreamConnector.class, URIConnectorFactory.class).build();
 	}
 
 	protected IConnectorFactory<JdbcConnector> createJdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
