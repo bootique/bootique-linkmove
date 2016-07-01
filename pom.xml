@@ -13,16 +13,16 @@
 	<version>0.10-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>LinkMove Integration for Bootique</name>
+	<name>bootique-linkmove: LinkMove Integration for Bootique</name>
 	<description>
 		Provides LinkMove integration with Bootique.
 	</description>
 
 	<properties>
-		<linkmove-version>1.7</linkmove-version>
-		<bootique-version>0.17</bootique-version>
+		<linkmove-version>2.0-SNAPSHOT</linkmove-version>
+		<bootique-version>0.18-SNAPSHOT</bootique-version>
 		<bootique-jdbc-version>0.9</bootique-jdbc-version>
-		<bootique-cayenne-version>0.12</bootique-cayenne-version>
+		<bootique-cayenne-version>0.15-SNAPSHOT</bootique-cayenne-version>
 	</properties>
 
 	<scm>
@@ -42,6 +42,10 @@
 					<exclusion>
 						<groupId>org.apache.cayenne</groupId>
 						<artifactId>cayenne-server</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.cayenne</groupId>
+						<artifactId>cayenne-java8</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
