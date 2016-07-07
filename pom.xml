@@ -19,7 +19,7 @@
 	</description>
 
 	<properties>
-		<linkmove-version>2.0-SNAPSHOT</linkmove-version>
+		<linkmove-version>2.0</linkmove-version>
 		<bootique-version>0.18-SNAPSHOT</bootique-version>
 		<bootique-jdbc-version>0.9</bootique-jdbc-version>
 		<bootique-cayenne-version>0.15-SNAPSHOT</bootique-cayenne-version>
