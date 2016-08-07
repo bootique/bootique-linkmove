@@ -1,6 +1,7 @@
 ## 0.11
 
 * #10 Move to io.bootique namespace
+* #11 Remove Java8 connector hacks
 
 ## 0.10
 

@@ -7,7 +7,7 @@ import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.connect.URIConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 import io.bootique.jdbc.DataSourceFactory;
-import io.bootique.linkmove.connector.Java8DataSourceConnectorFactory;
+import io.bootique.linkmove.connector.DataSourceConnectorFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import java.util.Objects;
@@ -31,10 +31,7 @@ public class LinkMoveFactory {
 	}
 
 	protected IConnectorFactory<JdbcConnector> createJdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
-		// TODO: remove this hack once
-		// https://github.com/nhl/link-move/issues/71 is in (or LM is switched
-		// to Java 8)
-		return new Java8DataSourceConnectorFactory(dataSourceFactory);
+		return new DataSourceConnectorFactory(dataSourceFactory);
 	}
 
 	public void setExtractorsDir(String extractorsDir) {
