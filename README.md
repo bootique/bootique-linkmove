@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/nhl/bootique-linkmove.svg)](https://travis-ci.org/nhl/bootique-linkmove)
+[![Build Status](https://travis-ci.org/bootique/bootique-linkmove.svg)](https://travis-ci.org/bootique/bootique-linkmove)
 
 # bootique-linkmove
 
-Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](https://github.com/nhl/bootique).
+Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io).
 

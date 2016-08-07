@@ -1,11 +1,11 @@
-package com.nhl.bootique.linkmove.connector;
+package io.bootique.linkmove.connector;
 
-import javax.sql.DataSource;
-
-import com.nhl.bootique.jdbc.DataSourceFactory;
 import com.nhl.link.move.LmRuntimeException;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
+import io.bootique.jdbc.DataSourceFactory;
+
+import javax.sql.DataSource;
 
 //TODO: remove this hack once https://github.com/nhl/link-move/issues/71 
 //is in (or LM is switched to Java 8)

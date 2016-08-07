@@ -1,7 +1,7 @@
-package com.nhl.bootique.linkmove;
+package io.bootique.linkmove;
 
 import com.google.inject.Module;
-import com.nhl.bootique.BQModuleProvider;
+import io.bootique.BQModuleProvider;
 
 public class LinkMoveModuleProvider implements BQModuleProvider {
 

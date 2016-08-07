@@ -1,17 +1,16 @@
-package com.nhl.bootique.linkmove;
+package io.bootique.linkmove;
 
-import java.util.Objects;
-
-import org.apache.cayenne.configuration.server.ServerRuntime;
-
-import com.nhl.bootique.jdbc.DataSourceFactory;
-import com.nhl.bootique.linkmove.connector.Java8DataSourceConnectorFactory;
 import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.connect.URIConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
+import io.bootique.jdbc.DataSourceFactory;
+import io.bootique.linkmove.connector.Java8DataSourceConnectorFactory;
+import org.apache.cayenne.configuration.server.ServerRuntime;
+
+import java.util.Objects;
 
 public class LinkMoveFactory {
 

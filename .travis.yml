@@ -9,8 +9,8 @@ branches:
 
 script: mvn clean deploy javadoc:javadoc --settings travis_settings.xml
 
-# travis encrypt -r nhl/bootique-linkmove "CI_DEPLOY_USERNAME='name'"
-# travis encrypt -r nhl/bootique-linkmove "CI_DEPLOY_PASSWORD='password'"
+# travis encrypt -r bootique/bootique-linkmove "CI_DEPLOY_USERNAME='name'"
+# travis encrypt -r bootique/bootique-linkmove "CI_DEPLOY_PASSWORD='password'"
 env:
   global:
     - secure: "Mr+KBKk9sSBlRxknQ6kReNuZPuJ7ghqnWvZwttOaiBrF/9Trq/+FRhI2b/11JM9NZIbo5vhwvXE5OOHS6iH+sSue1FxEQ3AkcHTn472pR0nKi8Tb0fb2Af9jszgBWwa/4Npn09/mjeQMqlJQ/WZ+q0fZSavlrr22Pt387HnapHMc74RirpWDzf90Szqd3wjnOkqYcPBJyCEEeO8bnRuKNGm9qFokL4FR+CEClqblwk3V5HjwOJDcDLvC7O4OuodOU4C30LW5mTervwjBzgPiRT/tdBQERXrrdIUoelXpKjMrhvCykkfSMEVyL7uFczAqPwfTk1ye4tUvUWj+zH36FgR4+Igq5AcBm6n7ZlUp4gpqdR+NOIhwmKilGfFttvzMqin8RsbRpYsG/bsv1MaqR5EQSKdY+OHm/KuVgzff331PRT0D26gchwMF+JhgOJqG2ayCkhWlGQnLog0zkAuxgDUfnyJuhrujk2VkvjmuqPPceQ4cEwDj1sk2vjd7jBApWxUU+YWsmRMG8iS4POWWSK9o8dCNv56fBYnPqONxbYjpVIezbece2w3UAY+Rm0Vtn9otSUMBUreFJDgeoteTVXgMLZIsLv3mCcPGsuT7zHYf0oRj7JtcNmdJuNjOOWHGRRn/0SKVfA/KmfUfkkNTSM+4HI3CPoEWMXx9NFNnGaI="
