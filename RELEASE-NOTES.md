@@ -1,3 +1,7 @@
+## 0.11
+
+* #10 Move to io.bootique namespace
+
 ## 0.10
 
 * #9 Upgrade to LM 2.0
