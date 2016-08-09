@@ -11,6 +11,7 @@ import io.bootique.linkmove.connector.DataSourceConnectorFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class LinkMoveFactory {
 
@@ -20,14 +21,17 @@ public class LinkMoveFactory {
 		this.extractorsDir = ".";
 	}
 
-	public LmRuntime createLinkMove(DataSourceFactory dataSourceFactory, ServerRuntime targetRuntime) {
+	public LmRuntime createLinkMove(DataSourceFactory dataSourceFactory, ServerRuntime targetRuntime,
+	                                Set<LinkMoveRuntimeBuildCallback> buildCallbacks) {
 
 		IConnectorFactory<JdbcConnector> jdbcCF = createJdbcConnectorFactory(dataSourceFactory);
 		Objects.requireNonNull(extractorsDir);
 
-		return new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir)
+		LmRuntimeBuilder builder = new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir)
 				.withConnectorFactory(JdbcConnector.class, jdbcCF)
-				.withConnectorFactory(StreamConnector.class, URIConnectorFactory.class).build();
+				.withConnectorFactory(StreamConnector.class, URIConnectorFactory.class);
+		buildCallbacks.forEach(c -> c.build(builder));
+		return builder.build();
 	}
 
 	protected IConnectorFactory<JdbcConnector> createJdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
