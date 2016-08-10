@@ -22,7 +22,7 @@ public class LinkMoveFactory {
 	}
 
 	public LmRuntime createLinkMove(DataSourceFactory dataSourceFactory, ServerRuntime targetRuntime,
-	                                Set<LinkMoveRuntimeBuildCallback> buildCallbacks) {
+	                                Set<LinkMoveBuilderCallback> builderCallbacks) {
 
 		IConnectorFactory<JdbcConnector> jdbcCF = createJdbcConnectorFactory(dataSourceFactory);
 		Objects.requireNonNull(extractorsDir);
@@ -30,7 +30,7 @@ public class LinkMoveFactory {
 		LmRuntimeBuilder builder = new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir)
 				.withConnectorFactory(JdbcConnector.class, jdbcCF)
 				.withConnectorFactory(StreamConnector.class, URIConnectorFactory.class);
-		buildCallbacks.forEach(c -> c.build(builder));
+		builderCallbacks.forEach(c -> c.build(builder));
 		return builder.build();
 	}
 

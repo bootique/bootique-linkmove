@@ -13,23 +13,31 @@ import java.util.Set;
 
 public class LinkMoveModule extends ConfigModule {
 
-	public LinkMoveModule() {
-	}
+    public LinkMoveModule() {
+    }
 
-	public LinkMoveModule(String configPrefix) {
-		super(configPrefix);
-	}
+    public LinkMoveModule(String configPrefix) {
+        super(configPrefix);
+    }
 
-	@Provides
-	public LmRuntime createLinkMoveRuntime(ConfigurationFactory configFactory,
-	                                       DataSourceFactory dataSourceFactory,
-	                                       ServerRuntime targetRuntime,
-	                                       Set<LinkMoveRuntimeBuildCallback> buildCallbacks) {
-		return configFactory.config(LinkMoveFactory.class, configPrefix).createLinkMove(dataSourceFactory,
-				targetRuntime, buildCallbacks);
-	}
+    public static Multibinder<LinkMoveBuilderCallback> contributeBuildCallback(Binder binder) {
+        return Multibinder.newSetBinder(binder, LinkMoveBuilderCallback.class);
+    }
 
-	public static Multibinder<LinkMoveRuntimeBuildCallback> contributeBuildCallback(Binder binder) {
-		return Multibinder.newSetBinder(binder, LinkMoveRuntimeBuildCallback.class);
-	}
+    @Override
+    public void configure(Binder binder) {
+        // init collections
+        contributeBuildCallback(binder);
+    }
+
+    @Provides
+    public LmRuntime createLinkMoveRuntime(ConfigurationFactory configFactory,
+                                           DataSourceFactory dataSourceFactory,
+                                           ServerRuntime targetRuntime,
+                                           Set<LinkMoveBuilderCallback> buildCallbacks) {
+
+        return configFactory
+                .config(LinkMoveFactory.class, configPrefix)
+                .createLinkMove(dataSourceFactory, targetRuntime, buildCallbacks);
+    }
 }

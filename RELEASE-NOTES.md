@@ -1,3 +1,7 @@
+## 0.12
+
+* #12 Runtime build callback for LM runtime customisations
+
 ## 0.11
 
 * #10 Move to io.bootique namespace
