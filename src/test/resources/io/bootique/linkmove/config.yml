@@ -1,0 +1,7 @@
+linkmove:
+  connectorFactories:
+    - type: jdbc
+    - type: uri
+      connectors:
+        c1: file:///path/to/file
+        c2: http://host/path/to/resource
