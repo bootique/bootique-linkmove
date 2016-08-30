@@ -2,6 +2,7 @@
 
 * #12 Runtime build callback for LM runtime customisations
 * #13 App-specific configuration of connector factories
+* #14 Upgrade to BQ 0.20
 
 ## 0.11
 

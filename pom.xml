@@ -20,7 +20,7 @@
 
 	<properties>
 		<linkmove-version>2.0</linkmove-version>
-		<bootique-version>0.19</bootique-version>
+		<bootique-version>0.20-SNAPSHOT</bootique-version>
 		<bootique-jdbc-version>0.11</bootique-jdbc-version>
 		<bootique-cayenne-version>0.16</bootique-cayenne-version>
 	</properties>
