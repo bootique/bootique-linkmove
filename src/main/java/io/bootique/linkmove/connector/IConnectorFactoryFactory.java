@@ -7,7 +7,7 @@ import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.config.PolymorphicConfiguration;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-public interface IConnectorFactoryProvider<C extends Connector> extends PolymorphicConfiguration {
+public interface IConnectorFactoryFactory<C extends Connector> extends PolymorphicConfiguration {
 
     Class<C> getConnectorType();
 

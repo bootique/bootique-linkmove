@@ -1,3 +1,3 @@
-io.bootique.linkmove.connector.IConnectorFactoryProvider
-io.bootique.linkmove.connector.DataSourceConnectorFactoryProvider
-io.bootique.linkmove.connector.URIConnectorFactoryProvider
+io.bootique.linkmove.connector.IConnectorFactoryFactory
+io.bootique.linkmove.connector.DataSourceConnectorFactoryFactory
+io.bootique.linkmove.connector.URIConnectorFactoryFactory

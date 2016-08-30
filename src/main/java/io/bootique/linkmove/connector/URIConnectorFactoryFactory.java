@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonTypeName("uri")
-public class URIConnectorFactoryProvider implements IConnectorFactoryProvider<URIConnector> {
+public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<URIConnector> {
 
     private Map<String, String> connectors;
 

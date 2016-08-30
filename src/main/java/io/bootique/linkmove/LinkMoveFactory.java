@@ -4,7 +4,7 @@ import com.google.inject.Injector;
 import com.nhl.link.move.connect.Connector;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
-import io.bootique.linkmove.connector.IConnectorFactoryProvider;
+import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import java.util.List;
@@ -15,13 +15,13 @@ public class LinkMoveFactory {
 
 	private String extractorsDir;
 
-	private List<IConnectorFactoryProvider<Connector>> connectorFactories;
+	private List<IConnectorFactoryFactory<Connector>> connectorFactories;
 
 	public void setExtractorsDir(String extractorsDir) {
 		this.extractorsDir = extractorsDir;
 	}
 
-	public void setConnectorFactories(List<IConnectorFactoryProvider<Connector>> connectorFactories) {
+	public void setConnectorFactories(List<IConnectorFactoryFactory<Connector>> connectorFactories) {
 		this.connectorFactories = connectorFactories;
 	}
 
@@ -43,7 +43,7 @@ public class LinkMoveFactory {
 		return builder.build();
 	}
 
-	public List<IConnectorFactoryProvider<Connector>> getConnectorFactories() {
+	public List<IConnectorFactoryFactory<Connector>> getConnectorFactories() {
 		return connectorFactories;
 	}
 

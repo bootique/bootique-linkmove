@@ -7,9 +7,9 @@ import io.bootique.config.ConfigurationFactory;
 import io.bootique.config.jackson.JsonNodeConfigurationFactory;
 import io.bootique.jackson.DefaultJacksonService;
 import io.bootique.jackson.JacksonService;
-import io.bootique.linkmove.connector.DataSourceConnectorFactoryProvider;
-import io.bootique.linkmove.connector.IConnectorFactoryProvider;
-import io.bootique.linkmove.connector.URIConnectorFactoryProvider;
+import io.bootique.linkmove.connector.DataSourceConnectorFactoryFactory;
+import io.bootique.linkmove.connector.IConnectorFactoryFactory;
+import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
 import io.bootique.log.DefaultBootLogger;
 import org.junit.Test;
 
@@ -47,14 +47,14 @@ public class LinkMoveModule_ConfigurationIT {
 
         assertEquals("Unexpected number of connector factory providers", 2, f.getConnectorFactories().size());
 
-        IConnectorFactoryProvider<?> provider;
+        IConnectorFactoryFactory<?> factory;
 
-        provider = f.getConnectorFactories().get(0);
-        assertTrue(provider instanceof DataSourceConnectorFactoryProvider);
+        factory = f.getConnectorFactories().get(0);
+        assertTrue(factory instanceof DataSourceConnectorFactoryFactory);
 
-        provider = f.getConnectorFactories().get(1);
-        assertTrue(provider instanceof URIConnectorFactoryProvider);
-        Map<String, String> connectors = ((URIConnectorFactoryProvider) provider).getConnectors();
+        factory = f.getConnectorFactories().get(1);
+        assertTrue(factory instanceof URIConnectorFactoryFactory);
+        Map<String, String> connectors = ((URIConnectorFactoryFactory) factory).getConnectors();
         assertContainsEntry(connectors, "c1", "file:///path/to/file");
         assertContainsEntry(connectors, "c2", "http://host/path/to/resource");
     }
