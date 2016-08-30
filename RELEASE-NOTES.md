@@ -1,6 +1,7 @@
 ## 0.12
 
 * #12 Runtime build callback for LM runtime customisations
+* #13 App-specific configuration of connector factories
 
 ## 0.11
 
