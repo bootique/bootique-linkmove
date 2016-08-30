@@ -7,7 +7,7 @@ import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 import io.bootique.jdbc.DataSourceFactory;
 
 @JsonTypeName("jdbc")
-public class DataSourceConnectorFactoryFactory implements IConnectorFactoryFactory<JdbcConnector> {
+public class JdbcConnectorFactoryFactory implements IConnectorFactoryFactory<JdbcConnector> {
 
     @Override
     public Class<JdbcConnector> getConnectorType() {
@@ -16,6 +16,6 @@ public class DataSourceConnectorFactoryFactory implements IConnectorFactoryFacto
 
     @Override
     public IConnectorFactory<JdbcConnector> getConnectorFactory(Injector injector) {
-        return new DataSourceConnectorFactory(injector.getInstance(DataSourceFactory.class));
+        return new JdbcConnectorFactory(injector.getInstance(DataSourceFactory.class));
     }
 }

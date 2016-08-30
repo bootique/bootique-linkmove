@@ -8,11 +8,11 @@ import io.bootique.jdbc.DataSourceFactory;
 
 import javax.sql.DataSource;
 
-public class DataSourceConnectorFactory implements IConnectorFactory<JdbcConnector> {
+public class JdbcConnectorFactory implements IConnectorFactory<JdbcConnector> {
 
 	private DataSourceFactory dataSourceFactory;
 
-	public DataSourceConnectorFactory(DataSourceFactory dataSourceFactory) {
+	public JdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
 		this.dataSourceFactory = dataSourceFactory;
 	}
 

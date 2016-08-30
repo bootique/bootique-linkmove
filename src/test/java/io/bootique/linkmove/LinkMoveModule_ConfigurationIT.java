@@ -7,7 +7,7 @@ import io.bootique.config.ConfigurationFactory;
 import io.bootique.config.jackson.JsonNodeConfigurationFactory;
 import io.bootique.jackson.DefaultJacksonService;
 import io.bootique.jackson.JacksonService;
-import io.bootique.linkmove.connector.DataSourceConnectorFactoryFactory;
+import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
 import io.bootique.log.DefaultBootLogger;
@@ -50,7 +50,7 @@ public class LinkMoveModule_ConfigurationIT {
         IConnectorFactoryFactory<?> factory;
 
         factory = f.getConnectorFactories().get(0);
-        assertTrue(factory instanceof DataSourceConnectorFactoryFactory);
+        assertTrue(factory instanceof JdbcConnectorFactoryFactory);
 
         factory = f.getConnectorFactories().get(1);
         assertTrue(factory instanceof URIConnectorFactoryFactory);
