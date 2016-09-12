@@ -21,8 +21,8 @@
 	<properties>
 		<linkmove-version>2.1</linkmove-version>
 		<bootique-version>0.20-SNAPSHOT</bootique-version>
-		<bootique-jdbc-version>0.11</bootique-jdbc-version>
-		<bootique-cayenne-version>0.16</bootique-cayenne-version>
+		<bootique-jdbc-version>0.12-SNAPSHOT</bootique-jdbc-version>
+		<bootique-cayenne-version>0.17-SNAPSHOT</bootique-cayenne-version>
 	</properties>
 
 	<scm>
