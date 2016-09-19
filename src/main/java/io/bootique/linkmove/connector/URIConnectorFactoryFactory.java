@@ -7,6 +7,7 @@ import com.nhl.link.move.runtime.connect.IConnectorFactory;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,10 @@ import java.util.Map;
 public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<URIConnector> {
 
     private Map<String, String> connectors;
+
+    public URIConnectorFactoryFactory() {
+        this.connectors = Collections.emptyMap();
+    }
 
     public void setConnectors(Map<String, String> connectors) {
         this.connectors = connectors;
