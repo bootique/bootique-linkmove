@@ -2,6 +2,7 @@ package io.bootique.linkmove.connector;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.google.inject.Injector;
+import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.connect.URIConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonTypeName("uri")
-public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<URIConnector> {
+public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {
 
     private Map<String, String> connectors;
 
@@ -25,12 +26,12 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<URIC
     }
 
     @Override
-    public Class<URIConnector> getConnectorType() {
-        return URIConnector.class;
+    public Class<StreamConnector> getConnectorType() {
+        return StreamConnector.class;
     }
 
     @Override
-    public IConnectorFactory<URIConnector> getConnectorFactory(Injector injector) {
+    public IConnectorFactory<StreamConnector> getConnectorFactory(Injector injector) {
 
         Map<String, URI> connectorUris = new HashMap<>((int)(connectors.size() / 0.75d) + 1);
         connectors.forEach((id, uri) -> {
