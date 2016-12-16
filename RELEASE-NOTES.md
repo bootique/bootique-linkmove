@@ -1,3 +1,7 @@
+## 0.13
+
+* #18 Upgrade to bootique 0.21, bootique-cayenne 0.18 and Cayenne 4.0.M4
+
 ## 0.12
 
 * #12 Runtime build callback for LM runtime customisations
