@@ -4,13 +4,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLParser;
 import io.bootique.config.ConfigurationFactory;
+import io.bootique.config.PolymorphicConfiguration;
+import io.bootique.config.TypesFactory;
 import io.bootique.config.jackson.JsonNodeConfigurationFactory;
 import io.bootique.jackson.DefaultJacksonService;
 import io.bootique.jackson.JacksonService;
-import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
+import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
 import io.bootique.log.DefaultBootLogger;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,10 +27,20 @@ public class LinkMoveModule_ConfigurationIT {
 
     private static final String CONFIG_PREFIX = "linkmove";
 
+    private TypesFactory<PolymorphicConfiguration> typesFactory;
+
+    @Before
+    public void before() {
+        typesFactory = new TypesFactory<>(
+                getClass().getClassLoader(),
+                PolymorphicConfiguration.class,
+                new DefaultBootLogger(true));
+    }
+
     private ConfigurationFactory factory(URL configUrl) {
 
         // not using a mock; making sure all Jackson extensions are loaded
-        JacksonService jacksonService = new DefaultJacksonService(new DefaultBootLogger(true));
+        JacksonService jacksonService = new DefaultJacksonService(typesFactory.getTypes());
 
         YAMLParser parser;
         try {
