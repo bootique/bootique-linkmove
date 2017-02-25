@@ -4,6 +4,9 @@ import com.google.inject.Binder;
 import com.google.inject.multibindings.Multibinder;
 import io.bootique.ModuleExtender;
 
+/**
+ * @since 0.14
+ */
 public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtender> {
 
     private Multibinder<LinkMoveBuilderCallback> buildCallback;
