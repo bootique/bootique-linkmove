@@ -20,14 +20,30 @@ public class LinkMoveModule extends ConfigModule {
         super(configPrefix);
     }
 
+    /**
+     * @param binder DI binder passed to the Module that invokes this method.
+     * @return an instance of {@link LinkMoveModuleExtender} that can be used to load LinkMove custom extensions.
+     * @since 0.19
+     */
+    public static LinkMoveModuleExtender extend(Binder binder) {
+        return new LinkMoveModuleExtender(binder);
+    }
+
+    /**
+     * @param binder DI binder passed to the Module that invokes this method.
+     * @return returns a {@link Multibinder} for LinkMoveBuilderCallbacks.
+     * @since 0.13
+     * @deprecated since 0.19 call {@link #extend(Binder)} and then call
+     * {@link LinkMoveModuleExtender#addLinkMoveBuilderCallback(Class)} or similar methods.
+     */
+    @Deprecated
     public static Multibinder<LinkMoveBuilderCallback> contributeBuildCallback(Binder binder) {
         return Multibinder.newSetBinder(binder, LinkMoveBuilderCallback.class);
     }
 
     @Override
     public void configure(Binder binder) {
-        // init collections
-        contributeBuildCallback(binder);
+        extend(binder).initAllExtensions();
     }
 
     @Provides

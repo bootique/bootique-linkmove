@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.bootique.modules.parent</groupId>
 		<artifactId>bootique-modules-parent</artifactId>
-		<version>0.2</version>
+		<version>0.7</version>
 	</parent>
 
 	<groupId>io.bootique.linkmove</groupId>
@@ -20,9 +20,9 @@
 
 	<properties>
 		<linkmove-version>2.1</linkmove-version>
-		<bootique-version>0.21</bootique-version>
-		<bootique-jdbc-version>0.13</bootique-jdbc-version>
-		<bootique-cayenne-version>0.18</bootique-cayenne-version>
+		<bootique-version>0.22-SNAPSHOT</bootique-version>
+		<bootique-jdbc-version>0.14-SNAPSHOT</bootique-jdbc-version>
+		<bootique-cayenne-version>0.19-SNAPSHOT</bootique-cayenne-version>
 	</properties>
 
 	<scm>
@@ -76,6 +76,11 @@
 				<version>${bootique-version}</version>
 			</dependency>
 			<dependency>
+				<groupId>io.bootique</groupId>
+				<artifactId>bootique-test</artifactId>
+				<version>${bootique-version}</version>
+			</dependency>
+			<dependency>
 				<groupId>io.bootique.jdbc</groupId>
 				<artifactId>bootique-jdbc</artifactId>
 				<version>${bootique-jdbc-version}</version>
@@ -99,6 +104,10 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.bootique</groupId>
+			<artifactId>bootique-test</artifactId>
 		</dependency>
 
 		<!-- Compile dependencies -->

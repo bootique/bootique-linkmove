@@ -5,6 +5,8 @@ import com.google.inject.Injector;
 import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.connect.URIConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
+import io.bootique.annotation.BQConfig;
+import io.bootique.annotation.BQConfigProperty;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@BQConfig
 @JsonTypeName("uri")
 public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {
 
@@ -21,6 +24,7 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
         this.connectors = Collections.emptyMap();
     }
 
+    @BQConfigProperty
     public void setConnectors(Map<String, String> connectors) {
         this.connectors = connectors;
     }

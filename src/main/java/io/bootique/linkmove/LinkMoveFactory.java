@@ -4,6 +4,8 @@ import com.google.inject.Injector;
 import com.nhl.link.move.connect.Connector;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
+import io.bootique.annotation.BQConfig;
+import io.bootique.annotation.BQConfigProperty;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
@@ -14,12 +16,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+@BQConfig
 public class LinkMoveFactory {
 
     private String extractorsDir;
-
     private List<IConnectorFactoryFactory<? extends Connector>> connectorFactories;
-
 
     public LinkMoveFactory() {
         this.extractorsDir = ".";
@@ -51,6 +52,7 @@ public class LinkMoveFactory {
         return connectorFactories;
     }
 
+    @BQConfigProperty
     public void setConnectorFactories(List<IConnectorFactoryFactory<? extends Connector>> connectorFactories) {
         this.connectorFactories = connectorFactories;
     }
@@ -59,6 +61,7 @@ public class LinkMoveFactory {
         return extractorsDir;
     }
 
+    @BQConfigProperty
     public void setExtractorsDir(String extractorsDir) {
         this.extractorsDir = extractorsDir;
     }

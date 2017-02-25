@@ -1,3 +1,7 @@
+## 0.14
+
+* #19 Upgrade to Bootique 0.22 and replace contribution API with "extend"
+
 ## 0.13
 
 * #16 URIConnectorFactory should declare StreamConnector as its type
