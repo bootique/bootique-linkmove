@@ -1,6 +1,7 @@
 ## 0.14
 
 * #19 Upgrade to Bootique 0.22 and replace contribution API with "extend"
+* #20 Upgrade to LinkMove 2.2
 
 ## 0.13
 
