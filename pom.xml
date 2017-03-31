@@ -10,7 +10,7 @@
 
 	<groupId>io.bootique.linkmove</groupId>
 	<artifactId>bootique-linkmove</artifactId>
-	<version>0.14</version>
+	<version>0.15-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>bootique-linkmove: LinkMove Integration for Bootique</name>
@@ -28,7 +28,7 @@
 	<scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-linkmove</developerConnection>
         <url>https://github.com/bootique/bootique-linkmove</url>
-        <tag>bootique-linkmove-0.14</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
