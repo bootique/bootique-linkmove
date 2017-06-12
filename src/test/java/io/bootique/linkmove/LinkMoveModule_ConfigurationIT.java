@@ -13,9 +13,11 @@ import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
 import io.bootique.log.DefaultBootLogger;
+import io.bootique.resource.FolderResourceFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
@@ -71,6 +73,18 @@ public class LinkMoveModule_ConfigurationIT {
         assertContainsEntry(connectors, "c1", "file:///path/to/file");
         assertContainsEntry(connectors, "c2", "http://host/path/to/resource");
     }
+
+    @Test
+    public void testConfiguration_ExtractorsDir_Classpath() {
+        LinkMoveFactory f = factory(this.getClass().getResource("/io/bootique/linkmove/extractorsDirClasspath.yml"))
+                .config(LinkMoveFactory.class, CONFIG_PREFIX);
+
+        FolderResourceFactory folderResourceFactory = f.getExtractorsDir();
+        File file = new File(folderResourceFactory.getUrl().getFile(), "extractor.xml");
+
+        assertTrue(file.getAbsolutePath() + " is not a file", file.isFile());
+    }
+
 
     private static void assertContainsEntry(Map<?, ?> m, Object k, Object v) {
         assertTrue("Missing key: " + k, m.containsKey(k));

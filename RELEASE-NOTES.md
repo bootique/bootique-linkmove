@@ -1,3 +1,7 @@
+## 0.15
+
+* #5 Support classpath: URLs in 'extractorsDir'
+
 ## 0.14
 
 * #19 Upgrade to Bootique 0.22 and replace contribution API with "extend"
