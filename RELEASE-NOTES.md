@@ -1,3 +1,7 @@
+## 0.15 
+
+* #23 Upgrade to Cayenne 4.0.B1, LinkMove 2.3 and latest Bootique dependencies 
+
 ## 0.14
 
 * #19 Upgrade to Bootique 0.22 and replace contribution API with "extend"

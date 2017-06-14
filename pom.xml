@@ -19,10 +19,10 @@
 	</description>
 
 	<properties>
-		<linkmove-version>2.2</linkmove-version>
-		<bootique-version>0.22</bootique-version>
-		<bootique-jdbc-version>0.14</bootique-jdbc-version>
-		<bootique-cayenne-version>0.19</bootique-cayenne-version>
+		<linkmove-version>2.3</linkmove-version>
+		<bootique-version>0.23-SNAPSHOT</bootique-version>
+		<bootique-jdbc-version>0.15-SNAPSHOT</bootique-jdbc-version>
+		<bootique-cayenne-version>0.20-SNAPSHOT</bootique-cayenne-version>
 	</properties>
 
 	<scm>
@@ -94,21 +94,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- Unit test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.bootique</groupId>
-			<artifactId>bootique-test</artifactId>
-		</dependency>
 
 		<!-- Compile dependencies -->
 		<dependency>
@@ -130,6 +115,28 @@
 			<groupId>io.bootique.cayenne</groupId>
 			<artifactId>bootique-cayenne</artifactId>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Unit test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.bootique</groupId>
+			<artifactId>bootique-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
