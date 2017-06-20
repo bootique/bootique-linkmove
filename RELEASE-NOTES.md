@@ -2,6 +2,7 @@
 
 * #5 Support classpath: URLs in 'extractorsDir'
 * #21 Support classpath: and file: URLs for URIConnectors in YAML 
+* #23 Upgrade to Cayenne 4.0.B1, LinkMove 2.3 and latest Bootique dependencies 
 
 ## 0.14
 
