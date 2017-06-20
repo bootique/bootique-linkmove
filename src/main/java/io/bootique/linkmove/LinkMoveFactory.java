@@ -9,6 +9,7 @@ import io.bootique.annotation.BQConfigProperty;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
+import io.bootique.resource.FolderResourceFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ import java.util.Set;
 @BQConfig
 public class LinkMoveFactory {
 
-    private String extractorsDir;
+    private FolderResourceFactory extractorsDir;
     private List<IConnectorFactoryFactory<? extends Connector>> connectorFactories;
 
     public LinkMoveFactory() {
-        this.extractorsDir = ".";
+        this.extractorsDir = new FolderResourceFactory(".");
         this.connectorFactories = new ArrayList<>();
 
         // add default factories
@@ -36,7 +37,7 @@ public class LinkMoveFactory {
 
         Objects.requireNonNull(extractorsDir);
 
-        LmRuntimeBuilder builder = new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir);
+        LmRuntimeBuilder builder = new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir.getUrl().getFile());
 
         connectorFactories.forEach(factory -> addToBuilder(builder, factory, injector));
 
@@ -57,12 +58,12 @@ public class LinkMoveFactory {
         this.connectorFactories = connectorFactories;
     }
 
-    public String getExtractorsDir() {
+    public FolderResourceFactory getExtractorsDir() {
         return extractorsDir;
     }
 
     @BQConfigProperty
-    public void setExtractorsDir(String extractorsDir) {
+    public void setExtractorsDir(FolderResourceFactory extractorsDir) {
         this.extractorsDir = extractorsDir;
     }
 }

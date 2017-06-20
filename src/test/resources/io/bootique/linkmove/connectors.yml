@@ -1,0 +1,5 @@
+linkmove:
+  connectorFactories:
+    - type: uri
+      connectors:
+        domainSourceConnector: classpath:io/bootique/linkmove/domain.json
