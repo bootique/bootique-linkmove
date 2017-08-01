@@ -10,7 +10,7 @@
 
 	<groupId>io.bootique.linkmove</groupId>
 	<artifactId>bootique-linkmove</artifactId>
-	<version>0.16-SNAPSHOT</version>
+	<version>0.24-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>bootique-linkmove: LinkMove Integration for Bootique</name>
