@@ -5,4 +5,4 @@
 # bootique-linkmove
 
 Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io).
-
+See usage example [bootique-linkmove-demo](https://github.com/bootique-examples/bootique-linkmove-demo).
