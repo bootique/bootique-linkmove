@@ -33,7 +33,7 @@ public class LinkMoveModule extends ConfigModule {
      * @param binder DI binder passed to the Module that invokes this method.
      * @return returns a {@link Multibinder} for LinkMoveBuilderCallbacks.
      * @since 0.13
-     * @deprecated since 0.19 call {@link #extend(Binder)} and then call
+     * @deprecated since 0.14 call {@link #extend(Binder)} and then call
      * {@link LinkMoveModuleExtender#addLinkMoveBuilderCallback(Class)} or similar methods.
      */
     @Deprecated
