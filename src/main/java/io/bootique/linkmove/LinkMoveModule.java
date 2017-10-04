@@ -47,10 +47,11 @@ public class LinkMoveModule extends ConfigModule {
     }
 
     @Provides
-    public LmRuntime createLinkMoveRuntime(ConfigurationFactory configFactory,
-                                           Injector injector,
-                                           ServerRuntime targetRuntime,
-                                           Set<LinkMoveBuilderCallback> buildCallbacks) {
+    public LmRuntime createLinkMoveRuntime(
+            ConfigurationFactory configFactory,
+            Injector injector,
+            ServerRuntime targetRuntime,
+            Set<LinkMoveBuilderCallback> buildCallbacks) {
 
         return configFactory
                 .config(LinkMoveFactory.class, configPrefix)

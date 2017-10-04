@@ -32,8 +32,10 @@ public class LinkMoveFactory {
         connectorFactories.add(new URIConnectorFactoryFactory());
     }
 
-    public LmRuntime createLinkMove(Injector injector, ServerRuntime targetRuntime,
-                                    Set<LinkMoveBuilderCallback> builderCallbacks) {
+    public LmRuntime createLinkMove(
+            Injector injector,
+            ServerRuntime targetRuntime,
+            Set<LinkMoveBuilderCallback> builderCallbacks) {
 
         Objects.requireNonNull(extractorsDir);
 
@@ -45,7 +47,10 @@ public class LinkMoveFactory {
         return builder.build();
     }
 
-    protected <C extends Connector> void addToBuilder(LmRuntimeBuilder builder, IConnectorFactoryFactory<C> factoryFactory, Injector injector) {
+    protected <C extends Connector> void addToBuilder(
+            LmRuntimeBuilder builder,
+            IConnectorFactoryFactory<C> factoryFactory,
+            Injector injector) {
         builder.withConnectorFactory(factoryFactory.getConnectorType(), factoryFactory.getConnectorFactory(injector));
     }
 
