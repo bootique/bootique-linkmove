@@ -39,7 +39,9 @@ public class LinkMoveFactory {
 
         Objects.requireNonNull(extractorsDir);
 
-        LmRuntimeBuilder builder = new LmRuntimeBuilder().withTargetRuntime(targetRuntime).extractorModelsRoot(extractorsDir.getUrl().getFile());
+        LmRuntimeBuilder builder = new LmRuntimeBuilder()
+                .withTargetRuntime(targetRuntime)
+                .extractorModelsRoot(extractorsDir.getUrl().getFile());
 
         connectorFactories.forEach(factory -> addToBuilder(builder, factory, injector));
 
