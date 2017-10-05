@@ -138,6 +138,7 @@
 			<artifactId>bootique-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<!-- Optional profile used to sign artifacts -->
