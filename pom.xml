@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>io.bootique.modules.parent</groupId>
-		<artifactId>bootique-modules-parent</artifactId>
-		<version>0.7</version>
-	</parent>
+    <parent>
+        <groupId>io.bootique.modules.parent</groupId>
+        <artifactId>bootique-modules-parent</artifactId>
+        <version>0.7</version>
+    </parent>
 
-	<groupId>io.bootique.linkmove</groupId>
-	<artifactId>bootique-linkmove</artifactId>
-	<version>0.24-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <groupId>io.bootique.linkmove</groupId>
+    <artifactId>bootique-linkmove</artifactId>
+    <version>0.24-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>bootique-linkmove: LinkMove Integration for Bootique</name>
-	<description>
-		Provides LinkMove integration with Bootique.
-	</description>
+    <name>bootique-linkmove: LinkMove Integration for Bootique</name>
+    <description>
+        Provides LinkMove integration with Bootique.
+    </description>
 
-	<properties>
-		<linkmove-version>2.3</linkmove-version>
-		<bootique-version>${project.version}</bootique-version>
-		<bootique-jdbc-version>${project.version}</bootique-jdbc-version>
-		<bootique-cayenne-version>${project.version}</bootique-cayenne-version>
-	</properties>
+    <properties>
+        <linkmove-version>2.3</linkmove-version>
+        <bootique-version>${project.version}</bootique-version>
+        <bootique-jdbc-version>${project.version}</bootique-jdbc-version>
+        <bootique-cayenne-version>${project.version}</bootique-cayenne-version>
+    </properties>
 
-	<scm>
+    <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-linkmove</developerConnection>
         <url>https://github.com/bootique/bootique-linkmove</url>
         <tag>HEAD</tag>
@@ -39,129 +40,152 @@
         </repository>
     </distributionManagement>
 
-	<repositories>
-		<repository>
-			<id>linkrest-snapshots</id>
-			<url>http://maven.objectstyle.org/nexus/content/repositories/linkrest-snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>linkrest-snapshots</id>
+            <url>http://maven.objectstyle.org/nexus/content/repositories/linkrest-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.nhl.link.move</groupId>
-				<artifactId>link-move</artifactId>
-				<version>${linkmove-version}</version>
-				<!-- Ensure cayenne version from bootique-cayenne is used -->
-				<exclusions>
-					<exclusion>
-						<groupId>org.apache.cayenne</groupId>
-						<artifactId>cayenne-server</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cayenne</groupId>
-						<artifactId>cayenne-java8</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>io.bootique</groupId>
-				<artifactId>bootique</artifactId>
-				<version>${bootique-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.bootique</groupId>
-				<artifactId>bootique-test</artifactId>
-				<version>${bootique-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.bootique.jdbc</groupId>
-				<artifactId>bootique-jdbc</artifactId>
-				<version>${bootique-jdbc-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.bootique.cayenne</groupId>
-				<artifactId>bootique-cayenne</artifactId>
-				<version>${bootique-cayenne-version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.nhl.link.move</groupId>
+                <artifactId>link-move</artifactId>
+                <version>${linkmove-version}</version>
+                <!-- Ensure cayenne version from bootique-cayenne is used -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.cayenne</groupId>
+                        <artifactId>cayenne-server</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.cayenne</groupId>
+                        <artifactId>cayenne-java8</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique</groupId>
+                <artifactId>bootique</artifactId>
+                <version>${bootique-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique</groupId>
+                <artifactId>bootique-test</artifactId>
+                <version>${bootique-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jdbc</groupId>
+                <artifactId>bootique-jdbc</artifactId>
+                <version>${bootique-jdbc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.cayenne</groupId>
+                <artifactId>bootique-cayenne</artifactId>
+                <version>${bootique-cayenne-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
+    <dependencies>
 
-		<!-- Compile dependencies -->
-		<dependency>
-			<groupId>com.nhl.link.move</groupId>
-			<artifactId>link-move</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.bootique</groupId>
-			<artifactId>bootique</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.bootique.jdbc</groupId>
-			<artifactId>bootique-jdbc</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.bootique.cayenne</groupId>
-			<artifactId>bootique-cayenne</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
+        <!-- Compile dependencies -->
+        <dependency>
+            <groupId>com.nhl.link.move</groupId>
+            <artifactId>link-move</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique</groupId>
+            <artifactId>bootique</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.cayenne</groupId>
+            <artifactId>bootique-cayenne</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
-		<!-- Unit test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.bootique</groupId>
-			<artifactId>bootique-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <!-- Unit test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique</groupId>
+            <artifactId>bootique-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <additionalClasspathElements>
+                        <!-- Needed to test extractors packaged as jars-->
+                        <additionalClasspathElement>extractor.jar</additionalClasspathElement>
+                    </additionalClasspathElements>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	</dependencies>
-
-	<!-- Optional profile used to sign artifacts -->
-	<profiles>
-		<profile>
-			<id>gpg</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    <!-- Optional profile used to sign artifacts -->
+    <profiles>
+        <profile>
+            <id>gpg</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
