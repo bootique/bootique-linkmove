@@ -7,7 +7,6 @@
     <connectorId>myconnector</connectorId>
 
     <extractor>
-        <!-- Optional source to target attribute mapping -->
         <attributes>
             <attribute>
                 <type>java.lang.Integer</type>
@@ -25,14 +24,8 @@
                 <target>db:name</target>
             </attribute>
         </attributes>
-        <!-- JDBC connector properties. -->
         <properties>
-            <!-- Query to run against the source. Supports full Cayenne
-                 SQLTemplate syntax, including parameters and directives.
-            -->
-            <extractor.jdbc.sqltemplate>
-                SELECT age, description, name FROM utest.etl1
-            </extractor.jdbc.sqltemplate>
+            <folder>true</folder>
         </properties>
     </extractor>
 </config>
