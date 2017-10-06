@@ -14,42 +14,46 @@ import static org.junit.Assert.assertNotNull;
 
 public class LinkMoveModule_ExtractorsConfigIT {
 
+    private static final ExtractorName EXTRACTOR_NAME = ExtractorName.create("extractor.xml", ExtractorModel.DEFAULT_NAME);
+
     @Rule
     public BQTestFactory testFactory = new BQTestFactory();
-    
-    private LmRuntime runtime(String appConfig) {
-        return testFactory.app("-c", appConfig)
-                .autoLoadModules()
-                .createRuntime()
-                .getInstance(LmRuntime.class);
+
+    @Test
+    public void testConfiguration_ExtractorsDir_File() {
+        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInFilesystemFolder.yml", "folder");
+
+        // TODO: test change reloading...
     }
 
     @Test
     public void testConfiguration_ExtractorsDir_Classpath() {
-
-        LmRuntime runtime = runtime("classpath:io/bootique/linkmove/extractorsDirClasspath.yml");
-
-        ExtractorModel model = runtime
-                .service(IExtractorModelService.class)
-                .get(ExtractorName.create("extractor.xml", ExtractorModel.DEFAULT_NAME));
-
-        assertNotNull(model);
-        assertEquals(ExtractorModel.DEFAULT_NAME, model.getName());
-        assertEquals("jdbc", model.getType());
+        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInClasspathFolder.yml", "cpfolder");
     }
 
     @Test
     @Ignore
     public void testConfiguration_ExtractorsDir_Classpath_InJar() {
+        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInJar.yml", "injar");
+    }
 
-        LmRuntime runtime = runtime("classpath:io/bootique/linkmove/extractorsInJar.yml");
+    private void assertExtractorModel(String config, String markerProperty) {
+        LmRuntime runtime = runtime(config);
 
         ExtractorModel model = runtime
                 .service(IExtractorModelService.class)
-                .get(ExtractorName.create("extractor.xml", ExtractorModel.DEFAULT_NAME));
+                .get(EXTRACTOR_NAME);
 
         assertNotNull(model);
-        assertEquals(ExtractorModel.DEFAULT_NAME, model.getName());
+        assertEquals(EXTRACTOR_NAME.getName(), model.getName());
         assertEquals("jdbc", model.getType());
+        assertEquals("true", model.getProperties().get(markerProperty));
+    }
+
+    private LmRuntime runtime(String appConfig) {
+        return testFactory.app("-c", appConfig)
+                .autoLoadModules()
+                .createRuntime()
+                .getInstance(LmRuntime.class);
     }
 }

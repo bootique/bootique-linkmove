@@ -158,7 +158,7 @@
                 <configuration>
                     <additionalClasspathElements>
                         <!-- Needed to test extractors packaged as jars-->
-                        <additionalClasspathElement>extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/injar/extractor.jar</additionalClasspathElement>
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
