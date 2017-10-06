@@ -3,7 +3,6 @@
         xsi:schemaLocation="http://linkmove.io/xsd/extractor_config_2.xsd"
         xmlns="http://linkmove.io/xsd/extractor_config_2.xsd">
 
-    <!--Sample extractor for test purposes-->
     <type>jdbc</type>
     <connectorId>myconnector</connectorId>
 

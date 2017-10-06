@@ -25,9 +25,23 @@ public class LinkMoveModule_ExtractorsConfigIT {
     }
 
     @Test
+    public void testConfiguration_ExtractorsDir_File() {
+
+        LmRuntime runtime = runtime("classpath:io/bootique/linkmove/extractorsInFilesystemFolder.yml");
+
+        ExtractorModel model = runtime
+                .service(IExtractorModelService.class)
+                .get(ExtractorName.create("extractor.xml", ExtractorModel.DEFAULT_NAME));
+
+        assertNotNull(model);
+        assertEquals(ExtractorModel.DEFAULT_NAME, model.getName());
+        assertEquals("jdbc", model.getType());
+    }
+
+    @Test
     public void testConfiguration_ExtractorsDir_Classpath() {
 
-        LmRuntime runtime = runtime("classpath:io/bootique/linkmove/extractorsDirClasspath.yml");
+        LmRuntime runtime = runtime("classpath:io/bootique/linkmove/extractorsInClasspathFolder.yml");
 
         ExtractorModel model = runtime
                 .service(IExtractorModelService.class)

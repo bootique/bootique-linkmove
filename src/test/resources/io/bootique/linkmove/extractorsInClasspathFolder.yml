@@ -1,0 +1,2 @@
+linkmove:
+  extractorsDir: classpath:io/bootique/linkmove/cpfolder
