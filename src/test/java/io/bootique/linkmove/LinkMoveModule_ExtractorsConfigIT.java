@@ -5,7 +5,6 @@ import com.nhl.link.move.extractor.model.ExtractorName;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.extractor.model.IExtractorModelService;
 import io.bootique.test.junit.BQTestFactory;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -32,7 +31,6 @@ public class LinkMoveModule_ExtractorsConfigIT {
     }
 
     @Test
-    @Ignore
     public void testConfiguration_ExtractorsDir_Classpath_InJar() {
         assertExtractorModel("classpath:io/bootique/linkmove/extractorsInJar.yml", "injar");
     }
