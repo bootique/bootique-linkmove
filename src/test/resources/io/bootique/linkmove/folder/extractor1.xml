@@ -25,7 +25,7 @@
             </attribute>
         </attributes>
         <properties>
-            <folder>true</folder>
+            <folder1>true</folder1>
         </properties>
     </extractor>
 </config>

@@ -8,8 +8,14 @@ import io.bootique.test.junit.BQTestFactory;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class LinkMoveModule_ExtractorsConfigIT {
 
@@ -19,39 +25,90 @@ public class LinkMoveModule_ExtractorsConfigIT {
     public BQTestFactory testFactory = new BQTestFactory();
 
     @Test
-    public void testConfiguration_ExtractorsDir_File() {
-        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInFilesystemFolder.yml", "folder");
+    public void testConfiguration_ExtractorsDir_File() throws IOException, InterruptedException {
 
-        // TODO: test change reloading...
+        File targetFolder = new File("target/extractors/io/bootique/linkmove/folder");
+        File targetFile = new File(targetFolder, "extractor.xml");
+
+        targetFolder.mkdirs();
+        targetFile.delete();
+
+        Files.copy(
+                Paths.get("src/test/resources/io/bootique/linkmove/folder/extractor1.xml"),
+                targetFile.toPath());
+
+        ExtractorModelTester tester = tester("classpath:io/bootique/linkmove/extractorsInFilesystemFolder.yml")
+                .assertBasics()
+                .assertPropertyPresent("folder1")
+                .assertPropertyAbsent("folder2");
+
+        // replace the file and test reloading
+
+        targetFile.delete();
+        // must sleep long enough for reload to be detected, as file modification time is rounded to seconds..
+        Thread.sleep(1100);
+        Files.copy(
+                Paths.get("src/test/resources/io/bootique/linkmove/folder/extractor2.xml"),
+                targetFile.toPath());
+
+        tester.assertPropertyPresent("folder2").assertPropertyAbsent("folder1");
     }
 
     @Test
     public void testConfiguration_ExtractorsDir_Classpath() {
-        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInClasspathFolder.yml", "cpfolder");
+        tester("classpath:io/bootique/linkmove/extractorsInClasspathFolder.yml")
+                .assertBasics()
+                .assertPropertyPresent("cpfolder");
     }
 
     @Test
     public void testConfiguration_ExtractorsDir_Classpath_InJar() {
-        assertExtractorModel("classpath:io/bootique/linkmove/extractorsInJar.yml", "injar");
+        tester("classpath:io/bootique/linkmove/extractorsInJar.yml")
+                .assertBasics()
+                .assertPropertyPresent("injar");
     }
 
-    private void assertExtractorModel(String config, String markerProperty) {
-        LmRuntime runtime = runtime(config);
 
-        ExtractorModel model = runtime
-                .service(IExtractorModelService.class)
-                .get(EXTRACTOR_NAME);
-
-        assertNotNull(model);
-        assertEquals(EXTRACTOR_NAME.getName(), model.getName());
-        assertEquals("jdbc", model.getType());
-        assertEquals("true", model.getProperties().get(markerProperty));
-    }
-
-    private LmRuntime runtime(String appConfig) {
-        return testFactory.app("-c", appConfig)
+    private ExtractorModelTester tester(String appConfig) {
+        LmRuntime runtime = testFactory.app("-c", appConfig)
                 .autoLoadModules()
                 .createRuntime()
                 .getInstance(LmRuntime.class);
+        return new ExtractorModelTester(runtime);
+    }
+
+    class ExtractorModelTester {
+        private LmRuntime runtime;
+
+        ExtractorModelTester(LmRuntime runtime) {
+            this.runtime = runtime;
+        }
+
+        ExtractorModel getModel() {
+
+            ExtractorModel model = runtime
+                    .service(IExtractorModelService.class)
+                    .get(EXTRACTOR_NAME);
+
+            assertNotNull(model);
+            return model;
+        }
+
+        ExtractorModelTester assertBasics() {
+            ExtractorModel model = getModel();
+            assertEquals(EXTRACTOR_NAME.getName(), model.getName());
+            assertEquals("jdbc", model.getType());
+            return this;
+        }
+
+        ExtractorModelTester assertPropertyPresent(String property) {
+            assertNotNull(getModel().getProperties().get(property));
+            return this;
+        }
+
+        ExtractorModelTester assertPropertyAbsent(String property) {
+            assertNull(getModel().getProperties().get(property));
+            return this;
+        }
     }
 }

@@ -1,2 +1,2 @@
 linkmove:
-  extractorsDir: src/test/resources/io/bootique/linkmove/folder
+  extractorsDir: target/extractors/io/bootique/linkmove/folder
