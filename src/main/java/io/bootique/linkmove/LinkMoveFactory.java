@@ -2,6 +2,8 @@ package io.bootique.linkmove;
 
 import com.google.inject.Injector;
 import com.nhl.link.move.connect.Connector;
+import com.nhl.link.move.resource.FolderResourceResolver;
+import com.nhl.link.move.resource.ResourceResolver;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
 import io.bootique.annotation.BQConfig;
@@ -9,12 +11,17 @@ import io.bootique.annotation.BQConfigProperty;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.connector.URIConnectorFactoryFactory;
+import io.bootique.linkmove.resource.BQUrlResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 @BQConfig
@@ -37,16 +44,44 @@ public class LinkMoveFactory {
             ServerRuntime targetRuntime,
             Set<LinkMoveBuilderCallback> builderCallbacks) {
 
-        Objects.requireNonNull(extractorsDir);
-
+        ResourceResolver resolver = createResolver();
         LmRuntimeBuilder builder = new LmRuntimeBuilder()
                 .withTargetRuntime(targetRuntime)
-                .extractorModelsRoot(extractorsDir.getUrl().getFile());
+                .extractorResolver(resolver);
 
         connectorFactories.forEach(factory -> addToBuilder(builder, factory, injector));
 
         builderCallbacks.forEach(c -> c.build(builder));
         return builder.build();
+    }
+
+    protected ResourceResolver createResolver() {
+
+        Objects.requireNonNull(extractorsDir);
+
+        // handle dir URLs differently - they are reloadable...
+
+        return folderUrl()
+                .map(this::crateFolderResolver)
+                .orElseGet(() -> new BQUrlResourceResolver(extractorsDir));
+    }
+
+    protected ResourceResolver crateFolderResolver(URL url) {
+        try {
+            return new FolderResourceResolver(new File(url.toURI()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("Not a 'file:' URL: " + url, e);
+        }
+    }
+
+    protected Optional<URL> folderUrl() {
+
+        if (extractorsDir.getResourceId().startsWith("classpath:")) {
+            return Optional.empty();
+        }
+
+        URL url = extractorsDir.getUrl();
+        return "file".equals(url.getProtocol()) ? Optional.of(url) : Optional.empty();
     }
 
     protected <C extends Connector> void addToBuilder(
