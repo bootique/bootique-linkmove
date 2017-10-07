@@ -1,6 +1,7 @@
 ## 0.24
 
 * #25 Extractor XML descriptors can't be loaded from .jar files
+* #26 Upgrade to Cayenne 4.0.B2, LinkMove 2.4
 
 ## 0.15
 
