@@ -150,14 +150,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <additionalClasspathElements>
-                        <!-- Needed to test extractors packaged as jars-->
+                        <!--
+                        Needed to test extractors packaged as jars. See
+                        LinkMoveModule_ExtractorsConfigIT.testConfiguration_ExtractorsDir_Classpath_InJar()
+                        -->
                         <additionalClasspathElement>src/test/resources/io/bootique/linkmove/injar/extractor.jar</additionalClasspathElement>
                     </additionalClasspathElements>
                 </configuration>

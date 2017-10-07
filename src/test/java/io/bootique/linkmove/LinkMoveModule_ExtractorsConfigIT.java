@@ -63,6 +63,7 @@ public class LinkMoveModule_ExtractorsConfigIT {
 
     @Test
     public void testConfiguration_ExtractorsDir_Classpath_InJar() {
+        // this works because the test jar is added to classpath in the pom.xml via <additionalClasspathElement>
         tester("classpath:io/bootique/linkmove/extractorsInJar.yml")
                 .assertBasics()
                 .assertPropertyPresent("injar");
