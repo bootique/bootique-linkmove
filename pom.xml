@@ -20,7 +20,7 @@
     </description>
 
     <properties>
-        <linkmove-version>2.4-SNAPSHOT</linkmove-version>
+        <linkmove-version>2.4</linkmove-version>
         <bootique-version>${project.version}</bootique-version>
         <bootique-jdbc-version>${project.version}</bootique-jdbc-version>
         <bootique-cayenne-version>${project.version}</bootique-cayenne-version>
