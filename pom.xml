@@ -22,8 +22,6 @@
     <properties>
         <linkmove-version>2.4</linkmove-version>
         <bootique-version>${project.version}</bootique-version>
-        <bootique-jdbc-version>${project.version}</bootique-jdbc-version>
-        <bootique-cayenne-version>${project.version}</bootique-cayenne-version>
     </properties>
 
     <scm>
@@ -84,12 +82,12 @@
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc</artifactId>
-                <version>${bootique-jdbc-version}</version>
+                <version>${bootique-version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.cayenne</groupId>
                 <artifactId>bootique-cayenne</artifactId>
-                <version>${bootique-cayenne-version}</version>
+                <version>${bootique-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
