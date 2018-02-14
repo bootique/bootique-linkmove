@@ -19,7 +19,7 @@
     </description>
 
     <properties>
-        <linkmove-version>2.4</linkmove-version>
+        <linkmove-version>2.5</linkmove-version>
         <bootique-version>${project.version}</bootique-version>
     </properties>
 

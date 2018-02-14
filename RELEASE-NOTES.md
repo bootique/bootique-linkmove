@@ -1,3 +1,7 @@
+## 0.25
+
+* #28 Upgrade to LM 2.5
+
 ## 0.24
 
 * #25 Extractor XML descriptors can't be loaded from .jar files
