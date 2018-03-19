@@ -1,6 +1,7 @@
 ## 0.25
 
 * #28 Upgrade to LM 2.5
+* #29 Upgrade to bootique-modules-parent 0.8
 
 ## 0.24
 
