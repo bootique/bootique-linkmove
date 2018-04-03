@@ -3,7 +3,6 @@ package io.bootique.linkmove;
 import com.google.inject.Binder;
 import com.google.inject.Injector;
 import com.google.inject.Provides;
-import com.google.inject.multibindings.Multibinder;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.ConfigModule;
 import io.bootique.config.ConfigurationFactory;
@@ -27,18 +26,6 @@ public class LinkMoveModule extends ConfigModule {
      */
     public static LinkMoveModuleExtender extend(Binder binder) {
         return new LinkMoveModuleExtender(binder);
-    }
-
-    /**
-     * @param binder DI binder passed to the Module that invokes this method.
-     * @return returns a {@link Multibinder} for LinkMoveBuilderCallbacks.
-     * @since 0.13
-     * @deprecated since 0.14 call {@link #extend(Binder)} and then call
-     * {@link LinkMoveModuleExtender#addLinkMoveBuilderCallback(Class)} or similar methods.
-     */
-    @Deprecated
-    public static Multibinder<LinkMoveBuilderCallback> contributeBuildCallback(Binder binder) {
-        return Multibinder.newSetBinder(binder, LinkMoveBuilderCallback.class);
     }
 
     @Override

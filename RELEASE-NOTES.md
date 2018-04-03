@@ -1,3 +1,7 @@
+## 0.26
+
+* #30 Cleaning up APIs deprecated since <= 0.25
+
 ## 0.25
 
 * #28 Upgrade to LM 2.5
