@@ -36,21 +36,6 @@ Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique
 </dependency>
 ```
 
-## Available commands
-
-```
-OPTIONS
-      -c yaml_location, --config=yaml_location
-           Specifies YAML config location, which can be a file path or a URL.
-
-      -h, --help
-           Prints this message.
-
-      -H, --help-config
-           Prints information about application modules and their configuration
-           options.
-```
-
 ## Example Project
 
 [bootique-linkmove-demo](https://github.com/bootique-examples/bootique-linkmove-demo)
