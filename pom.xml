@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.bootique.modules.parent</groupId>
         <artifactId>bootique-modules-parent</artifactId>
-        <version>0.8</version>
+        <version>0.10</version>
     </parent>
 
     <groupId>io.bootique.linkmove</groupId>
@@ -19,8 +19,8 @@
     </description>
 
     <properties>
-        <linkmove-version>2.5</linkmove-version>
-        <bootique-version>${project.version}</bootique-version>
+        <bootique.version>${project.version}</bootique.version>
+        <linkmove.version>2.5</linkmove.version>
     </properties>
 
     <scm>
@@ -55,7 +55,7 @@
             <dependency>
                 <groupId>com.nhl.link.move</groupId>
                 <artifactId>link-move</artifactId>
-                <version>${linkmove-version}</version>
+                <version>${linkmove.version}</version>
                 <!-- Ensure cayenne version from bootique-cayenne is used -->
                 <exclusions>
                     <exclusion>
@@ -75,27 +75,22 @@
             <dependency>
                 <groupId>io.bootique</groupId>
                 <artifactId>bootique</artifactId>
-                <version>${bootique-version}</version>
+                <version>${bootique.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique</groupId>
                 <artifactId>bootique-test</artifactId>
-                <version>${bootique-version}</version>
+                <version>${bootique.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc</artifactId>
-                <version>${bootique-version}</version>
+                <version>${bootique.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.cayenne</groupId>
                 <artifactId>bootique-cayenne</artifactId>
-                <version>${bootique-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4j.version}</version>
+                <version>${bootique.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
