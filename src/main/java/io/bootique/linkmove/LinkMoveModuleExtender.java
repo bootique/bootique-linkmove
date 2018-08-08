@@ -20,6 +20,7 @@
 package io.bootique.linkmove;
 
 import com.google.inject.Binder;
+import com.google.inject.Key;
 import com.google.inject.multibindings.Multibinder;
 import io.bootique.ModuleExtender;
 
@@ -40,6 +41,16 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
         return this;
     }
 
+    /**
+     * @param callbackKey a DI key pointing to a bound callback service.
+     * @return this instance of extender
+     * @since 0.26
+     */
+    public LinkMoveModuleExtender addLinkMoveBuilderCallback(Key<? extends LinkMoveBuilderCallback> callbackKey) {
+        contributeBuildCallback().addBinding().to(callbackKey);
+        return this;
+    }
+
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(LinkMoveBuilderCallback callback) {
         contributeBuildCallback().addBinding().toInstance(callback);
         return this;
@@ -51,6 +62,6 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
     }
 
     protected Multibinder<LinkMoveBuilderCallback> contributeBuildCallback() {
-        return buildCallback != null ? buildCallback  : (buildCallback = newSet(LinkMoveBuilderCallback.class));
+        return buildCallback != null ? buildCallback : (buildCallback = newSet(LinkMoveBuilderCallback.class));
     }
 }
