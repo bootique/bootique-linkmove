@@ -58,13 +58,7 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
     public IConnectorFactory<StreamConnector> getConnectorFactory(Injector injector) {
 
         Map<String, URI> connectorUris = new HashMap<>((int)(connectors.size() / 0.75d) + 1);
-        connectors.forEach((id, uri) -> {
-            try {
-                connectorUris.put(id, uri.getUrl().toURI());
-            } catch (URISyntaxException e) {
-                throw new IllegalArgumentException("Invalid URI for connector with ID: " + id, e);
-            }
-        });
+        connectors.forEach((id, uri) -> connectorUris.put(id, connectorURI(id, uri)));
 
         return id -> {
             if (!connectorUris.containsKey(id)) {
@@ -72,6 +66,14 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
             }
             return new URIConnector(connectorUris.get(id));
         };
+    }
+    
+    protected URI connectorURI(String id, ResourceFactory resourceFactory) {
+        try {
+            return resourceFactory.getUrl().toURI();
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException("Invalid URI for connector with ID: " + id, e);
+        }
     }
 
     public Map<String, ResourceFactory> getConnectors() {
