@@ -1,4 +1,4 @@
-## 0.26
+## 1.0.RC1
 
 * #30 Cleaning up APIs deprecated since <= 0.25
 * #32 Upgrade to LinkMove 2.6
