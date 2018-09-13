@@ -22,6 +22,7 @@ package io.bootique.linkmove;
 import com.google.inject.Binder;
 import com.google.inject.Injector;
 import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.ConfigModule;
 import io.bootique.config.ConfigurationFactory;
@@ -52,6 +53,7 @@ public class LinkMoveModule extends ConfigModule {
         extend(binder).initAllExtensions();
     }
 
+    @Singleton
     @Provides
     public LmRuntime createLinkMoveRuntime(
             ConfigurationFactory configFactory,

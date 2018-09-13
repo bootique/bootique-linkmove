@@ -2,6 +2,7 @@
 
 * #30 Cleaning up APIs deprecated since <= 0.25
 * #32 Upgrade to LinkMove 2.6
+* #33 LM runtime is not a singleton causing massive resource leak 
 
 ## 0.25
 
