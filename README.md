@@ -18,7 +18,7 @@
   -->
 
 [![Build Status](https://travis-ci.org/bootique/bootique-linkmove.svg)](https://travis-ci.org/bootique/bootique-linkmove)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.bootique.linkmove/bootique-linkmove/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.bootique.linkmove/bootique-linkmove/)
+[![Maven Central](https://img.shields.io/maven-central/v/io.bootique.linkmove/bootique-linkmove.svg?colorB=brightgreen)](https://search.maven.org/artifact/io.bootique.linkmove/bootique-linkmove/)
 
 # bootique-linkmove
 
