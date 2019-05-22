@@ -28,14 +28,18 @@
     </parent>
 
     <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove</artifactId>
+    <artifactId>bootique-linkmove-parent</artifactId>
     <version>1.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>bootique-linkmove: LinkMove Integration for Bootique</name>
+    <name>bootique-linkmove-parent: Parent of LinkMove integration modules</name>
     <description>
-        Provides LinkMove integration with Bootique.
+        Parent of LinkMove integration modules
     </description>
+
+    <modules>
+        <module>bootique-linkmove</module>
+    </modules>
 
     <properties>
         <bootique.version>${project.version}</bootique.version>
@@ -106,43 +110,10 @@
                 <artifactId>bootique-jdbc</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
-            <dependency>
-                <groupId>io.bootique.cayenne</groupId>
-                <artifactId>bootique-cayenne</artifactId>
-                <version>${bootique.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-
-        <!-- Compile dependencies -->
-        <dependency>
-            <groupId>com.nhl.link.move</groupId>
-            <artifactId>link-move</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique</groupId>
-            <artifactId>bootique</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique.cayenne</groupId>
-            <artifactId>bootique-cayenne</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Unit test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -165,23 +136,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <additionalClasspathElements>
-                        <!--
-                        Needed to test extractors packaged as jars. See
-                        LinkMoveModule_ExtractorsConfigIT.testConfiguration_ExtractorsDir_Classpath_InJar()
-                        -->
-                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/injar/extractor.jar</additionalClasspathElement>
-                    </additionalClasspathElements>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <!-- Optional profile used to sign artifacts -->
     <profiles>
