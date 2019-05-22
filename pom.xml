@@ -39,6 +39,7 @@
 
     <modules>
         <module>bootique-linkmove</module>
+        <module>bootique-linkmove-cayenne41</module>
     </modules>
 
     <properties>

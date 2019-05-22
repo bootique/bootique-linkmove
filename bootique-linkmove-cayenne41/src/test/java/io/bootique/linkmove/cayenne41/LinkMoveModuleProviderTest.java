@@ -17,10 +17,10 @@
  * under the License.
  */
 
-package io.bootique.linkmove;
+package io.bootique.linkmove.cayenne41;
 
 import io.bootique.BQRuntime;
-import io.bootique.cayenne.CayenneModule;
+import io.bootique.cayenne.v41.CayenneModule;
 import io.bootique.jdbc.JdbcModule;
 import io.bootique.test.junit.BQModuleProviderChecker;
 import io.bootique.test.junit.BQRuntimeChecker;
@@ -28,7 +28,7 @@ import io.bootique.test.junit.BQTestFactory;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class LinkMoveModuleProviderIT {
+public class LinkMoveModuleProviderTest {
 
     @Rule
     public BQTestFactory testFactory = new BQTestFactory();

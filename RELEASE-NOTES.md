@@ -1,3 +1,9 @@
+## 1.1
+
+* #34 add support for Cayenne 4.1 
+
+## 1.0
+
 ## 1.0.RC1
 
 * #30 Cleaning up APIs deprecated since <= 0.25
