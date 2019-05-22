@@ -50,28 +50,8 @@
 
         <!-- Compile dependencies -->
         <dependency>
-            <groupId>com.nhl.link.move</groupId>
-            <artifactId>link-move</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique</groupId>
-            <artifactId>bootique</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>io.bootique.cayenne</groupId>
             <artifactId>bootique-cayenne41</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
             <scope>compile</scope>
         </dependency>
     </dependencies>
