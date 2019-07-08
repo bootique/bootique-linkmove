@@ -61,8 +61,7 @@ public class LinkMoveModule extends ConfigModule {
             ServerRuntime targetRuntime,
             Set<LinkMoveBuilderCallback> buildCallbacks) {
 
-        return configFactory
-                .config(LinkMoveFactory.class, configPrefix)
+        return config(LinkMoveFactory.class, configFactory)
                 .createLinkMove(injector, targetRuntime, buildCallbacks);
     }
 }
