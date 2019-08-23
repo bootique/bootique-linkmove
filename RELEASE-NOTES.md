@@ -1,6 +1,8 @@
 ## 1.1
 
 * #34 add support for Cayenne 4.1 
+* #36 LinkMove binary incompatibility with Cayenne 4.1
+* #37 Upgrade to LinkMove 2.7 
 
 ## 1.0
 

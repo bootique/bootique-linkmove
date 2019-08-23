@@ -46,7 +46,7 @@
 
     <properties>
         <bootique.version>${project.version}</bootique.version>
-        <linkmove.version>2.6</linkmove.version>
+        <linkmove.version>2.7-SNAPSHOT</linkmove.version>
     </properties>
 
     <scm>
