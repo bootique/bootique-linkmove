@@ -1,0 +1,11 @@
+jdbc:
+  ds:
+    url: jdbc:derby:target/derby/lm;create=true
+    initialSize: 1
+
+linkmove:
+  extractorsDir: "classpath:io/bootique/linkmove/json"
+  connectorFactories:
+    - type: "uri"
+      connectors:
+        data: "classpath:io/bootique/linkmove/json/data.json"

@@ -49,5 +49,17 @@
             <artifactId>link-move-json</artifactId>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>io.bootique.cayenne</groupId>
+            <artifactId>bootique-cayenne41-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc-tomcat</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
