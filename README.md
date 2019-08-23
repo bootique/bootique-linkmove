@@ -53,7 +53,19 @@ Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique
     <groupId>io.bootique.linkmove</groupId>
     <artifactId>bootique-linkmove</artifactId>
 </dependency>
+
+<!-- If you need to process JSON sources also include JSON module-->
+<!-- 
+<dependency>
+    <groupId>io.bootique.linkmove</groupId>
+    <artifactId>bootique-linkmove-json</artifactId>
+</dependency> 
+-->
 ```
+
+## Use LinkMove
+
+Now you can inject `LmRuntime` in your code, build and execute `LmTasks`. 
 
 ## Example Project
 

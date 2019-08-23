@@ -39,7 +39,9 @@
 
     <modules>
         <module>bootique-linkmove</module>
+        <module>bootique-linkmove-json</module>
         <module>bootique-linkmove-cayenne41</module>
+        <module>bootique-linkmove-json-cayenne41</module>
     </modules>
 
     <properties>
@@ -97,6 +99,22 @@
                 </exclusions>
             </dependency>
             <dependency>
+                <groupId>com.nhl.link.move</groupId>
+                <artifactId>link-move-json</artifactId>
+                <version>${linkmove.version}</version>
+                <!-- Ensure Jackson version from bootique is used -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
                 <groupId>io.bootique</groupId>
                 <artifactId>bootique</artifactId>
                 <version>${bootique.version}</version>
@@ -109,6 +127,26 @@
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.linkmove</groupId>
+                <artifactId>bootique-linkmove</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.linkmove</groupId>
+                <artifactId>bootique-linkmove-cayenne41</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.cayenne</groupId>
+                <artifactId>bootique-cayenne-test</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jdbc</groupId>
+                <artifactId>bootique-jdbc-tomcat</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
         </dependencies>
