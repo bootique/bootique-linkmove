@@ -1,4 +1,4 @@
-package io.bootique.linkmove.rest;
+package io.bootique.linkmove.rest.cayenne41;
 
 import com.nhl.link.move.connect.StreamConnector;
 

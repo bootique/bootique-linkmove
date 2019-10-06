@@ -43,6 +43,7 @@
         <module>bootique-linkmove-cayenne41</module>
         <module>bootique-linkmove-json-cayenne41</module>
         <module>bootique-linkmove-rest</module>
+        <module>bootique-linkmove-rest-cayenne41</module>
     </modules>
 
     <properties>
