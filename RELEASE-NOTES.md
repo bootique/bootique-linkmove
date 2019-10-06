@@ -4,6 +4,7 @@
 * #35 "bootique-linkmove-json" module 
 * #36 LinkMove binary incompatibility with Cayenne 4.1
 * #37 Upgrade to LinkMove 2.7 
+* #38 Upgrade to LinkMove 2.8
 
 ## 1.0
 
