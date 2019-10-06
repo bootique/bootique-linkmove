@@ -8,7 +8,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
+/**
+ * @since 1.1
+ */
 public class RestConnector implements StreamConnector {
+
+    static final String TEMPLATE_VALUE_MAP_PARAMETER = RestConnector.class.getSimpleName() + ".templateValueMap";
 
     private WebTarget target;
 
@@ -16,9 +21,14 @@ public class RestConnector implements StreamConnector {
         this.target = target;
     }
 
+    public static RestConnectorUrlTemplateResolver bindTemplateValues() {
+        return new RestConnectorUrlTemplateResolver();
+    }
+
     @Override
     public InputStream getInputStream(Map<String, ?> parameters) throws IOException {
-        Response response = target.request().get();
+
+        Response response = resolveTarget(parameters).request().get();
 
         // presumably redirects are followed automatically, so the only response that is not an error is 200...
         if (response.getStatus() != 200) {
@@ -33,5 +43,10 @@ public class RestConnector implements StreamConnector {
         // TODO: do we need to worry about closing anything explicitly
         //  (assuming downstream consuming code closes the InputStream)?
         return response.readEntity(InputStream.class);
+    }
+
+    protected WebTarget resolveTarget(Map<String, ?> parameters) {
+        Map<String, Object> templateParams = (Map<String, Object>) parameters.get(TEMPLATE_VALUE_MAP_PARAMETER);
+        return templateParams != null && !templateParams.isEmpty() ? target.resolveTemplates(templateParams) : target;
     }
 }

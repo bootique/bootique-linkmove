@@ -8,6 +8,9 @@ import io.bootique.annotation.BQConfig;
 import io.bootique.jersey.client.HttpTargets;
 import io.bootique.linkmove.cayenne41.connector.IConnectorFactoryFactory;
 
+/**
+ * @since 1.1
+ */
 @JsonTypeName("bq.rest")
 @BQConfig("Creates a LinkMove connector that resolves connector ids as 'targets' in 'jerseyclient' configurations")
 public class RestConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {

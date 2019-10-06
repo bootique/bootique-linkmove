@@ -20,5 +20,8 @@ package io.bootique.linkmove.rest.cayenne41;
 
 import io.bootique.ConfigModule;
 
+/**
+ * @since 1.1
+ */
 public class LinkMoveRestModule extends ConfigModule {
 }

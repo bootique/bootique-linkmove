@@ -39,11 +39,13 @@ import org.junit.Test;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriInfo;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -85,6 +87,17 @@ public class LinkMoveRestIT {
                 .run();
     }
 
+
+    @Test
+    public void testLinkMoveRest_ResolvePathParameters() {
+        testFactory
+                .autoLoadModules()
+                .app("-c", "classpath:io/bootique/linkmove/rest/test-params.yml")
+                .module(b -> BQCoreModule.extend(b).setDefaultCommand(LMWithRest_WithParams.class))
+                .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne-project.xml"))
+                .run();
+    }
+
     public static final class LMWithRest implements Command {
 
         @Inject
@@ -106,6 +119,32 @@ public class LinkMoveRestIT {
         }
     }
 
+    public static final class LMWithRest_WithParams implements Command {
+
+        @Inject
+        private Provider<LmRuntime> runtime;
+
+        @Override
+        public CommandOutcome run(Cli cli) {
+
+            LmTask task = runtime.get()
+                    .getTaskService()
+                    .createOrUpdate(Table1.class)
+                    .sourceExtractor("extractor.xml")
+                    .task();
+
+
+            Map<String, Object> params = RestConnector.bindTemplateValues()
+                    .value("p1", 897L)
+                    .value("p2", "a_Name")
+                    .toExtractorParameters();
+
+            assertEquals(1, task.run(params).getStats().getCreated());
+
+            return CommandOutcome.succeeded();
+        }
+    }
+
     @Path("/r1")
     public static class R1 {
 
@@ -114,31 +153,41 @@ public class LinkMoveRestIT {
 
         @GET
         @Produces(MediaType.APPLICATION_JSON)
-        public String get(@Context UriInfo uriInfo) {
-            return "{\n" +
-                    "  \"data\": [\n" +
-                    "    {\n" +
-                    "      \"id\": 1,\n" +
-                    "      \"name\": \"n1\"\n" +
-                    "    },\n" +
-                    "    {\n" +
-                    "      \"id\": 2,\n" +
-                    "      \"name\": \"n2\"\n" +
-                    "    },\n" +
-                    "    {\n" +
-                    "      \"id\": 3,\n" +
-                    "      \"name\": \"n3\"\n" +
-                    "    },\n" +
-                    "    {\n" +
-                    "      \"id\": 4,\n" +
-                    "      \"name\": \"n4\"\n" +
-                    "    },\n" +
-                    "    {\n" +
-                    "      \"id\": 5,\n" +
-                    "      \"name\": \"n5\"\n" +
-                    "    }\n" +
-                    "  ]\n" +
-                    "}";
+        public String get() {
+            return "{\"data\": [" +
+                    "    {" +
+                    "      \"id\": 1," +
+                    "      \"name\": \"n1\"" +
+                    "    }," +
+                    "    {" +
+                    "      \"id\": 2," +
+                    "      \"name\": \"n2\"" +
+                    "    }," +
+                    "    {" +
+                    "      \"id\": 3," +
+                    "      \"name\": \"n3\"" +
+                    "    }," +
+                    "    {" +
+                    "      \"id\": 4," +
+                    "      \"name\": \"n4\"" +
+                    "    }," +
+                    "    {" +
+                    "      \"id\": 5," +
+                    "      \"name\": \"n5\"" +
+                    "    }" +
+                    "]}";
+        }
+
+        @GET
+        @Path("{id}")
+        @Produces(MediaType.APPLICATION_JSON)
+        public String getOne(@PathParam("id") long id, @QueryParam("name") String name) {
+            return "{\"data\": [" +
+                    "    {" +
+                    "      \"id\": " + id + "," +
+                    "      \"name\": \"" + name + "\"" +
+                    "    }" +
+                    "]}";
         }
     }
 }

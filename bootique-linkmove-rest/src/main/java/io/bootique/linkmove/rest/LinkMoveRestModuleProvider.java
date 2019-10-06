@@ -21,6 +21,9 @@ package io.bootique.linkmove.rest;
 import com.google.inject.Module;
 import io.bootique.BQModuleProvider;
 
+/**
+ * @since 1.1
+ */
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override

@@ -4,6 +4,9 @@ import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.jersey.client.HttpTargets;
 
+/**
+ * @since 1.1
+ */
 public class RestConnectorFactory implements IConnectorFactory<StreamConnector> {
 
     private HttpTargets httpTargets;

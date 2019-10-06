@@ -6,6 +6,7 @@
 * #37 Upgrade to LinkMove 2.7 
 * #38 Upgrade to LinkMove 2.8
 * #39 RestConnector - connector based on Bootique JAX RS client
+* #40 Parameterized URLs in RestConnector
 
 ## 1.0
 
