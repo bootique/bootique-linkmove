@@ -42,6 +42,7 @@
         <module>bootique-linkmove-json</module>
         <module>bootique-linkmove-cayenne41</module>
         <module>bootique-linkmove-json-cayenne41</module>
+        <module>bootique-linkmove-rest</module>
     </modules>
 
     <properties>
@@ -152,6 +153,11 @@
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc-tomcat</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jersey</groupId>
+                <artifactId>bootique-jersey</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
         </dependencies>

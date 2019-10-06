@@ -62,7 +62,7 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
 
         return id -> {
             if (!connectorUris.containsKey(id)) {
-                throw new IllegalArgumentException("Unknown connector ID: " + id);
+                throw new IllegalArgumentException("Unknown connector ID of a 'uri' connector: " + id);
             }
             return new URIConnector(connectorUris.get(id));
         };

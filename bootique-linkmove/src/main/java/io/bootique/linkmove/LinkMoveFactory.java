@@ -38,7 +38,9 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -68,10 +70,34 @@ public class LinkMoveFactory {
                 .withTargetRuntime(targetRuntime)
                 .extractorResolver(resolver);
 
+
+        validateConnectorFactories();
+
         connectorFactories.forEach(factory -> addToBuilder(builder, factory, injector));
 
         builderCallbacks.forEach(c -> c.build(builder));
         return builder.build();
+    }
+
+    private void validateConnectorFactories() {
+        // LM allows only a single connector factory per type. So e.g. "uri" and "bq.rest" factories will override each
+        //  other. Let's validate this condition to avoid confusion, when suddenly a preconfigured connector becomes
+        // unavailable
+
+        if (connectorFactories.size() > 1) {
+            Map<Class, IConnectorFactoryFactory> seen = new HashMap<>();
+            for (IConnectorFactoryFactory<?> factory : connectorFactories) {
+                IConnectorFactoryFactory<?> seenFactory = seen.put(factory.getConnectorType(), factory);
+                if (seenFactory != null && seenFactory != factory) {
+                    throw new IllegalArgumentException("Two factories present for connector type '"
+                            + factory.getConnectorType().getName()
+                            + ": (1) "
+                            + seenFactory.getClass().getName()
+                            + ", (2) "
+                            + factory.getClass().getName());
+                }
+            }
+        }
     }
 
     protected ResourceResolver createResolver() {

@@ -1,0 +1,15 @@
+jdbc:
+  ds:
+    url: jdbc:derby:target/derby/lm;create=true
+    initialSize: 1
+
+linkmove:
+  extractorsDir: "classpath:io/bootique/linkmove/rest"
+  connectorFactories:
+    - type: "uri" # this conflicts with "bq.rest"
+    - type: "bq.rest"
+
+jerseyclient:
+  targets:
+    toextract:
+      url: "http://127.0.0.1:8080/r1"
