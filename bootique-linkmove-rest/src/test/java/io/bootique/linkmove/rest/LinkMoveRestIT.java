@@ -141,6 +141,8 @@ public class LinkMoveRestIT {
 
             assertEquals(1, task.run(params).getStats().getCreated());
 
+            // TODO: check the data in DB - it must have used parameters above
+
             return CommandOutcome.succeeded();
         }
     }
