@@ -22,7 +22,9 @@
 
 # bootique-linkmove
 
-Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io).
+Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io). The main value
+of this integration is the ability to configure connectors and extractor locations via Bootique, as well as to enhance
+LinkMove with more advanced connectors based on the existing Bootique features, such as HTTP client.
 
 *For additional help/questions about this example send a message to
 [Bootique forum](https://groups.google.com/forum/#!forum/bootique-user).*
