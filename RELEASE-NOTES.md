@@ -7,6 +7,7 @@
 * #38 Upgrade to LinkMove 2.8
 * #39 RestConnector - connector based on Bootique JAX RS client
 * #40 Parameterized URLs in RestConnector
+* #41 Upgrade to link-move 2.9 that contains latest Cayenne
 
 ## 1.0
 
