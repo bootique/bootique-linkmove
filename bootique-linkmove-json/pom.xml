@@ -36,13 +36,22 @@
         are no extra services to bind.
     </description>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.bootique.linkmove</groupId>
+                <artifactId>bootique-linkmove</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
         <!-- Compile dependencies -->
         <dependency>
             <groupId>io.bootique.linkmove</groupId>
             <artifactId>bootique-linkmove</artifactId>
-            <version>${bootique.version}</version>
         </dependency>
         <dependency>
             <groupId>com.nhl.link.move</groupId>
