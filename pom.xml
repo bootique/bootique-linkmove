@@ -132,16 +132,6 @@
                 <version>${bootique.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove</artifactId>
-                <version>${bootique.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove-cayenne41</artifactId>
-                <version>${bootique.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>io.bootique.cayenne</groupId>
                 <artifactId>bootique-cayenne-test</artifactId>
                 <version>${bootique.version}</version>
