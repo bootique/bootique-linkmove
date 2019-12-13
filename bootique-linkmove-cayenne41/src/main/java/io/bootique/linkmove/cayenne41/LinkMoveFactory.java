@@ -19,7 +19,6 @@
 
 package io.bootique.linkmove.cayenne41;
 
-import com.google.inject.Injector;
 import com.nhl.link.move.connect.Connector;
 import com.nhl.link.move.resource.FolderResourceResolver;
 import com.nhl.link.move.resource.ResourceResolver;
@@ -27,6 +26,7 @@ import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.LmRuntimeBuilder;
 import io.bootique.annotation.BQConfig;
 import io.bootique.annotation.BQConfigProperty;
+import io.bootique.di.Injector;
 import io.bootique.linkmove.cayenne41.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.cayenne41.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.cayenne41.connector.URIConnectorFactoryFactory;

@@ -19,17 +19,17 @@
 
 package io.bootique.linkmove.cayenne41;
 
-import com.google.inject.Binder;
-import com.google.inject.Key;
-import com.google.inject.multibindings.Multibinder;
 import io.bootique.ModuleExtender;
+import io.bootique.di.Binder;
+import io.bootique.di.Key;
+import io.bootique.di.SetBuilder;
 
 /**
  * @since 0.14
  */
 public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtender> {
 
-    private Multibinder<LinkMoveBuilderCallback> buildCallback;
+    private SetBuilder<LinkMoveBuilderCallback> buildCallback;
 
     public LinkMoveModuleExtender(Binder binder) {
         super(binder);
@@ -47,21 +47,21 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
      * @since 1.0.RC1
      */
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(Key<? extends LinkMoveBuilderCallback> callbackKey) {
-        contributeBuildCallback().addBinding().to(callbackKey);
+        contributeBuildCallback().add(callbackKey);
         return this;
     }
 
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(LinkMoveBuilderCallback callback) {
-        contributeBuildCallback().addBinding().toInstance(callback);
+        contributeBuildCallback().add(callback);
         return this;
     }
 
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(Class<? extends LinkMoveBuilderCallback> callbackType) {
-        contributeBuildCallback().addBinding().to(callbackType);
+        contributeBuildCallback().add(callbackType);
         return this;
     }
 
-    protected Multibinder<LinkMoveBuilderCallback> contributeBuildCallback() {
+    protected SetBuilder<LinkMoveBuilderCallback> contributeBuildCallback() {
         return buildCallback != null ? buildCallback : (buildCallback = newSet(LinkMoveBuilderCallback.class));
     }
 }

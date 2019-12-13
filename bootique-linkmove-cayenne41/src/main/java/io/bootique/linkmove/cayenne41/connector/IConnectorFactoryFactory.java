@@ -20,11 +20,11 @@
 package io.bootique.linkmove.cayenne41.connector;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.google.inject.Injector;
 import com.nhl.link.move.connect.Connector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.annotation.BQConfig;
 import io.bootique.config.PolymorphicConfiguration;
+import io.bootique.di.Injector;
 
 @BQConfig
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")

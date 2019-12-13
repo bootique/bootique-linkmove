@@ -19,8 +19,9 @@
 
 package io.bootique.linkmove.json;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
+import javax.inject.Inject;
+import javax.inject.Provider;
+
 import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.BQCoreModule;

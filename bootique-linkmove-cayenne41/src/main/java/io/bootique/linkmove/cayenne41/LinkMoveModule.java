@@ -19,16 +19,16 @@
 
 package io.bootique.linkmove.cayenne41;
 
-import com.google.inject.Binder;
-import com.google.inject.Injector;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.ConfigModule;
 import io.bootique.config.ConfigurationFactory;
+import io.bootique.di.Binder;
+import io.bootique.di.Injector;
+import io.bootique.di.Provides;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import java.util.Set;
+import javax.inject.Singleton;
 
 public class LinkMoveModule extends ConfigModule {
 

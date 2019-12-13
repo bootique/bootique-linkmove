@@ -18,8 +18,8 @@
  */
 package io.bootique.linkmove.rest.cayenne41;
 
-import com.google.inject.Module;
 import io.bootique.BQModuleProvider;
+import io.bootique.di.BQModule;
 
 /**
  * @since 1.1
@@ -27,7 +27,7 @@ import io.bootique.BQModuleProvider;
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override
-    public Module module() {
+    public BQModule module() {
         return new LinkMoveRestModule();
     }
 }

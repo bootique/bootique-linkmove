@@ -19,9 +19,6 @@
 
 package io.bootique.linkmove.rest.cayenne41;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import com.google.inject.ProvisionException;
 import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.BQCoreModule;
@@ -29,6 +26,7 @@ import io.bootique.cayenne.v41.CayenneModule;
 import io.bootique.cli.Cli;
 import io.bootique.command.Command;
 import io.bootique.command.CommandOutcome;
+import io.bootique.di.DIRuntimeException;
 import io.bootique.jersey.JerseyModule;
 import io.bootique.linkmove.rest.cayenne41.cayenne.Table1;
 import io.bootique.test.junit.BQTestFactory;
@@ -37,6 +35,8 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -76,7 +76,7 @@ public class LinkMoveRestIT {
     }
 
     // TODO: probably worth checking the exception message .. ProvisionException can be thrown for unrelated reasons
-    @Test(expected = ProvisionException.class)
+    @Test(expected = DIRuntimeException.class)
     public void testLinkMoveRest_ConflictingConnectorTypes() {
         testFactory
                 .autoLoadModules()

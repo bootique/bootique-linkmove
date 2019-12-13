@@ -19,10 +19,10 @@
 
 package io.bootique.linkmove.cayenne41;
 
-import com.google.inject.Module;
-import io.bootique.BQModule;
+import io.bootique.BQModuleMetadata;
 import io.bootique.BQModuleProvider;
 import io.bootique.cayenne.v41.CayenneModuleProvider;
+import io.bootique.di.BQModule;
 import io.bootique.jdbc.JdbcModuleProvider;
 
 import java.lang.reflect.Type;
@@ -35,7 +35,7 @@ import static java.util.Arrays.asList;
 public class LinkMoveModuleProvider implements BQModuleProvider {
 
     @Override
-    public Module module() {
+    public BQModule module() {
         return new LinkMoveModule();
     }
 
@@ -47,7 +47,7 @@ public class LinkMoveModuleProvider implements BQModuleProvider {
     }
 
     @Override
-    public BQModule.Builder moduleBuilder() {
+    public BQModuleMetadata.Builder moduleBuilder() {
         return BQModuleProvider.super
                 .moduleBuilder()
                 .description("Provides integration with LinkMove ETL framework.");

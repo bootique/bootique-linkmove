@@ -1,10 +1,10 @@
 package io.bootique.linkmove.rest;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.google.inject.Injector;
 import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.annotation.BQConfig;
+import io.bootique.di.Injector;
 import io.bootique.jersey.client.HttpTargets;
 import io.bootique.linkmove.connector.IConnectorFactoryFactory;
 

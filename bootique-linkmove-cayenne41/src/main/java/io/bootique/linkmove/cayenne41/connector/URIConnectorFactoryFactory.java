@@ -20,12 +20,12 @@
 package io.bootique.linkmove.cayenne41.connector;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.google.inject.Injector;
 import com.nhl.link.move.connect.StreamConnector;
 import com.nhl.link.move.connect.URIConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.annotation.BQConfig;
 import io.bootique.annotation.BQConfigProperty;
+import io.bootique.di.Injector;
 import io.bootique.resource.ResourceFactory;
 
 import java.net.URI;
