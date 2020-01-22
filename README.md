@@ -44,7 +44,7 @@ LinkMove with more advanced connectors based on the existing Bootique features, 
         <dependency>
             <groupId>io.bootique.bom</groupId>
             <artifactId>bootique-bom</artifactId>
-            <version>1.0</version>
+            <version>X.X</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
