@@ -1,3 +1,7 @@
+## 2.0
+
+* #42 Upgrade to LM 2.11
+
 ## 1.1
 
 * #34 add support for Cayenne 4.1 
