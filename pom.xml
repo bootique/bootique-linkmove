@@ -29,7 +29,7 @@
 
     <groupId>io.bootique.linkmove</groupId>
     <artifactId>bootique-linkmove-parent</artifactId>
-    <version>1.2</version>
+    <version>1.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>bootique-linkmove-parent: Parent of LinkMove integration modules</name>
@@ -54,7 +54,7 @@
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-linkmove</developerConnection>
         <url>https://github.com/bootique/bootique-linkmove</url>
-        <tag>1.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
