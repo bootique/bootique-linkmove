@@ -1,4 +1,4 @@
-## 2.0
+## 2.0.M1
 
 * #42 Upgrade to LM 2.11
 * #43 Upgrade to LinkMove 2.12
