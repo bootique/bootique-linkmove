@@ -52,7 +52,7 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
     }
 
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(LinkMoveBuilderCallback callback) {
-        contributeBuildCallback().add(callback);
+        contributeBuildCallback().addInstance(callback);
         return this;
     }
 
