@@ -1,8 +1,3 @@
-jdbc:
-  ds:
-    url: jdbc:derby:target/derby/lm;create=true
-    initialSize: 1
-
 linkmove:
   extractorsDir: "classpath:io/bootique/linkmove/rest"
   connectorFactories:

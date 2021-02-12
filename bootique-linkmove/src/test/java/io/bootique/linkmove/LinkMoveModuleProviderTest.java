@@ -22,15 +22,13 @@ package io.bootique.linkmove;
 import io.bootique.BQRuntime;
 import io.bootique.cayenne.CayenneModule;
 import io.bootique.jdbc.JdbcModule;
-import io.bootique.test.junit.BQModuleProviderChecker;
-import io.bootique.test.junit.BQRuntimeChecker;
-import io.bootique.test.junit.BQTestFactory;
-import org.junit.Rule;
-import org.junit.Test;
+import io.bootique.junit5.*;
+import org.junit.jupiter.api.Test;
 
+@BQTest
 public class LinkMoveModuleProviderTest {
 
-    @Rule
+    @BQTestTool
     public BQTestFactory testFactory = new BQTestFactory();
 
     @Test

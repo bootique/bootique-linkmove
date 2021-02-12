@@ -20,28 +20,30 @@
 package io.bootique.linkmove.cayenne41;
 
 import io.bootique.config.ConfigurationFactory;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestTool;
 import io.bootique.linkmove.cayenne41.connector.IConnectorFactoryFactory;
 import io.bootique.linkmove.cayenne41.connector.JdbcConnectorFactoryFactory;
 import io.bootique.linkmove.cayenne41.connector.URIConnectorFactoryFactory;
 import io.bootique.resource.ResourceFactory;
-import io.bootique.test.junit.BQTestFactory;
-import org.junit.Rule;
-import org.junit.Test;
+import io.bootique.junit5.BQTestFactory;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@BQTest
 public class LinkMoveModule_ConnectorsConfigIT {
 
-    @Rule
-    public BQTestFactory testFactory = new BQTestFactory();
+    @BQTestTool
+    final BQTestFactory testFactory = new BQTestFactory();
 
     private static void assertContainsEntry(Map<?, ResourceFactory> m, Object k, Object v) {
-        assertTrue("Missing key: " + k, m.containsKey(k));
-        assertEquals("Unexpected value for key: " + k, m.get(k).getResourceId(), v);
+        assertTrue(m.containsKey(k), "Missing key: " + k);
+        assertEquals(m.get(k).getResourceId(), v, "Unexpected value for key: " + k);
     }
 
     private LinkMoveFactory factory(String appConfig) {
@@ -57,7 +59,7 @@ public class LinkMoveModule_ConnectorsConfigIT {
 
         LinkMoveFactory f = factory("classpath:io/bootique/linkmove/cayenne41/config.yml");
 
-        assertEquals("Unexpected number of connector factory providers", 2, f.getConnectorFactories().size());
+        assertEquals(2, f.getConnectorFactories().size(), "Unexpected number of connector factory providers");
 
         IConnectorFactoryFactory<?> factory;
 
@@ -77,7 +79,7 @@ public class LinkMoveModule_ConnectorsConfigIT {
         LinkMoveFactory f = factory("classpath:io/bootique/linkmove/cayenne41/connectors.yml");
 
 
-        assertEquals("Unexpected number of connector factory providers", 1, f.getConnectorFactories().size());
+        assertEquals(1, f.getConnectorFactories().size(), "Unexpected number of connector factory providers");
 
         IConnectorFactoryFactory<?> factory;
 
@@ -87,6 +89,6 @@ public class LinkMoveModule_ConnectorsConfigIT {
         ResourceFactory resourceFactory = ((URIConnectorFactoryFactory) factory).getConnectors().get("domainSourceConnector");
         File file = new File(resourceFactory.getUrl().getFile());
 
-        assertTrue(file.getAbsolutePath() + " is not a file", file.isFile());
+        assertTrue(file.isFile(), () -> file.getAbsolutePath() + " is not a file");
     }
 }

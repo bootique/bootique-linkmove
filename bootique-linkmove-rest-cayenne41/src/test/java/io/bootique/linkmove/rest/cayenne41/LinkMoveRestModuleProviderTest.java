@@ -19,15 +19,16 @@
 
 package io.bootique.linkmove.rest.cayenne41;
 
-import io.bootique.linkmove.rest.cayenne41.LinkMoveRestModuleProvider;
-import io.bootique.test.junit.BQModuleProviderChecker;
-import io.bootique.test.junit.BQTestFactory;
-import org.junit.Rule;
-import org.junit.Test;
+import io.bootique.junit5.BQModuleProviderChecker;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestFactory;
+import io.bootique.junit5.BQTestTool;
+import org.junit.jupiter.api.Test;
 
+@BQTest
 public class LinkMoveRestModuleProviderTest {
 
-    @Rule
+    @BQTestTool
     public BQTestFactory testFactory = new BQTestFactory();
 
     @Test

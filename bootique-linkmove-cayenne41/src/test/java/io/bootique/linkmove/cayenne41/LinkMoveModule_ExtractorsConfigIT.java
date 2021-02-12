@@ -23,24 +23,24 @@ import com.nhl.link.move.extractor.model.ExtractorModel;
 import com.nhl.link.move.extractor.model.ExtractorName;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.extractor.model.IExtractorModelService;
-import io.bootique.test.junit.BQTestFactory;
-import org.junit.Rule;
-import org.junit.Test;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestFactory;
+import io.bootique.junit5.BQTestTool;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
+@BQTest
 public class LinkMoveModule_ExtractorsConfigIT {
 
     private static final ExtractorName EXTRACTOR_NAME = ExtractorName.create("extractor.xml", ExtractorModel.DEFAULT_NAME);
 
-    @Rule
+    @BQTestTool
     public BQTestFactory testFactory = new BQTestFactory();
 
     @Test

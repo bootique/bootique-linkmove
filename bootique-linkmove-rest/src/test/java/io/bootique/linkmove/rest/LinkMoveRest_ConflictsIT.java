@@ -16,53 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+package io.bootique.linkmove.rest;
 
-package io.bootique.linkmove.json;
-
-import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.BQRuntime;
 import io.bootique.Bootique;
 import io.bootique.cayenne.CayenneModule;
-import io.bootique.cayenne.junit5.CayenneTester;
-import io.bootique.jdbc.junit5.derby.DerbyTester;
+import io.bootique.di.DIRuntimeException;
 import io.bootique.junit5.BQApp;
 import io.bootique.junit5.BQTest;
-import io.bootique.junit5.BQTestTool;
-import io.bootique.linkmove.json.cayenne.Table1;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @BQTest
-public class LinkMoveJSONIT {
-
-    @BQTestTool
-    static final DerbyTester db = DerbyTester.db();
-
-    @BQTestTool
-    static final CayenneTester cayenne = CayenneTester.create().entities(Table1.class);
+public class LinkMoveRest_ConflictsIT {
 
     @BQApp(skipRun = true)
     static final BQRuntime app = Bootique
-            .app("-c", "classpath:io/bootique/linkmove/json/test.yml")
+            .app("-c", "classpath:io/bootique/linkmove/rest/test-conflicting-connectors.yml")
             .autoLoadModules()
-            .module(db.moduleWithTestDataSource("ds"))
-            .module(cayenne.moduleWithTestHooks())
-            .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/json/cayenne-project.xml"))
+            .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne-project.xml"))
             .createRuntime();
 
-
     @Test
-    public void testLinkMoveJSON() {
-        LmTask task = app.getInstance(LmRuntime.class)
-                .getTaskService()
-                .createOrUpdate(Table1.class)
-                .sourceExtractor("extractor.xml")
-                .task();
-
-        assertEquals(5, task.run().getStats().getCreated());
-        assertEquals(0, task.run().getStats().getCreated());
+    public void testLinkMoveRest_ConflictingConnectorTypes() {
+        try {
+            app.getInstance(LmRuntime.class);
+            fail("Was expected to fail due to conflicting connector types");
+        } catch (DIRuntimeException e) {
+            assertTrue(e.getCause() instanceof IllegalArgumentException);
+            assertTrue(e.getCause().getMessage().startsWith("Two factories present for connector type"));
+        }
     }
 
 }

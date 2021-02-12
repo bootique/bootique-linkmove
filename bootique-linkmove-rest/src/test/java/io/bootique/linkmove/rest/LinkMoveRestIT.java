@@ -21,130 +21,88 @@ package io.bootique.linkmove.rest;
 
 import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
-import io.bootique.BQCoreModule;
+import io.bootique.BQRuntime;
+import io.bootique.Bootique;
 import io.bootique.cayenne.CayenneModule;
-import io.bootique.cli.Cli;
-import io.bootique.command.Command;
-import io.bootique.command.CommandOutcome;
-import io.bootique.di.DIRuntimeException;
+import io.bootique.jdbc.junit5.derby.DerbyTester;
 import io.bootique.jersey.JerseyModule;
+import io.bootique.junit5.BQApp;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestFactory;
+import io.bootique.junit5.BQTestTool;
 import io.bootique.linkmove.rest.cayenne.Table1;
-import io.bootique.test.junit.BQTestFactory;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@BQTest
 public class LinkMoveRestIT {
 
-    @ClassRule
-    public static BQTestFactory sharedTestFactory = new BQTestFactory();
+    @BQApp
+    static final BQRuntime server = Bootique
+            .app("-s")
+            .autoLoadModules()
+            .module(b -> JerseyModule.extend(b).addResource(R1.class))
+            .createRuntime();
 
-    @Rule
-    public BQTestFactory testFactory = new BQTestFactory();
+    @BQTestTool
+    static final DerbyTester db = DerbyTester.db()
+            .initDB("classpath:io/bootique/linkmove/rest/schema.sql")
+            .deleteBeforeEachTest("table1");
 
-    @BeforeClass
-    public static void startJersey() {
-        sharedTestFactory
-                .app("-s")
-                .autoLoadModules()
-                .module(b -> JerseyModule.extend(b).addResource(R1.class))
-                .run();
-    }
+    @BQTestTool
+    final BQTestFactory testFactory = new BQTestFactory();
 
     @Test
     public void testLinkMoveRest() {
-        testFactory
-                .autoLoadModules()
+
+        BQRuntime lm1 = testFactory
                 .app("-c", "classpath:io/bootique/linkmove/rest/test.yml")
-                .module(b -> BQCoreModule.extend(b).setDefaultCommand(LMWithRest.class))
-                .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne-project.xml"))
-                .run();
-    }
-
-    // TODO: probably worth checking the exception message .. ProvisionException can be thrown for unrelated reasons
-    @Test(expected = DIRuntimeException.class)
-    public void testLinkMoveRest_ConflictingConnectorTypes() {
-        testFactory
                 .autoLoadModules()
-                .app("-c", "classpath:io/bootique/linkmove/rest/test-conflicting-connectors.yml")
-                .module(b -> BQCoreModule.extend(b).setDefaultCommand(LMWithRest.class))
+                .module(db.moduleWithTestDataSource("ds"))
                 .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne-project.xml"))
-                .run();
-    }
+                .createRuntime();
 
+        LmTask task = lm1.getInstance(LmRuntime.class)
+                .getTaskService()
+                .createOrUpdate(Table1.class)
+                .sourceExtractor("extractor.xml")
+                .task();
+
+        assertEquals(5, task.run().getStats().getCreated());
+        assertEquals(0, task.run().getStats().getCreated());
+    }
 
     @Test
     public void testLinkMoveRest_ResolvePathParameters() {
-        testFactory
-                .autoLoadModules()
+
+        BQRuntime lm2 = Bootique
                 .app("-c", "classpath:io/bootique/linkmove/rest/test-params.yml")
-                .module(b -> BQCoreModule.extend(b).setDefaultCommand(LMWithRest_WithParams.class))
+                .autoLoadModules()
+                .module(db.moduleWithTestDataSource("ds"))
                 .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne-project.xml"))
-                .run();
-    }
+                .createRuntime();
 
-    public static final class LMWithRest implements Command {
+        LmTask task = lm2.getInstance(LmRuntime.class)
+                .getTaskService()
+                .createOrUpdate(Table1.class)
+                .sourceExtractor("extractor.xml")
+                .task();
 
-        @Inject
-        private Provider<LmRuntime> runtime;
+        Map<String, Object> params = RestConnector.bindTemplateValues()
+                .value("p1", 897L)
+                .value("p2", "a_Name")
+                .toExtractorParameters();
 
-        @Override
-        public CommandOutcome run(Cli cli) {
+        assertEquals(1, task.run(params).getStats().getCreated());
 
-            LmTask task = runtime.get()
-                    .getTaskService()
-                    .createOrUpdate(Table1.class)
-                    .sourceExtractor("extractor.xml")
-                    .task();
-
-            assertEquals(5, task.run().getStats().getCreated());
-            assertEquals(0, task.run().getStats().getCreated());
-
-            return CommandOutcome.succeeded();
-        }
-    }
-
-    public static final class LMWithRest_WithParams implements Command {
-
-        @Inject
-        private Provider<LmRuntime> runtime;
-
-        @Override
-        public CommandOutcome run(Cli cli) {
-
-            LmTask task = runtime.get()
-                    .getTaskService()
-                    .createOrUpdate(Table1.class)
-                    .sourceExtractor("extractor.xml")
-                    .task();
-
-
-            Map<String, Object> params = RestConnector.bindTemplateValues()
-                    .value("p1", 897L)
-                    .value("p2", "a_Name")
-                    .toExtractorParameters();
-
-            assertEquals(1, task.run(params).getStats().getCreated());
-
-            // TODO: check the data in DB - it must have used parameters above
-
-            return CommandOutcome.succeeded();
-        }
+        // TODO: check the data in DB - it must have used parameters above
     }
 
     @Path("/r1")
