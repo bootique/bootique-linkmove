@@ -2,6 +2,7 @@
 
 * #44 Upgrade to LinkMove 2.13
 * #45 Support Cayenne 4.2
+* #46 Upgrade to LM 2.14
 
 ## 2.0.M1
 
