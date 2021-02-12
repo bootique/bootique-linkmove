@@ -35,7 +35,7 @@ public class LinkMoveRest_ConflictsIT {
 
     @BQApp(skipRun = true)
     static final BQRuntime app = Bootique
-            .app("-c", "classpath:io/bootique/linkmove/rest/cayenne41/test-conflicting-connectors.yml")
+            .app("-c", "classpath:io/bootique/linkmove/rest/cayenne42/test-conflicting-connectors.yml")
             .autoLoadModules()
             .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/rest/cayenne41/cayenne-project.xml"))
             .createRuntime();

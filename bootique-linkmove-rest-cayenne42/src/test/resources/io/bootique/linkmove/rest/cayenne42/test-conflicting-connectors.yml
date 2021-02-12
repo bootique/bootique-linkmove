@@ -1,5 +1,5 @@
 linkmove:
-  extractorsDir: "classpath:io/bootique/linkmove/rest/cayenne41"
+  extractorsDir: "classpath:io/bootique/linkmove/rest/cayenne42"
   connectorFactories:
     - type: "uri" # this conflicts with "bq.rest"
     - type: "bq.rest"

@@ -1,5 +1,5 @@
 linkmove:
-  extractorsDir: "classpath:io/bootique/linkmove/rest/cayenne41"
+  extractorsDir: "classpath:io/bootique/linkmove/rest/cayenne42"
   connectorFactories:
     - type: "bq.rest"
     - type: "jdbc" # make sure "bq.rest" doesn't conflict with "jdbc" connector
