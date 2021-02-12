@@ -40,10 +40,11 @@
     <modules>
         <module>bootique-linkmove</module>
         <module>bootique-linkmove-json</module>
+        <module>bootique-linkmove-rest</module>
         <module>bootique-linkmove-cayenne41</module>
         <module>bootique-linkmove-json-cayenne41</module>
-        <module>bootique-linkmove-rest</module>
         <module>bootique-linkmove-rest-cayenne41</module>
+        <module>bootique-linkmove-cayenne42</module>
     </modules>
 
     <properties>
@@ -71,7 +72,7 @@
                 <groupId>com.nhl.link.move</groupId>
                 <artifactId>link-move</artifactId>
                 <version>${linkmove.version}</version>
-                <!-- Ensure cayenne version from bootique-cayenne is used -->
+                <!-- Ensure cayenne version from Bootique is used -->
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.cayenne</groupId>
@@ -142,28 +143,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Compile dependencies -->
-        <dependency>
-            <groupId>com.nhl.link.move</groupId>
-            <artifactId>link-move</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique</groupId>
-            <artifactId>bootique</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Unit test dependencies -->
         <dependency>
             <groupId>junit</groupId>

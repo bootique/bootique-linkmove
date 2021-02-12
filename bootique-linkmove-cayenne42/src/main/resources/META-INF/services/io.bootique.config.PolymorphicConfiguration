@@ -1,0 +1,3 @@
+io.bootique.linkmove.cayenne42.connector.IConnectorFactoryFactory
+io.bootique.linkmove.cayenne42.connector.JdbcConnectorFactoryFactory
+io.bootique.linkmove.cayenne42.connector.URIConnectorFactoryFactory

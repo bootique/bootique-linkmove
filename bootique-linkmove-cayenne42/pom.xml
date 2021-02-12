@@ -27,10 +27,10 @@
         <version>2.0.B1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bootique-linkmove-cayenne41</artifactId>
+    <artifactId>bootique-linkmove-cayenne42</artifactId>
     <packaging>jar</packaging>
 
-    <name>bootique-linkmove-cayenne41: LinkMove Integration using Cayenne 4.1</name>
+    <name>bootique-linkmove-cayenne42: LinkMove Integration using Cayenne 4.2</name>
     <description>
         Provides LinkMove integration with Bootique.
     </description>
@@ -40,7 +40,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.bootique.cayenne</groupId>
-                <artifactId>bootique-cayenne41</artifactId>
+                <artifactId>bootique-cayenne42</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
         </dependencies>
@@ -51,7 +51,7 @@
         <!-- Compile dependencies -->
         <dependency>
             <groupId>io.bootique.cayenne</groupId>
-            <artifactId>bootique-cayenne41</artifactId>
+            <artifactId>bootique-cayenne42</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -69,7 +69,6 @@
             <artifactId>slf4j-api</artifactId>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -84,8 +83,8 @@
                         Another hack - adding the same jar to classpath twice, so it works from both root directory
                         and module directory
                         -->
-                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/cayenne41/injar/extractor.jar</additionalClasspathElement>
-                        <additionalClasspathElement>bootique-linkmove-cayenne41/src/test/resources/io/bootique/linkmove/cayenne41/injar/extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/cayenne42/injar/extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>bootique-linkmove-cayenne42/src/test/resources/io/bootique/linkmove/cayenne42/injar/extractor.jar</additionalClasspathElement>
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
