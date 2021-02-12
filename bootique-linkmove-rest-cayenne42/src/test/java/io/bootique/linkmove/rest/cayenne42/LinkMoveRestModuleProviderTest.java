@@ -17,23 +17,27 @@
  * under the License.
  */
 
-package io.bootique.linkmove.cayenne42.connector;
+package io.bootique.linkmove.rest.cayenne42;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.nhl.link.move.connect.Connector;
-import com.nhl.link.move.runtime.connect.IConnectorFactory;
-import io.bootique.annotation.BQConfig;
-import io.bootique.config.PolymorphicConfiguration;
-import io.bootique.di.Injector;
+import io.bootique.junit5.BQModuleProviderChecker;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestFactory;
+import io.bootique.junit5.BQTestTool;
+import org.junit.jupiter.api.Test;
 
-/**
- * @since 2.0.B1
- */
-@BQConfig
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-public interface IConnectorFactoryFactory<C extends Connector> extends PolymorphicConfiguration {
+@BQTest
+public class LinkMoveRestModuleProviderTest {
 
-    Class<C> getConnectorType();
+    @BQTestTool
+    public BQTestFactory testFactory = new BQTestFactory();
 
-    IConnectorFactory<C> getConnectorFactory(Injector injector);
+    @Test
+    public void testAutoLoadable() {
+        BQModuleProviderChecker.testAutoLoadable(LinkMoveRestModuleProvider.class);
+    }
+
+    @Test
+    public void testMetadata() {
+        BQModuleProviderChecker.testMetadata(LinkMoveRestModuleProvider.class);
+    }
 }

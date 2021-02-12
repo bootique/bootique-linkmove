@@ -41,11 +41,14 @@
         <module>bootique-linkmove</module>
         <module>bootique-linkmove-json</module>
         <module>bootique-linkmove-rest</module>
+        
         <module>bootique-linkmove-cayenne41</module>
         <module>bootique-linkmove-json-cayenne41</module>
         <module>bootique-linkmove-rest-cayenne41</module>
+
         <module>bootique-linkmove-cayenne42</module>
         <module>bootique-linkmove-json-cayenne42</module>
+        <module>bootique-linkmove-rest-cayenne42</module>
     </modules>
 
     <properties>

@@ -34,6 +34,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @since 2.0.B1
+ */
 @BQConfig
 @JsonTypeName("uri")
 public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {

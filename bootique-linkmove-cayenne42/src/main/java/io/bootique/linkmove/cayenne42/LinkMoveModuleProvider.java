@@ -32,6 +32,9 @@ import java.util.Map;
 
 import static java.util.Arrays.asList;
 
+/**
+ * @since 2.0.B1
+ */
 public class LinkMoveModuleProvider implements BQModuleProvider {
 
     @Override

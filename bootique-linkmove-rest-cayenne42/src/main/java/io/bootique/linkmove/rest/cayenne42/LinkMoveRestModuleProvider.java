@@ -16,24 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+package io.bootique.linkmove.rest.cayenne42;
 
-package io.bootique.linkmove.cayenne42.connector;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.nhl.link.move.connect.Connector;
-import com.nhl.link.move.runtime.connect.IConnectorFactory;
-import io.bootique.annotation.BQConfig;
-import io.bootique.config.PolymorphicConfiguration;
-import io.bootique.di.Injector;
+import io.bootique.BQModuleProvider;
+import io.bootique.di.BQModule;
 
 /**
  * @since 2.0.B1
  */
-@BQConfig
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-public interface IConnectorFactoryFactory<C extends Connector> extends PolymorphicConfiguration {
+public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
-    Class<C> getConnectorType();
-
-    IConnectorFactory<C> getConnectorFactory(Injector injector);
+    @Override
+    public BQModule module() {
+        return new LinkMoveRestModule();
+    }
 }

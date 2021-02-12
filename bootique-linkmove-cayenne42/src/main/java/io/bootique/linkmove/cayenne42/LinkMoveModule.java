@@ -27,9 +27,12 @@ import io.bootique.di.Injector;
 import io.bootique.di.Provides;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
-import java.util.Set;
 import javax.inject.Singleton;
+import java.util.Set;
 
+/**
+ * @since 2.0.B1
+ */
 public class LinkMoveModule extends ConfigModule {
 
     public LinkMoveModule() {

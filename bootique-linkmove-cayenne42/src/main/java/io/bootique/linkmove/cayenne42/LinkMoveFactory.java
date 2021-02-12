@@ -45,6 +45,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * @since 2.0.B1
+ */
 @BQConfig
 public class LinkMoveFactory {
 

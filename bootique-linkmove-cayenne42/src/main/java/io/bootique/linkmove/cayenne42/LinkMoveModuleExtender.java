@@ -25,7 +25,7 @@ import io.bootique.di.Key;
 import io.bootique.di.SetBuilder;
 
 /**
- * @since 0.14
+ * @since 2.0.B1
  */
 public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtender> {
 

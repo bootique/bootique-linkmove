@@ -26,6 +26,9 @@ import io.bootique.annotation.BQConfig;
 import io.bootique.di.Injector;
 import io.bootique.jdbc.DataSourceFactory;
 
+/**
+ * @since 2.0.B1
+ */
 @BQConfig
 @JsonTypeName("jdbc")
 public class JdbcConnectorFactoryFactory implements IConnectorFactoryFactory<JdbcConnector> {

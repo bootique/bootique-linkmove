@@ -27,6 +27,9 @@ import io.bootique.jdbc.DataSourceFactory;
 
 import javax.sql.DataSource;
 
+/**
+ * @since 2.0.B1
+ */
 public class JdbcConnectorFactory implements IConnectorFactory<JdbcConnector> {
 
 	private DataSourceFactory dataSourceFactory;

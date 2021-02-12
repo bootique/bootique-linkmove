@@ -27,10 +27,10 @@
         <version>2.0.B1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bootique-linkmove-rest-cayenne41</artifactId>
+    <artifactId>bootique-linkmove-rest-cayenne42</artifactId>
     <packaging>jar</packaging>
 
-    <name>bootique-linkmove-rest-cayenne41: REST connector for LinkMove</name>
+    <name>bootique-linkmove-rest-cayenne42: REST connector for LinkMove</name>
     <description>
         Provides a REST connector for LinkMove
     </description>
@@ -44,12 +44,12 @@
             </dependency>
             <dependency>
                 <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove-cayenne41</artifactId>
+                <artifactId>bootique-linkmove-cayenne42</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove-json-cayenne41</artifactId>
+                <artifactId>bootique-linkmove-json-cayenne42</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -65,7 +65,7 @@
         </dependency>
         <dependency>
             <groupId>io.bootique.linkmove</groupId>
-            <artifactId>bootique-linkmove-cayenne41</artifactId>
+            <artifactId>bootique-linkmove-cayenne42</artifactId>
             <scope>compile</scope>
         </dependency>
 
@@ -82,7 +82,7 @@
         </dependency>
         <dependency>
             <groupId>io.bootique.linkmove</groupId>
-            <artifactId>bootique-linkmove-json-cayenne41</artifactId>
+            <artifactId>bootique-linkmove-json-cayenne42</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
