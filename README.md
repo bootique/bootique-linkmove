@@ -17,7 +17,7 @@
   under the License.
   -->
 
-[![Build Status](https://travis-ci.org/bootique/bootique-linkmove.svg)](https://travis-ci.org/bootique/bootique-linkmove)
+[![build test deploy](https://github.com/bootique/bootique-linkmove/actions/workflows/maven.yml/badge.svg)](https://github.com/bootique/bootique-linkmove/actions/workflows/maven.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.bootique.linkmove/bootique-linkmove.svg?colorB=brightgreen)](https://search.maven.org/artifact/io.bootique.linkmove/bootique-linkmove/)
 
 # bootique-linkmove
