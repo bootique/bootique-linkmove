@@ -44,7 +44,6 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
     /**
      * @param callbackKey a DI key pointing to a bound callback service.
      * @return this instance of extender
-     * @since 1.0.RC1
      */
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(Key<? extends LinkMoveBuilderCallback> callbackKey) {
         contributeBuildCallback().add(callbackKey);

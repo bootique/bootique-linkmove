@@ -27,8 +27,8 @@ import io.bootique.di.Injector;
 import io.bootique.di.Provides;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
-import java.util.Set;
 import javax.inject.Singleton;
+import java.util.Set;
 
 public class LinkMoveModule extends ConfigModule {
 
@@ -42,7 +42,6 @@ public class LinkMoveModule extends ConfigModule {
     /**
      * @param binder DI binder passed to the Module that invokes this method.
      * @return an instance of {@link LinkMoveModuleExtender} that can be used to load LinkMove custom extensions.
-     * @since 0.14
      */
     public static LinkMoveModuleExtender extend(Binder binder) {
         return new LinkMoveModuleExtender(binder);

@@ -27,9 +27,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 
-/**
- * @since 0.24
- */
 public class BQUrlResourceResolver implements ResourceResolver {
 
     private FolderResourceFactory baseFolder;
