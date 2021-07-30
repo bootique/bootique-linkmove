@@ -1,3 +1,7 @@
+## 2.0.RC1
+
+* #47 Upgrade to LinkMove 2.15
+
 ## 2.0.B1
 
 * #44 Upgrade to LinkMove 2.13
