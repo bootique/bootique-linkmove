@@ -32,13 +32,6 @@ import java.util.Set;
 
 public class LinkMoveModule extends ConfigModule {
 
-    public LinkMoveModule() {
-    }
-
-    public LinkMoveModule(String configPrefix) {
-        super(configPrefix);
-    }
-
     /**
      * @param binder DI binder passed to the Module that invokes this method.
      * @return an instance of {@link LinkMoveModuleExtender} that can be used to load LinkMove custom extensions.
