@@ -68,15 +68,7 @@
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.cayenne</groupId>
-                        <artifactId>cayenne-di</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.cayenne</groupId>
-                        <artifactId>cayenne-server</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.cayenne</groupId>
-                        <artifactId>cayenne-java8</artifactId>
+                        <artifactId>*</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -88,11 +80,7 @@
                 <exclusions>
                     <exclusion>
                         <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-databind</artifactId>
+                        <artifactId>*</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
