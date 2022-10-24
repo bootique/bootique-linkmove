@@ -27,56 +27,58 @@
         <version>3.0.M1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bootique-linkmove2-json</artifactId>
+    <artifactId>bootique-linkmove3</artifactId>
     <packaging>jar</packaging>
 
-    <name>bootique-linkmove2-json: LinkMove 2 JSON adapter integration for Bootique</name>
+    <name>bootique-linkmove3: LinkMove 3 Integration</name>
     <description>
-        Provides LinkMove 2 JSON adapter integration with Bootique. This is a library, and not a Bootique
-        module, as there are no extra services to bind.
+        Provides LinkMove 3 integration with Bootique.
     </description>
+
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.nhl.link.move</groupId>
-                <artifactId>link-move-json</artifactId>
-                <version>${linkmove2.version}</version>
-                <!-- Ensure Jackson version from bootique is used -->
+                <artifactId>link-move</artifactId>
+                <version>${linkmove3.version}</version>
+                <!-- Ensure cayenne version from Bootique is used -->
                 <exclusions>
                     <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <groupId>org.apache.cayenne</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
-            <dependency>
-                <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove2</artifactId>
-                <version>${project.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <dependencies>
 
         <!-- Compile dependencies -->
         <dependency>
-            <groupId>io.bootique.linkmove</groupId>
-            <artifactId>bootique-linkmove2</artifactId>
+            <groupId>io.bootique.cayenne</groupId>
+            <artifactId>bootique-cayenne42</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.nhl.link.move</groupId>
-            <artifactId>link-move-json</artifactId>
+            <artifactId>link-move</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
             <scope>compile</scope>
         </dependency>
 
         <!-- Unit test dependencies -->
-        <dependency>
-            <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc-junit5-derby</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>io.bootique.cayenne</groupId>
             <artifactId>bootique-cayenne42-junit5</artifactId>
@@ -88,4 +90,24 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <additionalClasspathElements>
+                        <!--
+                        Needed to test extractors packaged as jars. See
+                        LinkMoveModule_ExtractorsConfigIT.testConfiguration_ExtractorsDir_Classpath_InJar()
+                        Another hack - adding the same jar to classpath twice, so it works from both root directory
+                        and module directory
+                        -->
+                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/v3/injar/extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>bootique-linkmove3/src/test/resources/io/bootique/linkmove/v3/injar/extractor.jar</additionalClasspathElement>
+                    </additionalClasspathElements>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

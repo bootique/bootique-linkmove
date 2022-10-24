@@ -35,13 +35,19 @@
         Provides LinkMove 2 integration with Bootique.
     </description>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.bootique.cayenne</groupId>
-                <artifactId>bootique-cayenne42</artifactId>
-                <version>${bootique.version}</version>
+                <groupId>com.nhl.link.move</groupId>
+                <artifactId>link-move</artifactId>
+                <version>${linkmove2.version}</version>
+                <!-- Ensure cayenne version from Bootique is used -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.cayenne</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>

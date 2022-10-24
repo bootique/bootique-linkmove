@@ -41,11 +41,15 @@
         <module>bootique-linkmove2</module>
         <module>bootique-linkmove2-json</module>
         <module>bootique-linkmove2-rest</module>
+
+        <module>bootique-linkmove3</module>
     </modules>
 
     <properties>
         <bootique.version>${project.version}</bootique.version>
-        <linkmove.version>2.18</linkmove.version>
+
+        <linkmove2.version>2.18</linkmove2.version>
+        <linkmove3.version>3.0.M1</linkmove3.version>
     </properties>
 
     <scm>
@@ -56,30 +60,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.nhl.link.move</groupId>
-                <artifactId>link-move</artifactId>
-                <version>${linkmove.version}</version>
-                <!-- Ensure cayenne version from Bootique is used -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.cayenne</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.nhl.link.move</groupId>
-                <artifactId>link-move-json</artifactId>
-                <version>${linkmove.version}</version>
-                <!-- Ensure Jackson version from bootique is used -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
             <dependency>
                 <groupId>io.bootique</groupId>
                 <artifactId>bootique</artifactId>
@@ -102,7 +82,7 @@
             </dependency>
             <dependency>
                 <groupId>io.bootique.cayenne</groupId>
-                <artifactId>bootique-cayenne41-junit5</artifactId>
+                <artifactId>bootique-cayenne42</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
             <dependency>
