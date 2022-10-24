@@ -44,6 +44,7 @@
 
         <module>bootique-linkmove3</module>
         <module>bootique-linkmove3-json</module>
+        <module>bootique-linkmove3-rest</module>
     </modules>
 
     <properties>
@@ -94,6 +95,11 @@
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc-junit5-derby</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jetty</groupId>
+                <artifactId>bootique-jetty-junit5</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
             <dependency>

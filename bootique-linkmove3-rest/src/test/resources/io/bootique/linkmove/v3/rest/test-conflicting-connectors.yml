@@ -1,0 +1,10 @@
+linkmove:
+  extractorsDir: "classpath:io/bootique/linkmove/v3/rest"
+  connectorFactories:
+    - type: "uri" # this conflicts with "bq.rest"
+    - type: "bq.rest"
+
+jerseyclient:
+  targets:
+    toextract:
+      url: "http://127.0.0.1:8080/r1"
