@@ -43,6 +43,7 @@
         <module>bootique-linkmove2-rest</module>
 
         <module>bootique-linkmove3</module>
+        <module>bootique-linkmove3-json</module>
     </modules>
 
     <properties>

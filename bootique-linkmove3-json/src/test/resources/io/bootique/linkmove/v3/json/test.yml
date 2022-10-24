@@ -1,0 +1,6 @@
+linkmove:
+  extractorsDir: "classpath:io/bootique/linkmove/v3/json"
+  connectorFactories:
+    - type: "uri"
+      connectors:
+        data: "classpath:io/bootique/linkmove/v3/json/data.json"
