@@ -95,8 +95,8 @@
                         Another hack - adding the same jar to classpath twice, so it works from both root directory
                         and module directory
                         -->
-                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/cayenne42/injar/extractor.jar</additionalClasspathElement>
-                        <additionalClasspathElement>bootique-linkmove-cayenne42/src/test/resources/io/bootique/linkmove/cayenne42/injar/extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>src/test/resources/io/bootique/linkmove/v2/injar/extractor.jar</additionalClasspathElement>
+                        <additionalClasspathElement>bootique-linkmove2/src/test/resources/io/bootique/linkmove/v2/injar/extractor.jar</additionalClasspathElement>
                     </additionalClasspathElements>
                 </configuration>
             </plugin>

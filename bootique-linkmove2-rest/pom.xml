@@ -61,12 +61,10 @@
         <dependency>
             <groupId>io.bootique.jersey</groupId>
             <artifactId>bootique-jersey-client</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.bootique.linkmove</groupId>
             <artifactId>bootique-linkmove2</artifactId>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Test dependencies -->
