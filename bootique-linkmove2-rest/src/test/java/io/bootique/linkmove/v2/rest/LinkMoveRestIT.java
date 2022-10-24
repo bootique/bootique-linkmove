@@ -21,11 +21,13 @@ package io.bootique.linkmove.v2.rest;
 
 import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
+import io.bootique.BQCoreModule;
 import io.bootique.BQRuntime;
 import io.bootique.Bootique;
 import io.bootique.cayenne.v42.CayenneModule;
 import io.bootique.jdbc.junit5.derby.DerbyTester;
 import io.bootique.jersey.JerseyModule;
+import io.bootique.jetty.junit5.JettyTester;
 import io.bootique.junit5.BQApp;
 import io.bootique.junit5.BQTest;
 import io.bootique.junit5.BQTestFactory;
@@ -44,10 +46,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @BQTest
 public class LinkMoveRestIT {
 
+    static final JettyTester jetty = JettyTester.create();
+
     @BQApp
     static final BQRuntime server = Bootique
             .app("-s")
             .autoLoadModules()
+            .module(jetty.moduleReplacingConnectors())
             .module(b -> JerseyModule.extend(b).addResource(R1.class))
             .createRuntime();
 
@@ -66,6 +71,7 @@ public class LinkMoveRestIT {
                 .app("-c", "classpath:io/bootique/linkmove/v2/rest/test.yml")
                 .autoLoadModules()
                 .module(db.moduleWithTestDataSource("ds"))
+                .module(b -> BQCoreModule.extend(b).setProperty("bq.jerseyclient.targets.toextract.url", jetty.getUrl() + "/r1"))
                 .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/v2/rest/cayenne-project.xml"))
                 .createRuntime();
 
@@ -86,6 +92,7 @@ public class LinkMoveRestIT {
                 .app("-c", "classpath:io/bootique/linkmove/v2/rest/test-params.yml")
                 .autoLoadModules()
                 .module(db.moduleWithTestDataSource("ds"))
+                .module(b -> BQCoreModule.extend(b).setProperty("bq.jerseyclient.targets.toextract.url", jetty.getUrl() + "/r1/{p1}?name={p2}"))
                 .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/v2/rest/cayenne-project.xml"))
                 .createRuntime();
 

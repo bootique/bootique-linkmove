@@ -3,7 +3,3 @@ linkmove:
   connectorFactories:
     - type: "bq.rest"
 
-jerseyclient:
-  targets:
-    toextract:
-      url: "http://127.0.0.1:8080/r1/{p1}?name={p2}"
