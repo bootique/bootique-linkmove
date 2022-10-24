@@ -27,12 +27,12 @@
         <version>3.0.M1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bootique-linkmove-json-cayenne41</artifactId>
+    <artifactId>bootique-linkmove2-json</artifactId>
     <packaging>jar</packaging>
 
-    <name>bootique-linkmove-json-cayenne41: LinkMove JSON adapter integration for Bootique on Cayenne v4.1</name>
+    <name>bootique-linkmove2-json: LinkMove 2 JSON adapter integration for Bootique</name>
     <description>
-        Provides LinkMove JSON adapter integration with Bootique on Cayenne v4.1. This is a library, and not a Bootique
+        Provides LinkMove 2 JSON adapter integration with Bootique. This is a library, and not a Bootique
         module, as there are no extra services to bind.
     </description>
 
@@ -40,7 +40,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.bootique.linkmove</groupId>
-                <artifactId>bootique-linkmove-cayenne41</artifactId>
+                <artifactId>bootique-linkmove2</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -51,7 +51,7 @@
         <!-- Compile dependencies -->
         <dependency>
             <groupId>io.bootique.linkmove</groupId>
-            <artifactId>bootique-linkmove-cayenne41</artifactId>
+            <artifactId>bootique-linkmove2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.nhl.link.move</groupId>
@@ -59,7 +59,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Test dependencies -->
+        <!-- Unit test dependencies -->
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
             <artifactId>bootique-jdbc-junit5-derby</artifactId>
@@ -67,7 +67,7 @@
         </dependency>
         <dependency>
             <groupId>io.bootique.cayenne</groupId>
-            <artifactId>bootique-cayenne41-junit5</artifactId>
+            <artifactId>bootique-cayenne42-junit5</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

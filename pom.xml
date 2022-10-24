@@ -37,14 +37,10 @@
         Parent of LinkMove integration modules
     </description>
 
-    <modules>        
-        <module>bootique-linkmove-cayenne41</module>
-        <module>bootique-linkmove-json-cayenne41</module>
-        <module>bootique-linkmove-rest-cayenne41</module>
-
-        <module>bootique-linkmove-cayenne42</module>
-        <module>bootique-linkmove-json-cayenne42</module>
-        <module>bootique-linkmove-rest-cayenne42</module>
+    <modules>
+        <module>bootique-linkmove2</module>
+        <module>bootique-linkmove2-json</module>
+        <module>bootique-linkmove2-rest</module>
     </modules>
 
     <properties>
