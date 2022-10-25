@@ -19,8 +19,11 @@
 
 package io.bootique.linkmove.v3.resource;
 
+import com.nhl.link.move.LmRuntimeException;
 import com.nhl.link.move.resource.ResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,21 +35,28 @@ import java.net.URL;
  */
 public class BQUrlResourceResolver implements ResourceResolver {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BQUrlResourceResolver.class);
+
     private FolderResourceFactory baseFolder;
 
     public BQUrlResourceResolver(FolderResourceFactory baseFolder) {
         this.baseFolder = baseFolder;
+
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Resources will be located relative to URL {}", baseFolder.getUrl());
+        }
     }
 
     @Override
     public Reader reader(String location) {
 
         URL url = baseFolder.getUrl(location);
+        LOGGER.debug("Will read resource at URL {}", url);
 
         try {
             return new InputStreamReader(url.openStream());
         } catch (IOException e) {
-            throw new RuntimeException("Error reading from " + url);
+            throw new LmRuntimeException("Error reading resource at URL " + url, e);
         }
     }
 }
