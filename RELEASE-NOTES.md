@@ -1,6 +1,7 @@
 ## 3.0.M1
 
 * #49 Stop supporting Cayenne 4.0
+* #50 New module structure and support for LM 3.x
 
 ## 2.0.RC1
 
