@@ -3,6 +3,7 @@
 * #49 Stop supporting Cayenne 4.0
 * #50 New module structure and support for LM 3.x
 * #51 Upgrade to LinkMove 3.0.M2
+* #52 Upgrade to LinkMove 3.0.M3
 
 ## 2.0.RC1
 
