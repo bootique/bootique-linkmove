@@ -48,6 +48,10 @@
                         <groupId>org.apache.cayenne</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
         </dependencies>
@@ -60,22 +64,18 @@
         <dependency>
             <groupId>io.bootique.cayenne</groupId>
             <artifactId>bootique-cayenne42</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.nhl.link.move</groupId>
             <artifactId>link-move</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
             <artifactId>bootique-jdbc</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Unit test dependencies -->
