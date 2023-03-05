@@ -29,7 +29,9 @@ import java.util.Optional;
 
 /**
  * @since 3.0
+ * @deprecated see the note in URIConnectorFactoryFactory
  */
+@Deprecated(since = "3.0")
 class URLConnectorFactory implements IConnectorFactory<StreamConnector> {
 
     private final Map<String, URL> connectorUrls;

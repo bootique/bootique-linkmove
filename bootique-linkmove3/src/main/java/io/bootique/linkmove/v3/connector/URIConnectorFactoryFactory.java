@@ -26,6 +26,8 @@ import io.bootique.annotation.BQConfig;
 import io.bootique.annotation.BQConfigProperty;
 import io.bootique.di.Injector;
 import io.bootique.resource.ResourceFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.Collections;
@@ -34,10 +36,14 @@ import java.util.Map;
 
 /**
  * @since 2.0.B1
+ * @deprecated in favor of RestConnectorFactoryFactory from "bootique-linkmove3-rest"
  */
 @BQConfig
+@Deprecated(since = "3.0")
 @JsonTypeName("uri")
 public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(URIConnectorFactoryFactory.class);
 
     private Map<String, ResourceFactory> connectors;
 
@@ -57,6 +63,8 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
 
     @Override
     public IConnectorFactory<StreamConnector> getConnectorFactory(Injector injector) {
+
+        LOGGER.warn("*** URIConnectorFactoryFactory is deprecated in favor of RestConnectorFactoryFactory from \"bootique-linkmove3-rest\"");
 
         Map<String, URL> connectorUrls = new HashMap<>((int) (connectors.size() / 0.75d) + 1);
         connectors.forEach((id, rf) -> connectorUrls.put(id, rf.getUrl()));
