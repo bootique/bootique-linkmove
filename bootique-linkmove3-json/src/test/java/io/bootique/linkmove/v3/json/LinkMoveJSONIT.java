@@ -29,8 +29,11 @@ import io.bootique.jdbc.junit5.derby.DerbyTester;
 import io.bootique.junit5.BQApp;
 import io.bootique.junit5.BQTest;
 import io.bootique.junit5.BQTestTool;
+import io.bootique.linkmove.v3.LinkMoveModule;
 import io.bootique.linkmove.v3.json.cayenne.Table1;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,12 +46,15 @@ public class LinkMoveJSONIT {
     @BQTestTool
     static final CayenneTester cayenne = CayenneTester.create().entities(Table1.class);
 
+    static final Map<String, String> urlMap = Map.of("data", "classpath:io/bootique/linkmove/v3/json/data.json");
+
     @BQApp(skipRun = true)
     static final BQRuntime app = Bootique
             .app("-c", "classpath:io/bootique/linkmove/v3/json/test.yml")
             .autoLoadModules()
             .module(db.moduleWithTestDataSource("ds"))
             .module(cayenne.moduleWithTestHooks())
+            .module(b -> LinkMoveModule.extend(b).addConnectorFactory(new URLConnectorFactory(urlMap)))
             .module(b -> CayenneModule.extend(b).addProject("io/bootique/linkmove/v3/json/cayenne-project.xml"))
             .createRuntime();
 

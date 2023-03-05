@@ -19,6 +19,7 @@
 
 package io.bootique.linkmove.v3;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nhl.link.move.resource.FolderResourceResolver;
 import com.nhl.link.move.resource.ResourceResolver;
 import com.nhl.link.move.runtime.LmRuntime;
@@ -39,6 +40,8 @@ import java.util.Set;
 /**
  * @since 2.0.B1
  */
+// backward compatibility setting, since we removed "connectorFactories" property in 3.0
+@JsonIgnoreProperties(ignoreUnknown = true)
 @BQConfig
 public class LinkMoveFactory {
 
