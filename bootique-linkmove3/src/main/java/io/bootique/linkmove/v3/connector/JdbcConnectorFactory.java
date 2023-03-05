@@ -19,40 +19,40 @@
 
 package io.bootique.linkmove.v3.connector;
 
-import com.nhl.link.move.LmRuntimeException;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import com.nhl.link.move.runtime.jdbc.DataSourceConnector;
 import com.nhl.link.move.runtime.jdbc.JdbcConnector;
 import io.bootique.jdbc.DataSourceFactory;
 
 import javax.sql.DataSource;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * @since 2.0.B1
  */
 public class JdbcConnectorFactory implements IConnectorFactory<JdbcConnector> {
 
-	private DataSourceFactory dataSourceFactory;
+    private final DataSourceFactory dataSourceFactory;
+    private final Set<String> knownNames;
 
-	public JdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
-		this.dataSourceFactory = dataSourceFactory;
-	}
+    public JdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
+        this.dataSourceFactory = dataSourceFactory;
+        this.knownNames = new HashSet<>(dataSourceFactory.allNames());
+    }
 
-	@Override
-	public JdbcConnector createConnector(String id) {
-		return new DataSourceConnector(id, connectorDataSource(id));
-	}
+    @Override
+    public Class<JdbcConnector> getConnectorType() {
+        return JdbcConnector.class;
+    }
 
-	DataSource connectorDataSource(String id) {
+    @Override
+    public Optional<JdbcConnector> createConnector(String id) {
+        return connectorDataSource(id).map(ds -> new DataSourceConnector(id, ds));
+    }
 
-		DataSource ds = dataSourceFactory.forName(id);
-
-		if (ds == null) {
-			throw new LmRuntimeException(
-					"Unknown JDBC connector ID: " + id + "; available IDs: " + dataSourceFactory.allNames());
-		}
-
-		return ds;
-	}
-
+    Optional<DataSource> connectorDataSource(String id) {
+        return knownNames.contains(id) ? Optional.of(dataSourceFactory.forName(id)) : Optional.empty();
+    }
 }

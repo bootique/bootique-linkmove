@@ -1,3 +1,7 @@
+## 3.0.M2
+
+* #53 Upgrade to LinkMove 3.0.M4
+
 ## 3.0.M1
 
 * #49 Stop supporting Cayenne 4.0

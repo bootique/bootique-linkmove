@@ -16,38 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package io.bootique.linkmove.v3.connector;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.nhl.link.move.LmRuntimeException;
 import com.nhl.link.move.connect.StreamConnector;
+import com.nhl.link.move.connect.URLConnector;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
-import io.bootique.annotation.BQConfig;
-import io.bootique.annotation.BQConfigProperty;
-import io.bootique.di.Injector;
-import io.bootique.resource.ResourceFactory;
 
 import java.net.URL;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
- * @since 2.0.B1
+ * @since 3.0
  */
-@BQConfig
-@JsonTypeName("uri")
-public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {
+class URLConnectorFactory implements IConnectorFactory<StreamConnector> {
 
-    private Map<String, ResourceFactory> connectors;
+    private final Map<String, URL> connectorUrls;
 
-    public URIConnectorFactoryFactory() {
-        this.connectors = Collections.emptyMap();
-    }
-
-    @BQConfigProperty
-    public void setConnectors(Map<String, ResourceFactory> connectors) {
-        this.connectors = connectors;
+    public URLConnectorFactory(Map<String, URL> connectorUrls) {
+        this.connectorUrls = connectorUrls;
     }
 
     @Override
@@ -56,15 +44,7 @@ public class URIConnectorFactoryFactory implements IConnectorFactoryFactory<Stre
     }
 
     @Override
-    public IConnectorFactory<StreamConnector> getConnectorFactory(Injector injector) {
-
-        Map<String, URL> connectorUrls = new HashMap<>((int) (connectors.size() / 0.75d) + 1);
-        connectors.forEach((id, rf) -> connectorUrls.put(id, rf.getUrl()));
-
-        return new URLConnectorFactory(connectorUrls);
-    }
-
-    public Map<String, ResourceFactory> getConnectors() {
-        return connectors;
+    public Optional<? extends StreamConnector> createConnector(String id) throws LmRuntimeException {
+        return Optional.ofNullable(connectorUrls.get(id)).map(URLConnector::of);
     }
 }
