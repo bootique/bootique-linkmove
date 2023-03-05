@@ -22,47 +22,47 @@
 
 # bootique-linkmove
 
-Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io). The main value
-of this integration is the ability to configure connectors and extractor locations via Bootique, as well as to enhance
-LinkMove with more advanced connectors based on the existing Bootique features, such as HTTP client.
+Provides [LinkMove](https://github.com/nhl/link-move) integration with [Bootique](http://bootique.io). Configures 
+connectors and extractor locations via Bootique, enhances LinkMove with advanced connectors (such as HTTP client).
 
-*For additional help/questions about this example send a message to
-[Bootique forum](https://groups.google.com/forum/#!forum/bootique-user).*
-   
-## Prerequisites
-      
-    * Java 1.8 or newer.
-    * Apache Maven.
-      
-# Setup
+### Prerequisites
 
-## Add bootique-linkmove to your build tool
-**Maven**
+Include ```bootique-bom```:
 ```xml
 <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.bootique.bom</groupId>
             <artifactId>bootique-bom</artifactId>
-            <version>X.X</version>
+            <version>3.0.M1</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
     </dependencies>
 </dependencyManagement>
+```
+      
+# Setup
 
+## Add bootique-linkmove to your build tool
+**Maven**
+```xml
 <dependency>
     <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove</artifactId>
+    <artifactId>bootique-linkmove3</artifactId>
 </dependency>
 
-<!-- If you need to process JSON sources also include JSON module-->
-<!-- 
+<!-- Optionally, if you need to process JSON sources include JSON module-->
 <dependency>
     <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove-json</artifactId>
-</dependency> 
--->
+    <artifactId>bootique-linkmove3-json</artifactId>
+</dependency>
+
+<!-- Optionally, if you need to process data coming from REST APIs include REST module-->
+<dependency>
+    <groupId>io.bootique.linkmove</groupId>
+    <artifactId>bootique-linkmove3-rest</artifactId>
+</dependency>
 ```
 
 ## Use LinkMove
