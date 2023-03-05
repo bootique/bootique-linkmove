@@ -20,11 +20,13 @@
 package io.bootique.linkmove.v3;
 
 import com.nhl.link.move.runtime.LmRuntime;
+import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.ConfigModule;
 import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.Binder;
-import io.bootique.di.Injector;
 import io.bootique.di.Provides;
+import io.bootique.jdbc.DataSourceFactory;
+import io.bootique.linkmove.v3.connector.JdbcConnectorFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import javax.inject.Singleton;
@@ -45,18 +47,28 @@ public class LinkMoveModule extends ConfigModule {
 
     @Override
     public void configure(Binder binder) {
-        extend(binder).initAllExtensions();
+        LinkMoveModule.extend(binder)
+                .initAllExtensions()
+
+                // default bundled connector factories
+                .addConnectorFactory(JdbcConnectorFactory.class);
     }
 
     @Singleton
     @Provides
-    public LmRuntime createLinkMoveRuntime(
+    LmRuntime provideLinkMoveRuntime(
             ConfigurationFactory configFactory,
-            Injector injector,
             ServerRuntime targetRuntime,
+            Set<IConnectorFactory<?>> connectorFactories,
             Set<LinkMoveBuilderCallback> buildCallbacks) {
 
         return config(LinkMoveFactory.class, configFactory)
-                .createLinkMove(injector, targetRuntime, buildCallbacks);
+                .createLinkMove(targetRuntime, connectorFactories, buildCallbacks);
+    }
+
+    @Singleton
+    @Provides
+    JdbcConnectorFactory provideJdbcConnectorFactory(DataSourceFactory dataSourceFactory) {
+        return new JdbcConnectorFactory(dataSourceFactory);
     }
 }

@@ -19,17 +19,23 @@
 
 package io.bootique.linkmove.v3;
 
+import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.ModuleExtender;
 import io.bootique.di.Binder;
 import io.bootique.di.Key;
 import io.bootique.di.SetBuilder;
+import io.bootique.di.TypeLiteral;
 
 /**
  * @since 2.0.B1
  */
 public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtender> {
 
-    private SetBuilder<LinkMoveBuilderCallback> buildCallback;
+    private static final Key<IConnectorFactory<?>> FACTORY_TYPE_KEY = Key.get(new TypeLiteral<>() {
+    });
+
+    private SetBuilder<IConnectorFactory<?>> connectorFactories;
+    private SetBuilder<LinkMoveBuilderCallback> builderCallbacks;
 
     public LinkMoveModuleExtender(Binder binder) {
         super(binder);
@@ -37,7 +43,24 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
 
     @Override
     public LinkMoveModuleExtender initAllExtensions() {
-        contributeBuildCallback();
+        contributeConnectorFactories();
+        contributeBuilderCallbacks();
+        return this;
+    }
+
+    /**
+     * @since 3.0
+     */
+    public LinkMoveModuleExtender addConnectorFactory(IConnectorFactory<?> factory) {
+        contributeConnectorFactories().addInstance(factory);
+        return this;
+    }
+
+    /**
+     * @since 3.0
+     */
+    public LinkMoveModuleExtender addConnectorFactory(Class<? extends IConnectorFactory<?>> factoryType) {
+        contributeConnectorFactories().add(factoryType);
         return this;
     }
 
@@ -46,21 +69,25 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
      * @return this instance of extender
      */
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(Key<? extends LinkMoveBuilderCallback> callbackKey) {
-        contributeBuildCallback().add(callbackKey);
+        contributeBuilderCallbacks().add(callbackKey);
         return this;
     }
 
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(LinkMoveBuilderCallback callback) {
-        contributeBuildCallback().addInstance(callback);
+        contributeBuilderCallbacks().addInstance(callback);
         return this;
     }
 
     public LinkMoveModuleExtender addLinkMoveBuilderCallback(Class<? extends LinkMoveBuilderCallback> callbackType) {
-        contributeBuildCallback().add(callbackType);
+        contributeBuilderCallbacks().add(callbackType);
         return this;
     }
 
-    protected SetBuilder<LinkMoveBuilderCallback> contributeBuildCallback() {
-        return buildCallback != null ? buildCallback : (buildCallback = newSet(LinkMoveBuilderCallback.class));
+    protected SetBuilder<IConnectorFactory<?>> contributeConnectorFactories() {
+        return connectorFactories != null ? connectorFactories : (connectorFactories = newSet(FACTORY_TYPE_KEY));
+    }
+
+    protected SetBuilder<LinkMoveBuilderCallback> contributeBuilderCallbacks() {
+        return builderCallbacks != null ? builderCallbacks : (builderCallbacks = newSet(LinkMoveBuilderCallback.class));
     }
 }

@@ -19,9 +19,26 @@
 package io.bootique.linkmove.v3.rest;
 
 import io.bootique.ConfigModule;
+import io.bootique.di.Binder;
+import io.bootique.di.Provides;
+import io.bootique.jersey.client.HttpTargets;
+import io.bootique.linkmove.v3.LinkMoveModule;
+
+import javax.inject.Singleton;
 
 /**
  * @since 2.0.B1
  */
 public class LinkMoveRestModule extends ConfigModule {
+
+    @Override
+    public void configure(Binder binder) {
+        LinkMoveModule.extend(binder).addConnectorFactory(RestConnectorFactory.class);
+    }
+
+    @Singleton
+    @Provides
+    RestConnectorFactory provideRestConnectorFactory(HttpTargets targets) {
+        return new RestConnectorFactory(targets);
+    }
 }
