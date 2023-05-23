@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * A helper class to build extractor parameters that will be used to resolve "templates" in the connector URL. JAX RS
- * allows to define "templates" like this in {@link javax.ws.rs.client.WebTarget} - "/abc/{path}/{id}?a={a}" and then
+ * allows to define "templates" like this in {@link jakarta.ws.rs.client.WebTarget} - "/abc/{path}/{id}?a={a}" and then
  * substitute them with the real values before use. This class assists in collecting such substitutions and passing
  * them to RestConnector via execution parameters.
  *
