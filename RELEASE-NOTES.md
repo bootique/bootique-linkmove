@@ -2,6 +2,7 @@
 
 * #53 Upgrade to LinkMove 3.0.M4
 * #54 Make IConnectorFactoryFactory injectable
+* #55 Jakarta version of "bootique-linkmove3-rest"
 
 ## 3.0.M1
 

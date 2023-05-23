@@ -45,6 +45,7 @@
         <module>bootique-linkmove3</module>
         <module>bootique-linkmove3-json</module>
         <module>bootique-linkmove3-rest</module>
+        <module>bootique-linkmove3-rest-jakarta</module>
     </modules>
 
     <properties>
@@ -83,6 +84,11 @@
                 <version>${bootique.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.bootique.jersey</groupId>
+                <artifactId>bootique-jersey-jakarta</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.bootique.cayenne</groupId>
                 <artifactId>bootique-cayenne42</artifactId>
                 <version>${bootique.version}</version>
@@ -100,6 +106,11 @@
             <dependency>
                 <groupId>io.bootique.jetty</groupId>
                 <artifactId>bootique-jetty-junit5</artifactId>
+                <version>${bootique.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jetty</groupId>
+                <artifactId>bootique-jetty-jakarta-junit5</artifactId>
                 <version>${bootique.version}</version>
             </dependency>
             <dependency>
