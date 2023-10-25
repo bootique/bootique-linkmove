@@ -4,6 +4,7 @@
 * #54 Make IConnectorFactoryFactory injectable
 * #55 Jakarta version of "bootique-linkmove3-rest"
 * #56 Upgrade to LinkMove 3.0.M5 / Cayenne 4.2
+* #57 Upgrade LinkMove 3 to 3.0.M6 / DFLib 0.18
 
 ## 3.0.M1
 
