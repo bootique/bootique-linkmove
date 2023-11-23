@@ -54,7 +54,7 @@ public class LinkMoveJSONIT {
 
 
     @Test
-    public void testLinkMoveJSON() {
+    public void linkMoveJSON() {
         LmTask task = app.getInstance(LmRuntime.class)
                 .getTaskService()
                 .createOrUpdate(Table1.class)

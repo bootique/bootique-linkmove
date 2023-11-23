@@ -55,7 +55,7 @@ public class LinkMoveModule_ConnectorsConfigIT {
     }
 
     @Test
-    public void testConfiguration_ConnectorFactories() {
+    public void configuration_ConnectorFactories() {
 
         LinkMoveFactory f = factory("classpath:io/bootique/linkmove/v2/config.yml");
 
@@ -74,7 +74,7 @@ public class LinkMoveModule_ConnectorsConfigIT {
     }
 
     @Test
-    public void testConfiguration_ConnectorFactories_Classpath() {
+    public void configuration_ConnectorFactories_Classpath() {
 
         LinkMoveFactory f = factory("classpath:io/bootique/linkmove/v2/connectors.yml");
 

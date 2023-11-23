@@ -65,7 +65,7 @@ public class LinkMoveRestIT {
     final BQTestFactory testFactory = new BQTestFactory();
 
     @Test
-    public void testLinkMoveRest() {
+    public void linkMoveRest() {
 
         BQRuntime lm1 = testFactory
                 .app("-c", "classpath:io/bootique/linkmove/v3/rest/test.yml")
@@ -86,7 +86,7 @@ public class LinkMoveRestIT {
     }
 
     @Test
-    public void testLinkMoveRest_ResolvePathParameters() {
+    public void linkMoveRest_ResolvePathParameters() {
 
         BQRuntime lm2 = Bootique
                 .app("-c", "classpath:io/bootique/linkmove/v3/rest/test-params.yml")

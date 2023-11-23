@@ -41,7 +41,7 @@ public class LinkMoveRest_ConflictsIT {
             .createRuntime();
 
     @Test
-    public void testLinkMoveRest_ConflictingConnectorTypes() {
+    public void linkMoveRest_ConflictingConnectorTypes() {
         try {
             app.getInstance(LmRuntime.class);
             fail("Was expected to fail due to conflicting connector types");

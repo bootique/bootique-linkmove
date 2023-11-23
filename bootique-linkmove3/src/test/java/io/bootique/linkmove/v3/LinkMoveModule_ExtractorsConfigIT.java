@@ -44,7 +44,7 @@ public class LinkMoveModule_ExtractorsConfigIT {
     final BQTestFactory testFactory = new BQTestFactory();
 
     @Test
-    public void testConfiguration_ExtractorsDir_File() throws IOException, InterruptedException {
+    public void configuration_ExtractorsDir_File() throws IOException, InterruptedException {
 
         File targetFolder = new File("target/extractors/io/bootique/linkmove/v3/folder");
         File targetFile = new File(targetFolder, "extractor.xml");
@@ -74,14 +74,14 @@ public class LinkMoveModule_ExtractorsConfigIT {
     }
 
     @Test
-    public void testConfiguration_ExtractorsDir_Classpath() {
+    public void configuration_ExtractorsDir_Classpath() {
         tester("classpath:io/bootique/linkmove/v3/extractorsInClasspathFolder.yml")
                 .assertBasics()
                 .assertPropertyPresent("cpfolder");
     }
 
     @Test
-    public void testConfiguration_ExtractorsDir_Classpath_InJar() {
+    public void configuration_ExtractorsDir_Classpath_InJar() {
         // this works because the test jar is added to classpath in the pom.xml via <additionalClasspathElement>
         tester("classpath:io/bootique/linkmove/v3/extractorsInJar.yml")
                 .assertBasics()
