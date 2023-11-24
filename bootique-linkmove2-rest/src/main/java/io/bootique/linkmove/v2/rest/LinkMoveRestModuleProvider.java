@@ -19,15 +19,18 @@
 package io.bootique.linkmove.v2.rest;
 
 import io.bootique.BQModuleProvider;
-import io.bootique.di.BQModule;
+import io.bootique.bootstrap.BuiltModule;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
  */
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override
-    public BQModule module() {
-        return new LinkMoveRestModule();
+    public BuiltModule buildModule() {
+        return BuiltModule.of(new LinkMoveRestModule())
+                .provider(this)
+                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v2")
+                .build();
     }
 }

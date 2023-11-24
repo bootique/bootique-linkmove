@@ -19,41 +19,27 @@
 
 package io.bootique.linkmove.v2;
 
-import io.bootique.BQModuleMetadata;
 import io.bootique.BQModuleProvider;
+import io.bootique.bootstrap.BuiltModule;
 import io.bootique.cayenne.v42.CayenneModuleProvider;
-import io.bootique.di.BQModule;
 import io.bootique.jdbc.JdbcModuleProvider;
 
-import java.lang.reflect.Type;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
 
 import static java.util.Arrays.asList;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
  */
 public class LinkMoveModuleProvider implements BQModuleProvider {
 
     @Override
-    public BQModule module() {
-        return new LinkMoveModule();
-    }
-
-    @Override
-    public Map<String, Type> configs() {
-        // TODO: config prefix is hardcoded. Refactor away from ConfigModule, and make provider
-        // generate config prefix, reusing it in metadata...
-        return Collections.singletonMap("linkmove", LinkMoveFactory.class);
-    }
-
-    @Override
-    public BQModuleMetadata.Builder moduleBuilder() {
-        return BQModuleProvider.super
-                .moduleBuilder()
-                .description("Provides integration with LinkMove ETL framework.");
+    public BuiltModule buildModule() {
+        return BuiltModule.of(new LinkMoveModule())
+                .provider(this)
+                .description("Integrates LinkMove ETL framework, v2")
+                .config("linkmove", LinkMoveFactory.class)
+                .build();
     }
 
     @Override
