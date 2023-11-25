@@ -18,7 +18,9 @@
  */
 package io.bootique.linkmove.v3.rest;
 
-import io.bootique.ConfigModule;
+import io.bootique.BQModuleProvider;
+import io.bootique.bootstrap.BuiltModule;
+import io.bootique.di.BQModule;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jersey.client.HttpTargets;
@@ -29,7 +31,14 @@ import javax.inject.Singleton;
 /**
  * @since 3.0
  */
-public class LinkMoveRestModule extends ConfigModule {
+public class LinkMoveRestModule implements BQModule, BQModuleProvider {
+
+    @Override
+    public BuiltModule buildModule() {
+        return BuiltModule.of(this)
+                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v3")
+                .build();
+    }
 
     @Override
     public void configure(Binder binder) {

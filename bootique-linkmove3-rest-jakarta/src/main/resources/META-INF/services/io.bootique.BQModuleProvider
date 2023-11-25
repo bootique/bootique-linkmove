@@ -1,1 +1,1 @@
-io.bootique.linkmove.v3.rest.LinkMoveRestModuleProvider
+io.bootique.linkmove.v3.rest.LinkMoveRestModule

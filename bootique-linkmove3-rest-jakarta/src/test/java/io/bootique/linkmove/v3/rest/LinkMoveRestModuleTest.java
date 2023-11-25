@@ -16,21 +16,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package io.bootique.linkmove.v3.rest;
 
-import io.bootique.BQModuleProvider;
-import io.bootique.bootstrap.BuiltModule;
+import io.bootique.junit5.BQModuleProviderChecker;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestFactory;
+import io.bootique.junit5.BQTestTool;
+import org.junit.jupiter.api.Test;
 
-/**
- * @since 3.0
- */
-public class LinkMoveRestModuleProvider implements BQModuleProvider {
+@BQTest
+public class LinkMoveRestModuleTest {
 
-    @Override
-    public BuiltModule buildModule() {
-        return BuiltModule.of(new LinkMoveRestModule())
-                .provider(this)
-                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v3")
-                .build();
+    @BQTestTool
+    public BQTestFactory testFactory = new BQTestFactory();
+
+    @Test
+    public void autoLoadable() {
+        BQModuleProviderChecker.testAutoLoadable(LinkMoveRestModule.class);
+    }
+
+    @Test
+    public void metadata() {
+        BQModuleProviderChecker.testMetadata(LinkMoveRestModule.class);
     }
 }

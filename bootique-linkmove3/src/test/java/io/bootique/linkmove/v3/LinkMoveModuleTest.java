@@ -19,35 +19,35 @@
 
 package io.bootique.linkmove.v3;
 
-import io.bootique.BQModuleProvider;
-import io.bootique.bootstrap.BuiltModule;
+import io.bootique.BQRuntime;
 import io.bootique.cayenne.v42.CayenneModule;
 import io.bootique.jdbc.JdbcModule;
+import io.bootique.junit5.*;
+import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
+@BQTest
+public class LinkMoveModuleTest {
 
-import static java.util.Arrays.asList;
+    @BQTestTool
+    final BQTestFactory testFactory = new BQTestFactory();
 
-/**
- * @since 2.0
- */
-public class LinkMoveModuleProvider implements BQModuleProvider {
-
-    @Override
-    public BuiltModule buildModule() {
-        return BuiltModule.of(new LinkMoveModule())
-                .provider(this)
-                .description("Integrates LinkMove ETL framework, v3")
-                .config("linkmove", LinkMoveFactory.class)
-                .build();
+    @Test
+    public void autoLoadable() {
+        BQModuleProviderChecker.testAutoLoadable(LinkMoveModule.class);
     }
 
-    @Override
-    @Deprecated(since = "3.0", forRemoval = true)
-    public Collection<BQModuleProvider> dependencies() {
-        return asList(
-                new JdbcModule(),
-                new CayenneModule()
+    @Test
+    public void metadata() {
+        BQModuleProviderChecker.testMetadata(LinkMoveModule.class);
+    }
+
+    @Test
+    public void moduleDeclaresDependencies() {
+        final BQRuntime bqRuntime = testFactory.app().moduleProvider(new LinkMoveModule()).createRuntime();
+        BQRuntimeChecker.testModulesLoaded(bqRuntime,
+                JdbcModule.class,
+                LinkMoveModule.class,
+                CayenneModule.class
         );
     }
 }
