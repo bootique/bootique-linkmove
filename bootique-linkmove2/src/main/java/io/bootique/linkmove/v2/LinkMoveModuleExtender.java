@@ -25,8 +25,10 @@ import io.bootique.di.Key;
 import io.bootique.di.SetBuilder;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of LinkMove v3
  */
+@Deprecated(since = "3.0", forRemoval = true)
 public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtender> {
 
     private SetBuilder<LinkMoveBuilderCallback> buildCallback;

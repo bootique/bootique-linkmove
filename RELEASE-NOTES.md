@@ -1,3 +1,7 @@
+## 3.0-M3
+
+* #58 Deprecate LinkMove 2 integration
+
 ## 3.0.M2
 
 * #53 Upgrade to LinkMove 3.0.M4

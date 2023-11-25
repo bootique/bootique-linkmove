@@ -23,7 +23,9 @@ import io.bootique.bootstrap.BuiltModule;
 
 /**
  * @since 2.0
+ * @deprecated in favor of LinkMove v3
  */
+@Deprecated(since = "3.0", forRemoval = true)
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override

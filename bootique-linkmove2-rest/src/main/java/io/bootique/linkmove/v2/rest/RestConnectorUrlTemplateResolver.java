@@ -28,8 +28,10 @@ import java.util.Map;
  * substitute them with the real values before use. This class assists in collecting such substitutions and passing
  * them to RestConnector via execution parameters.
  *
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of LinkMove v3
  */
+@Deprecated(since = "3.0", forRemoval = true)
 public class RestConnectorUrlTemplateResolver {
 
     private Map<String, Object> templateValues;

@@ -5,8 +5,10 @@ import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.jersey.client.HttpTargets;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of LinkMove v3
  */
+@Deprecated(since = "3.0", forRemoval = true)
 public class RestConnectorFactory implements IConnectorFactory<StreamConnector> {
 
     private HttpTargets httpTargets;

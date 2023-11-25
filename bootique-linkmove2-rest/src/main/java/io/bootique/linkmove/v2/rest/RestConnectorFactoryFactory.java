@@ -9,8 +9,10 @@ import io.bootique.jersey.client.HttpTargets;
 import io.bootique.linkmove.v2.connector.IConnectorFactoryFactory;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of LinkMove v3
  */
+@Deprecated(since = "3.0", forRemoval = true)
 @JsonTypeName("bq.rest")
 @BQConfig("Creates a LinkMove connector that resolves connector ids as 'targets' in 'jerseyclient' configurations")
 public class RestConnectorFactoryFactory implements IConnectorFactoryFactory<StreamConnector> {
