@@ -56,8 +56,7 @@ public class LinkMoveModule implements BQModule, BQModuleProvider {
 
     @Override
     public BuiltModule buildModule() {
-        return BuiltModule.of(new LinkMoveModule())
-                .provider(this)
+        return BuiltModule.of(this)
                 .description("Integrates LinkMove ETL framework, v3")
                 .config(CONFIG_PREFIX, LinkMoveFactory.class)
                 .build();
