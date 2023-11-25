@@ -39,7 +39,7 @@ public class LinkMoveModuleProvider implements BQModuleProvider {
     public BuiltModule buildModule() {
         return BuiltModule.of(new LinkMoveModule())
                 .provider(this)
-                .description("Deprecated and can be replaced with 'bootique-linkmove3'.")
+                .description("Deprecated, can be replaced with 'bootique-linkmove3'.")
                 .config("linkmove", LinkMoveFactory.class)
                 .build();
     }

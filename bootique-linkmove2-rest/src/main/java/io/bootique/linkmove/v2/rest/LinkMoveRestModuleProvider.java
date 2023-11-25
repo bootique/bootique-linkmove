@@ -32,7 +32,7 @@ public class LinkMoveRestModuleProvider implements BQModuleProvider {
     public BuiltModule buildModule() {
         return BuiltModule.of(new LinkMoveRestModule())
                 .provider(this)
-                .description("Deprecated and can be replaced with 'bootique-linkmove3-rest-jakarta'.")
+                .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
                 .build();
     }
 }
