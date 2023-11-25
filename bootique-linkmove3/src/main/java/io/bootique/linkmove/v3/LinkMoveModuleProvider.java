@@ -21,8 +21,8 @@ package io.bootique.linkmove.v3;
 
 import io.bootique.BQModuleProvider;
 import io.bootique.bootstrap.BuiltModule;
-import io.bootique.cayenne.v42.CayenneModuleProvider;
-import io.bootique.jdbc.JdbcModuleProvider;
+import io.bootique.cayenne.v42.CayenneModule;
+import io.bootique.jdbc.JdbcModule;
 
 import java.util.Collection;
 
@@ -46,8 +46,8 @@ public class LinkMoveModuleProvider implements BQModuleProvider {
     @Deprecated(since = "3.0", forRemoval = true)
     public Collection<BQModuleProvider> dependencies() {
         return asList(
-                new JdbcModuleProvider(),
-                new CayenneModuleProvider()
+                new JdbcModule(),
+                new CayenneModule()
         );
     }
 }
