@@ -1,6 +1,7 @@
 ## 3.0-M3
 
 * #58 Deprecate LinkMove 2 integration
+* #59 (Jakarta Migration) Deprecate JAX-RS 2 (javax) version of the REST connector
 
 ## 3.0.M2
 

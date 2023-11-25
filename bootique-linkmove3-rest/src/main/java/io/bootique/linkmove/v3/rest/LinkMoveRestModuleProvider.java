@@ -22,8 +22,10 @@ import io.bootique.BQModuleProvider;
 import io.bootique.bootstrap.BuiltModule;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of the Jakarta version of the REST connector
  */
+@Deprecated(forRemoval = true)
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override

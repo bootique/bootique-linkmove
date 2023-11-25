@@ -27,8 +27,10 @@ import io.bootique.linkmove.v3.LinkMoveModule;
 import javax.inject.Singleton;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
+ * @deprecated in favor of the Jakarta version of the REST connector
  */
+@Deprecated(forRemoval = true)
 public class LinkMoveRestModule extends ConfigModule {
 
     @Override
