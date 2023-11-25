@@ -39,7 +39,7 @@ public class LinkMoveModuleProvider implements BQModuleProvider {
     public BuiltModule buildModule() {
         return BuiltModule.of(new LinkMoveModule())
                 .provider(this)
-                .description("Integrates LinkMove ETL framework, v2")
+                .description("Deprecated and can be replaced with 'bootique-linkmove3'.")
                 .config("linkmove", LinkMoveFactory.class)
                 .build();
     }

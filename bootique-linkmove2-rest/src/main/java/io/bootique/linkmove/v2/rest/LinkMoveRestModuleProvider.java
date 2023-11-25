@@ -32,7 +32,7 @@ public class LinkMoveRestModuleProvider implements BQModuleProvider {
     public BuiltModule buildModule() {
         return BuiltModule.of(new LinkMoveRestModule())
                 .provider(this)
-                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v2")
+                .description("Deprecated and can be replaced with 'bootique-linkmove3-rest-jakarta'.")
                 .build();
     }
 }
