@@ -31,7 +31,7 @@ import java.io.Reader;
 import java.net.URL;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
  */
 public class BQUrlResourceResolver implements ResourceResolver {
 

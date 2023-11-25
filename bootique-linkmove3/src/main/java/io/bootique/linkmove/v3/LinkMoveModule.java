@@ -33,7 +33,7 @@ import javax.inject.Singleton;
 import java.util.Set;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
  */
 public class LinkMoveModule extends ConfigModule {
 

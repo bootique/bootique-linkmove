@@ -38,7 +38,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * @since 2.0.B1
+ * @since 2.0
  */
 // backward compatibility setting, since we removed "connectorFactories" property in 3.0
 @JsonIgnoreProperties(ignoreUnknown = true)

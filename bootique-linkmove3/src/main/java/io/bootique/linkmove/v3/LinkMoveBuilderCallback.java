@@ -24,7 +24,7 @@ import com.nhl.link.move.runtime.LmRuntimeBuilder;
 /**
  * A custom extension that allows users to customize LinkMove stack during creation.
  *
- * @since 2.0.B1
+ * @since 2.0
  */
 public interface LinkMoveBuilderCallback {
 
