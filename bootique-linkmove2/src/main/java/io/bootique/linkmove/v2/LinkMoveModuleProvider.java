@@ -20,7 +20,7 @@
 package io.bootique.linkmove.v2;
 
 import io.bootique.BQModuleProvider;
-import io.bootique.bootstrap.BuiltModule;
+import io.bootique.ModuleCrate;
 import io.bootique.cayenne.v42.CayenneModule;
 import io.bootique.jdbc.JdbcModule;
 
@@ -36,8 +36,8 @@ import static java.util.Arrays.asList;
 public class LinkMoveModuleProvider implements BQModuleProvider {
 
     @Override
-    public BuiltModule buildModule() {
-        return BuiltModule.of(new LinkMoveModule())
+    public ModuleCrate moduleCrate() {
+        return ModuleCrate.of(new LinkMoveModule())
                 .provider(this)
                 .description("Deprecated, can be replaced with 'bootique-linkmove3'.")
                 .config("linkmove", LinkMoveFactory.class)

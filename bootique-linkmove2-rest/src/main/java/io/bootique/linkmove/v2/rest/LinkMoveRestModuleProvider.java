@@ -19,7 +19,7 @@
 package io.bootique.linkmove.v2.rest;
 
 import io.bootique.BQModuleProvider;
-import io.bootique.bootstrap.BuiltModule;
+import io.bootique.ModuleCrate;
 
 /**
  * @since 2.0
@@ -29,8 +29,8 @@ import io.bootique.bootstrap.BuiltModule;
 public class LinkMoveRestModuleProvider implements BQModuleProvider {
 
     @Override
-    public BuiltModule buildModule() {
-        return BuiltModule.of(new LinkMoveRestModule())
+    public ModuleCrate moduleCrate() {
+        return ModuleCrate.of(new LinkMoveRestModule())
                 .provider(this)
                 .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
                 .build();

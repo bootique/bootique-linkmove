@@ -22,7 +22,7 @@ package io.bootique.linkmove.v3;
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.BQModuleProvider;
-import io.bootique.bootstrap.BuiltModule;
+import io.bootique.ModuleCrate;
 import io.bootique.cayenne.v42.CayenneModule;
 import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.BQModule;
@@ -55,8 +55,8 @@ public class LinkMoveModule implements BQModule, BQModuleProvider {
     }
 
     @Override
-    public BuiltModule buildModule() {
-        return BuiltModule.of(this)
+    public ModuleCrate moduleCrate() {
+        return ModuleCrate.of(this)
                 .description("Integrates LinkMove ETL framework, v3")
                 .config(CONFIG_PREFIX, LinkMoveFactory.class)
                 .build();
