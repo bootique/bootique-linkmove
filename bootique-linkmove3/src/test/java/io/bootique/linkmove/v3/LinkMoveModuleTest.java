@@ -19,35 +19,15 @@
 
 package io.bootique.linkmove.v3;
 
-import io.bootique.BQRuntime;
-import io.bootique.cayenne.v42.CayenneModule;
-import io.bootique.jdbc.JdbcModule;
-import io.bootique.junit5.*;
+import io.bootique.junit5.BQModuleTester;
+import io.bootique.junit5.BQTest;
 import org.junit.jupiter.api.Test;
 
 @BQTest
 public class LinkMoveModuleTest {
 
-    @BQTestTool
-    final BQTestFactory testFactory = new BQTestFactory();
-
     @Test
     public void autoLoadable() {
-        BQModuleProviderChecker.testAutoLoadable(LinkMoveModule.class);
-    }
-
-    @Test
-    public void metadata() {
-        BQModuleProviderChecker.testMetadata(LinkMoveModule.class);
-    }
-
-    @Test
-    public void moduleDeclaresDependencies() {
-        final BQRuntime bqRuntime = testFactory.app().moduleProvider(new LinkMoveModule()).createRuntime();
-        BQRuntimeChecker.testModulesLoaded(bqRuntime,
-                JdbcModule.class,
-                LinkMoveModule.class,
-                CayenneModule.class
-        );
+        BQModuleTester.of(LinkMoveModule.class).testAutoLoadable().testConfig();
     }
 }

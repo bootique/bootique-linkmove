@@ -16,23 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package io.bootique.linkmove.v2.rest;
 
-import io.bootique.BQModuleProvider;
-import io.bootique.ModuleCrate;
+import io.bootique.junit5.BQModuleTester;
+import io.bootique.junit5.BQTest;
+import org.junit.jupiter.api.Test;
 
-/**
- * @since 2.0
- * @deprecated in favor of LinkMove v3
- */
-@Deprecated(since = "3.0", forRemoval = true)
-public class LinkMoveRestModuleProvider implements BQModuleProvider {
+@BQTest
+public class LinkMoveRestModuleTest {
 
-    @Override
-    public ModuleCrate moduleCrate() {
-        return ModuleCrate.of(new LinkMoveRestModule())
-                .provider(this)
-                .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
-                .build();
+    @Test
+    public void check() {
+        BQModuleTester.of(LinkMoveRestModule.class).testAutoLoadable().testConfig();
     }
 }

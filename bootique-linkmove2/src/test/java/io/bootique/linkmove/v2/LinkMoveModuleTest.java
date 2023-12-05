@@ -16,23 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.bootique.linkmove.v3.rest;
 
-import io.bootique.BQModuleProvider;
-import io.bootique.ModuleCrate;
+package io.bootique.linkmove.v2;
 
-/**
- * @since 2.0
- * @deprecated in favor of the Jakarta version of the REST connector
- */
-@Deprecated(forRemoval = true)
-public class LinkMoveRestModuleProvider implements BQModuleProvider {
+import io.bootique.junit5.BQModuleTester;
+import io.bootique.junit5.BQTest;
+import org.junit.jupiter.api.Test;
 
-    @Override
-    public ModuleCrate moduleCrate() {
-        return ModuleCrate.of(new LinkMoveRestModule())
-                .provider(this)
-                .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
-                .build();
+@BQTest
+public class LinkMoveModuleTest {
+
+    @Test
+    public void check() {
+        BQModuleTester.of(LinkMoveModule.class).testAutoLoadable().testConfig();
     }
 }

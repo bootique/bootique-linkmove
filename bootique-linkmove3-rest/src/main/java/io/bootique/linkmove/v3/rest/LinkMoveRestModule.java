@@ -19,6 +19,7 @@
 package io.bootique.linkmove.v3.rest;
 
 import io.bootique.ConfigModule;
+import io.bootique.ModuleCrate;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jersey.client.HttpTargets;
@@ -32,6 +33,13 @@ import javax.inject.Singleton;
  */
 @Deprecated(forRemoval = true)
 public class LinkMoveRestModule extends ConfigModule {
+
+    @Override
+    public ModuleCrate crate() {
+        return ModuleCrate.of(this)
+                .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
+                .build();
+    }
 
     @Override
     public void configure(Binder binder) {

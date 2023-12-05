@@ -21,6 +21,7 @@ package io.bootique.linkmove.v2;
 
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.ConfigModule;
+import io.bootique.ModuleCrate;
 import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.Binder;
 import io.bootique.di.Injector;
@@ -43,6 +44,14 @@ public class LinkMoveModule extends ConfigModule {
      */
     public static LinkMoveModuleExtender extend(Binder binder) {
         return new LinkMoveModuleExtender(binder);
+    }
+
+    @Override
+    public ModuleCrate crate() {
+        return ModuleCrate.of(this)
+                .description("Deprecated, can be replaced with 'bootique-linkmove3'.")
+                .config("linkmove", LinkMoveFactory.class)
+                .build();
     }
 
     @Override

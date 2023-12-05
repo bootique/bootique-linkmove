@@ -19,25 +19,14 @@
 
 package io.bootique.linkmove.v3.rest;
 
-import io.bootique.junit5.BQModuleProviderChecker;
-import io.bootique.junit5.BQTest;
-import io.bootique.junit5.BQTestFactory;
-import io.bootique.junit5.BQTestTool;
+import io.bootique.junit5.*;
 import org.junit.jupiter.api.Test;
 
 @BQTest
 public class LinkMoveRestModuleTest {
 
-    @BQTestTool
-    public BQTestFactory testFactory = new BQTestFactory();
-
     @Test
-    public void autoLoadable() {
-        BQModuleProviderChecker.testAutoLoadable(LinkMoveRestModule.class);
-    }
-
-    @Test
-    public void metadata() {
-        BQModuleProviderChecker.testMetadata(LinkMoveRestModule.class);
+    public void check() {
+        BQModuleTester.of(LinkMoveRestModule.class).testAutoLoadable().testAutoLoadable();
     }
 }

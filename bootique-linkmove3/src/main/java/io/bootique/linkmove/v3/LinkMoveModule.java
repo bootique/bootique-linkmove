@@ -21,28 +21,22 @@ package io.bootique.linkmove.v3;
 
 import com.nhl.link.move.runtime.LmRuntime;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
-import io.bootique.BQModuleProvider;
+import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
-import io.bootique.cayenne.v42.CayenneModule;
 import io.bootique.config.ConfigurationFactory;
-import io.bootique.di.BQModule;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
-import io.bootique.jdbc.JdbcModule;
 import io.bootique.linkmove.v3.connector.JdbcConnectorFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import javax.inject.Singleton;
-import java.util.Collection;
 import java.util.Set;
-
-import static java.util.Arrays.asList;
 
 /**
  * @since 2.0
  */
-public class LinkMoveModule implements BQModule, BQModuleProvider {
+public class LinkMoveModule implements BQModule {
 
     private static final String CONFIG_PREFIX = "linkmove";
 
@@ -55,20 +49,11 @@ public class LinkMoveModule implements BQModule, BQModuleProvider {
     }
 
     @Override
-    public ModuleCrate moduleCrate() {
+    public ModuleCrate crate() {
         return ModuleCrate.of(this)
                 .description("Integrates LinkMove ETL framework, v3")
                 .config(CONFIG_PREFIX, LinkMoveFactory.class)
                 .build();
-    }
-
-    @Override
-    @Deprecated(since = "3.0", forRemoval = true)
-    public Collection<BQModuleProvider> dependencies() {
-        return asList(
-                new JdbcModule(),
-                new CayenneModule()
-        );
     }
 
     @Override

@@ -19,6 +19,7 @@
 package io.bootique.linkmove.v2.rest;
 
 import io.bootique.ConfigModule;
+import io.bootique.ModuleCrate;
 
 /**
  * @since 2.0
@@ -26,4 +27,11 @@ import io.bootique.ConfigModule;
  */
 @Deprecated(since = "3.0", forRemoval = true)
 public class LinkMoveRestModule extends ConfigModule {
+
+    @Override
+    public ModuleCrate crate() {
+        return ModuleCrate.of(this)
+                .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
+                .build();
+    }
 }
