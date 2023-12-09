@@ -18,20 +18,25 @@
  */
 package io.bootique.linkmove.v2.rest;
 
-import io.bootique.ConfigModule;
+import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
+import io.bootique.di.Binder;
 
 /**
  * @since 2.0
  * @deprecated in favor of LinkMove v3
  */
 @Deprecated(since = "3.0", forRemoval = true)
-public class LinkMoveRestModule extends ConfigModule {
+public class LinkMoveRestModule implements BQModule {
 
     @Override
     public ModuleCrate crate() {
         return ModuleCrate.of(this)
                 .description("Deprecated, can be replaced with 'bootique-linkmove3-rest-jakarta'.")
                 .build();
+    }
+
+    @Override
+    public void configure(Binder binder) {
     }
 }

@@ -20,7 +20,7 @@
 package io.bootique.linkmove.v2;
 
 import com.nhl.link.move.runtime.LmRuntime;
-import io.bootique.ConfigModule;
+import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
 import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.Binder;
@@ -36,7 +36,9 @@ import java.util.Set;
  * @deprecated in favor of LinkMove v3
  */
 @Deprecated(since = "3.0", forRemoval = true)
-public class LinkMoveModule extends ConfigModule {
+public class LinkMoveModule implements BQModule {
+
+    private static final String CONFIG_PREFIX = "linkmove";
 
     /**
      * @param binder DI binder passed to the Module that invokes this method.
@@ -50,7 +52,7 @@ public class LinkMoveModule extends ConfigModule {
     public ModuleCrate crate() {
         return ModuleCrate.of(this)
                 .description("Deprecated, can be replaced with 'bootique-linkmove3'.")
-                .config("linkmove", LinkMoveFactory.class)
+                .config(CONFIG_PREFIX, LinkMoveFactory.class)
                 .build();
     }
 
@@ -67,7 +69,7 @@ public class LinkMoveModule extends ConfigModule {
             ServerRuntime targetRuntime,
             Set<LinkMoveBuilderCallback> buildCallbacks) {
 
-        return config(LinkMoveFactory.class, configFactory)
+        return configFactory.config(LinkMoveFactory.class, CONFIG_PREFIX)
                 .createLinkMove(injector, targetRuntime, buildCallbacks);
     }
 }

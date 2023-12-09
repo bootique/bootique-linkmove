@@ -18,7 +18,7 @@
  */
 package io.bootique.linkmove.v3.rest;
 
-import io.bootique.ConfigModule;
+import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
@@ -32,7 +32,7 @@ import javax.inject.Singleton;
  * @deprecated in favor of the Jakarta version of the REST connector
  */
 @Deprecated(forRemoval = true)
-public class LinkMoveRestModule extends ConfigModule {
+public class LinkMoveRestModule implements BQModule {
 
     @Override
     public ModuleCrate crate() {
