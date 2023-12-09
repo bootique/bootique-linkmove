@@ -20,7 +20,6 @@
 package io.bootique.linkmove.v3;
 
 import com.nhl.link.move.runtime.LmRuntime;
-import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
 import io.bootique.config.ConfigurationFactory;
@@ -28,10 +27,8 @@ import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
 import io.bootique.linkmove.v3.connector.JdbcConnectorFactory;
-import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import javax.inject.Singleton;
-import java.util.Set;
 
 /**
  * @since 2.0
@@ -67,15 +64,8 @@ public class LinkMoveModule implements BQModule {
 
     @Singleton
     @Provides
-    LmRuntime provideLinkMoveRuntime(
-            ConfigurationFactory configFactory,
-            ServerRuntime targetRuntime,
-            Set<IConnectorFactory<?>> connectorFactories,
-            Set<LinkMoveBuilderCallback> buildCallbacks) {
-
-        return configFactory
-                .config(LinkMoveFactory.class, CONFIG_PREFIX)
-                .createLinkMove(targetRuntime, connectorFactories, buildCallbacks);
+    LmRuntime provideLinkMoveRuntime(ConfigurationFactory configFactory) {
+        return configFactory.config(LinkMoveFactory.class, CONFIG_PREFIX).create();
     }
 
     @Singleton

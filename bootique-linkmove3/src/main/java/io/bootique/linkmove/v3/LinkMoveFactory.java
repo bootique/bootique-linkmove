@@ -31,6 +31,7 @@ import io.bootique.linkmove.v3.resource.BQUrlResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -45,12 +46,23 @@ import java.util.Set;
 @BQConfig
 public class LinkMoveFactory {
 
+    private final ServerRuntime targetRuntime;
+    private final Set<IConnectorFactory<?>> connectorFactories;
+    private final Set<LinkMoveBuilderCallback> buildCallbacks;
+
     private FolderResourceFactory extractorsDir;
 
-    public LmRuntime createLinkMove(
+    @Inject
+    public LinkMoveFactory(
             ServerRuntime targetRuntime,
             Set<IConnectorFactory<?>> connectorFactories,
-            Set<LinkMoveBuilderCallback> builderCallbacks) {
+            Set<LinkMoveBuilderCallback> buildCallbacks) {
+        this.targetRuntime = targetRuntime;
+        this.connectorFactories = connectorFactories;
+        this.buildCallbacks = buildCallbacks;
+    }
+
+    public LmRuntime create() {
 
         ResourceResolver resolver = createResolver();
         LmRuntimeBuilder builder = LmRuntime.builder()
@@ -59,7 +71,7 @@ public class LinkMoveFactory {
 
         connectorFactories.forEach(builder::connectorFactory);
 
-        builderCallbacks.forEach(c -> c.build(builder));
+        buildCallbacks.forEach(c -> c.build(builder));
         return builder.build();
     }
 
