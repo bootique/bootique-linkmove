@@ -53,6 +53,7 @@
 
         <linkmove2.version>2.18</linkmove2.version>
         <linkmove3.version>3.0.M6</linkmove3.version>
+        <cayenne42.version>4.2</cayenne42.version>
     </properties>
 
     <scm>
