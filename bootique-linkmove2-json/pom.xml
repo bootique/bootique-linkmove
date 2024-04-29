@@ -68,7 +68,6 @@
         <dependency>
             <groupId>com.nhl.link.move</groupId>
             <artifactId>link-move-json</artifactId>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Unit test dependencies -->
