@@ -63,11 +63,21 @@
                         <groupId>org.slf4j</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
+                    <!-- TODO: including a newer version of Velocity explicitly. -->
+                    <!--   Will be able to replace it with the one coming from Cayenne after an upgrade to 4.2.1 or 5.0.x-->
+                    <exclusion>
+                        <groupId>org.apache.velocity</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <dependencies>
 
@@ -79,6 +89,10 @@
         <dependency>
             <groupId>org.apache.cayenne</groupId>
             <artifactId>cayenne-velocity</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.nhl.link.move</groupId>

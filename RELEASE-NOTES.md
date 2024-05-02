@@ -1,3 +1,7 @@
+## 3.0-M5
+
+* #61 Upgrade Velocity dependency
+
 ## 3.0-M3
 
 * #58 Deprecate LinkMove 2 integration
