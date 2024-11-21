@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>io.bootique.jersey</groupId>
                 <artifactId>bootique-jersey-jakarta-client</artifactId>
-                <version>${bootique.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.linkmove</groupId>
