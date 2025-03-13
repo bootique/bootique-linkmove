@@ -1,3 +1,7 @@
+## 3.0-RC1
+
+* #62 Align "cayenne-velocity" version with Cayenne 4.2 version in "bootique-cayenne"
+
 ## 3.0-M6
 
 * #61 Upgrade Velocity dependency
