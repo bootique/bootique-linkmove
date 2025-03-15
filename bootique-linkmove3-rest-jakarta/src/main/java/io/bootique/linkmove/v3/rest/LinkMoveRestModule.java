@@ -25,7 +25,7 @@ import io.bootique.di.Provides;
 import io.bootique.jersey.client.HttpTargets;
 import io.bootique.linkmove.v3.LinkMoveModule;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * @since 3.0

@@ -28,7 +28,7 @@ import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
 import io.bootique.linkmove.v3.connector.JdbcConnectorFactory;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 /**
  * @since 2.0

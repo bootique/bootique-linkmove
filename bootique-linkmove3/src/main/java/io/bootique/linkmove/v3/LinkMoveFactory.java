@@ -31,7 +31,7 @@ import io.bootique.linkmove.v3.resource.BQUrlResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;

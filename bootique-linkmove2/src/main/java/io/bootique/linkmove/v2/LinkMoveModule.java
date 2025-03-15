@@ -28,7 +28,7 @@ import io.bootique.di.Injector;
 import io.bootique.di.Provides;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 import java.util.Set;
 
 /**
