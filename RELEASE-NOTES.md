@@ -1,6 +1,7 @@
 ## 3.0-RC1
 
 * #62 Align "cayenne-velocity" version with Cayenne 4.2 version in "bootique-cayenne"
+* #63 Upgrade to LinkMove 3.0.0-RC1
 
 ## 3.0-M6
 
