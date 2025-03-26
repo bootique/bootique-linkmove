@@ -50,7 +50,7 @@
 
     <properties>
         <linkmove2.version>2.18</linkmove2.version>
-        <linkmove3.version>3.0.0-RC1</linkmove3.version>
+        <linkmove3.version>3.0.0-RC3</linkmove3.version>
         <!-- Keep in sync with bootique-cayenne -->
         <cayenne42.version>4.2.2</cayenne42.version>
         <velocity.version>2.3</velocity.version>
