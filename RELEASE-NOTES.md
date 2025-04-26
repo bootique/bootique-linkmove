@@ -1,3 +1,7 @@
+## 4.0-M1
+
+* #66 Remove deprecated modules (LM 2, javax flavor)
+
 ## 3.0-RC1
 
 * #62 Align "cayenne-velocity" version with Cayenne 4.2 version in "bootique-cayenne"

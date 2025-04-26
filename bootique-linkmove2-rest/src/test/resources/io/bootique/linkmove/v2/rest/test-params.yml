@@ -1,5 +1,0 @@
-linkmove:
-  extractorsDir: "classpath:io/bootique/linkmove/v2/rest"
-  connectorFactories:
-    - type: "bq.rest"
-

@@ -8,10 +8,8 @@ import io.bootique.jersey.client.HttpTargets;
 import java.util.Optional;
 
 /**
- * @since 2.0
- * @deprecated in favor of the Jakarta version of the REST connector
+ * @since 3.0
  */
-@Deprecated(forRemoval = true)
 public class RestConnectorFactory implements IConnectorFactory<StreamConnector> {
 
     private final HttpTargets httpTargets;

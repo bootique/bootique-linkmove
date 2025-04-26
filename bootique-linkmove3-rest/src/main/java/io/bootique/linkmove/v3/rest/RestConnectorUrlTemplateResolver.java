@@ -24,14 +24,12 @@ import java.util.Map;
 
 /**
  * A helper class to build extractor parameters that will be used to resolve "templates" in the connector URL. JAX RS
- * allows to define "templates" like this in {@link javax.ws.rs.client.WebTarget} - "/abc/{path}/{id}?a={a}" and then
+ * allows to define "templates" like this in {@link jakarta.ws.rs.client.WebTarget} - "/abc/{path}/{id}?a={a}" and then
  * substitute them with the real values before use. This class assists in collecting such substitutions and passing
  * them to RestConnector via execution parameters.
  *
- * @since 2.0
- * @deprecated in favor of the Jakarta version of the REST connector
+ * @since @since 3.0
  */
-@Deprecated(forRemoval = true)
 public class RestConnectorUrlTemplateResolver {
 
     private Map<String, Object> templateValues;
@@ -43,7 +41,7 @@ public class RestConnectorUrlTemplateResolver {
     // TODO: support various other flavors of "WebTarget#resolveTemplate"
 
     /**
-     * @see javax.ws.rs.client.WebTarget#resolveTemplate(String, Object)
+     * @see jakarta.ws.rs.client.WebTarget#resolveTemplate(String, Object)
      */
     public RestConnectorUrlTemplateResolver value(String name, Object value) {
         templateValues.put(name, value);

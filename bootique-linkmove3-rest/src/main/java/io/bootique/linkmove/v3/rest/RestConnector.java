@@ -1,23 +1,21 @@
 package io.bootique.linkmove.v3.rest;
 
 import com.nhl.link.move.connect.StreamConnector;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Response;
 
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
 /**
- * @since 2.0
- * @deprecated in favor of the Jakarta version of the REST connector
+ * @since 3.0
  */
-@Deprecated(forRemoval = true)
 public class RestConnector implements StreamConnector {
 
     static final String TEMPLATE_VALUE_MAP_PARAMETER = RestConnector.class.getSimpleName() + ".templateValueMap";
 
-    private WebTarget target;
+    private final WebTarget target;
 
     public RestConnector(WebTarget target) {
         this.target = target;

@@ -33,12 +33,12 @@ import io.bootique.junit5.BQTest;
 import io.bootique.junit5.BQTestFactory;
 import io.bootique.junit5.BQTestTool;
 import io.bootique.linkmove.v3.rest.cayenne.Table1;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Configuration;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.MediaType;
 import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Configuration;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

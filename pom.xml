@@ -38,18 +38,12 @@
     </description>
 
     <modules>
-        <module>bootique-linkmove2</module>
-        <module>bootique-linkmove2-json</module>
-        <module>bootique-linkmove2-rest</module>
-
         <module>bootique-linkmove3</module>
         <module>bootique-linkmove3-json</module>
         <module>bootique-linkmove3-rest</module>
-        <module>bootique-linkmove3-rest-jakarta</module>
     </modules>
 
     <properties>
-        <linkmove2.version>2.18</linkmove2.version>
         <linkmove3.version>3.0.0-RC4</linkmove3.version>
         <!-- Keep in sync with bootique-cayenne -->
         <cayenne42.version>4.2.2</cayenne42.version>

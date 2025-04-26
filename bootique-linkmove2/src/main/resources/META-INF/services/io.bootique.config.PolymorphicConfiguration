@@ -1,3 +1,0 @@
-io.bootique.linkmove.v2.connector.IConnectorFactoryFactory
-io.bootique.linkmove.v2.connector.JdbcConnectorFactoryFactory
-io.bootique.linkmove.v2.connector.URIConnectorFactoryFactory
