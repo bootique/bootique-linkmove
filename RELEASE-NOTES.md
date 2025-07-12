@@ -2,6 +2,10 @@
 
 * #66 Remove deprecated modules (LM 2, javax flavor)
 
+## 3.0-RC2
+
+* #67 Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0
+
 ## 3.0-RC1
 
 * #62 Align "cayenne-velocity" version with Cayenne 4.2 version in "bootique-cayenne"
