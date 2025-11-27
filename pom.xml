@@ -46,7 +46,7 @@
     <properties>
         <linkmove3.version>3.0.0-RC4</linkmove3.version>
         <!-- Keep in sync with bootique-cayenne -->
-        <cayenne42.version>4.2.2</cayenne42.version>
+        <cayenne42.version>4.2.3</cayenne42.version>
         <velocity.version>2.3</velocity.version>
         <commons.lang.version>3.18.0</commons.lang.version>
     </properties>
