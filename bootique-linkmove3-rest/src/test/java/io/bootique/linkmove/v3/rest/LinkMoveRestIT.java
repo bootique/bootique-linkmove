@@ -53,7 +53,7 @@ public class LinkMoveRestIT {
             .app("-s")
             .autoLoadModules()
             .module(jetty.moduleReplacingConnectors())
-            .module(b -> JerseyModule.extend(b).addResource(R1.class))
+            .module(b -> JerseyModule.extend(b).addApiResource(R1.class))
             .createRuntime();
 
     @BQTestTool
