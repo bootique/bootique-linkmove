@@ -5,6 +5,7 @@
 ## 3.0-RC2
 
 * #67 Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0
+* #68 Upgrade to LinkMove 3.0.0
 
 ## 3.0-RC1
 
