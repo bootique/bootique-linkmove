@@ -19,7 +19,6 @@
 
 package io.bootique.linkmove.v3;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nhl.link.move.resource.FolderResourceResolver;
 import com.nhl.link.move.resource.ResourceResolver;
 import com.nhl.link.move.runtime.LmRuntime;
@@ -29,9 +28,9 @@ import io.bootique.annotation.BQConfig;
 import io.bootique.annotation.BQConfigProperty;
 import io.bootique.linkmove.v3.resource.BQUrlResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
+import jakarta.inject.Inject;
 import org.apache.cayenne.configuration.server.ServerRuntime;
 
-import jakarta.inject.Inject;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -41,8 +40,6 @@ import java.util.Set;
 /**
  * @since 2.0
  */
-// backward compatibility setting, since we removed "connectorFactories" property in 3.0
-@JsonIgnoreProperties(ignoreUnknown = true)
 @BQConfig
 public class LinkMoveFactory {
 
@@ -66,7 +63,7 @@ public class LinkMoveFactory {
 
         ResourceResolver resolver = createResolver();
         LmRuntimeBuilder builder = LmRuntime.builder()
-                .withTargetRuntime(targetRuntime)
+                .targetRuntime(targetRuntime)
                 .extractorResolver(resolver);
 
         connectorFactories.forEach(builder::connectorFactory);
