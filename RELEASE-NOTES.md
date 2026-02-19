@@ -1,6 +1,14 @@
+## 4.0-M4
+
+* #69 Upgrade Velocity to 2.4.1 to align with Cayenne
+
 ## 4.0-M1
 
 * #66 Remove deprecated modules (LM 2, javax flavor)
+
+## 3.1
+
+* #69 Upgrade Velocity to 2.4.1 to align with Cayenne
 
 ## 3.0
 
