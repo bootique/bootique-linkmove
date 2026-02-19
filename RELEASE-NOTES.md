@@ -1,6 +1,6 @@
 ## 4.0-M4
 
-* #69 Upgrade Velocity to 2.4.1 to align with Cayenne
+* #70 Upgrade Velocity to 2.4.1 to align with Cayenne
 
 ## 4.0-M1
 
