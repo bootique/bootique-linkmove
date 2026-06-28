@@ -16,30 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.bootique.linkmove.v3.rest;
+package io.bootique.linkmove.v4.rest;
 
 import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jersey.client.HttpTargets;
-import io.bootique.linkmove.v3.LinkMoveModule;
+import io.bootique.linkmove.v4.LinkMoveModule;
 
 import jakarta.inject.Singleton;
 
 /**
  * @since 3.0
- * @deprecated since 4.0 in favor of LinkMove 4. Use the {@code bootique-linkmove4-rest} module
- * ({@code io.bootique.linkmove.v4.rest.LinkMoveRestModule}) instead.
  */
-@Deprecated(since = "4.0", forRemoval = true)
 public class LinkMoveRestModule implements BQModule {
 
     @Override
     public ModuleCrate crate() {
         return ModuleCrate.of(this)
-                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v3")
-                .deprecated(true)
+                .description("Integrates Bootique REST Connector to LinkMove ETL framework, v4")
                 .build();
     }
 

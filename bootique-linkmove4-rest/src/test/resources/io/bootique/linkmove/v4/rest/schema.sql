@@ -1,0 +1,1 @@
+CREATE TABLE "table1" ("id" BIGINT NOT NULL, "name" VARCHAR (100), PRIMARY KEY ("id"));

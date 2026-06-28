@@ -47,21 +47,16 @@ Include ```bootique-bom```:
 ## Add bootique-linkmove to your build tool
 **Maven**
 ```xml
+<!-- Includes LinkMove core, and extractors for JDBC, JSON, XML -->
 <dependency>
     <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove3</artifactId>
+    <artifactId>bootique-linkmove4</artifactId>
 </dependency>
 
-<!-- Optionally, if you need to process JSON sources include JSON module-->
+<!-- Optional. Includes REST connector configured via Bootique Jersey Client -->
 <dependency>
     <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove3-json</artifactId>
-</dependency>
-
-<!-- Optionally, if you need to process data coming from REST APIs include REST module-->
-<dependency>
-    <groupId>io.bootique.linkmove</groupId>
-    <artifactId>bootique-linkmove3-rest</artifactId>
+    <artifactId>bootique-linkmove4-rest</artifactId>
 </dependency>
 ```
 

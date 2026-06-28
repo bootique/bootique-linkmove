@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package io.bootique.linkmove.v3;
+package io.bootique.linkmove.v4;
 
 import com.nhl.link.move.runtime.LmRuntime;
 import io.bootique.BQModule;
@@ -26,16 +26,13 @@ import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
-import io.bootique.linkmove.v3.connector.JdbcConnectorFactory;
+import io.bootique.linkmove.v4.connector.JdbcConnectorFactory;
 
 import jakarta.inject.Singleton;
 
 /**
  * @since 2.0
- * @deprecated since 4.0 in favor of LinkMove 4. Use the {@code bootique-linkmove4} module
- * ({@code io.bootique.linkmove.v4.LinkMoveModule}) instead.
  */
-@Deprecated(since = "4.0", forRemoval = true)
 public class LinkMoveModule implements BQModule {
 
     private static final String CONFIG_PREFIX = "linkmove";
@@ -51,8 +48,7 @@ public class LinkMoveModule implements BQModule {
     @Override
     public ModuleCrate crate() {
         return ModuleCrate.of(this)
-                .description("Integrates LinkMove ETL framework, v3")
-                .deprecated(true)
+                .description("Integrates LinkMove ETL framework, v4")
                 .config(CONFIG_PREFIX, LinkMoveFactory.class)
                 .build();
     }

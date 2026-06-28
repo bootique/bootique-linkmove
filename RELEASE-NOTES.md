@@ -1,6 +1,7 @@
 ## 4.0-M4
 
 * #70 Upgrade Velocity to 2.4.1 to align with Cayenne
+* #71 LinkMove 4 integration
 
 ## 4.0-M1
 
