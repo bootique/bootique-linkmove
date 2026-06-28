@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nhl.github.io/link-move/xsd/extractor_config_2.xsd"
+        xmlns="http://linkmove.io/xsd/extractor_config_2.xsd">
+
+    <type>csv</type>
+    <connectorId>data</connectorId>
+
+    <extractor>
+        <!-- CSV attributes are matched to columns by position, in the order they are declared -->
+        <attributes>
+            <attribute>
+                <type>java.lang.Integer</type>
+                <source>id</source>
+                <target>db:id</target>
+            </attribute>
+            <attribute>
+                <type>java.lang.String</type>
+                <source>name</source>
+                <target>name</target>
+            </attribute>
+        </attributes>
+    </extractor>
+</config>

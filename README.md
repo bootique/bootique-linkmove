@@ -34,7 +34,7 @@ Include ```bootique-bom```:
         <dependency>
             <groupId>io.bootique.bom</groupId>
             <artifactId>bootique-bom</artifactId>
-            <version>3.0</version>
+            <version>4.0-M4</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -51,6 +51,12 @@ Include ```bootique-bom```:
 <dependency>
     <groupId>io.bootique.linkmove</groupId>
     <artifactId>bootique-linkmove4</artifactId>
+</dependency>
+
+<!-- Optional. Adds the CSV extractor (pulls in Apache Commons CSV) -->
+<dependency>
+    <groupId>io.bootique.linkmove</groupId>
+    <artifactId>bootique-linkmove4-csv</artifactId>
 </dependency>
 
 <!-- Optional. Includes REST connector configured via Bootique Jersey Client -->

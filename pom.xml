@@ -42,6 +42,7 @@
         <module>bootique-linkmove3-json</module>
         <module>bootique-linkmove3-rest</module>
         <module>bootique-linkmove4</module>
+        <module>bootique-linkmove4-csv</module>
         <module>bootique-linkmove4-rest</module>
     </modules>
 

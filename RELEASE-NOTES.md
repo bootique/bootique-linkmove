@@ -2,6 +2,7 @@
 
 * #70 Upgrade Velocity to 2.4.1 to align with Cayenne
 * #71 LinkMove 4 integration
+* #72 LinkMove CSV integration
 
 ## 4.0-M1
 
