@@ -21,6 +21,7 @@ package io.bootique.linkmove.v4.rest;
 
 import com.nhl.link.move.LmTask;
 import com.nhl.link.move.runtime.LmRuntime;
+import com.nhl.link.move.runtime.task.ITaskService;
 import io.bootique.BQCoreModule;
 import io.bootique.BQRuntime;
 import io.bootique.Bootique;
@@ -32,6 +33,7 @@ import io.bootique.junit.BQApp;
 import io.bootique.junit.BQTest;
 import io.bootique.junit.BQTestFactory;
 import io.bootique.junit.BQTestTool;
+import io.bootique.linkmove.v4.LinkMoveModule;
 import io.bootique.linkmove.v4.rest.cayenne.Table1;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Configuration;
@@ -83,6 +85,37 @@ public class LinkMoveRestIT {
 
         assertEquals(5, task.run().getStats().getCreated());
         assertEquals(0, task.run().getStats().getCreated());
+    }
+
+    @Test
+    public void linkMoveRest_CoexistsWithResourceConnector() {
+
+        // both the REST connector and the resourceConnector(..) produce "StreamConnector"s. Ensure they are
+        // resolved independently by their ids and do not conflict within a single runtime.
+        BQRuntime lm = testFactory
+                .app("-c", "classpath:io/bootique/linkmove/v4/rest/test.yml")
+                .autoLoadModules()
+                .module(db.moduleWithTestDataSource("ds"))
+                .module(b -> BQCoreModule.extend(b).setProperty("bq.jerseyclient.targets.toextract.url", jetty.getUrl() + "/r1"))
+                .module(b -> LinkMoveModule.extend(b).addResourceConnector("data", "classpath:io/bootique/linkmove/v4/rest/resource-data.json"))
+                .module(b -> CayenneModule.extend(b).addLocation("classpath:io/bootique/linkmove/v4/rest/cayenne-project.xml"))
+                .createRuntime();
+
+        ITaskService taskService = lm.getInstance(LmRuntime.class).getTaskService();
+
+        // the REST connector ("toextract") serves 5 records
+        LmTask restTask = taskService
+                .createOrUpdate(Table1.class)
+                .sourceExtractor("extractor.xml")
+                .task();
+        assertEquals(5, restTask.run().getStats().getCreated());
+
+        // the resourceConnector ("data") serves its own 3 records
+        LmTask resourceTask = taskService
+                .createOrUpdate(Table1.class)
+                .sourceExtractor("extractor-resource.xml")
+                .task();
+        assertEquals(3, resourceTask.run().getStats().getCreated());
     }
 
     @Test

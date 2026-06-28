@@ -33,8 +33,6 @@ import io.bootique.linkmove.v4.LinkMoveModule;
 import io.bootique.linkmove.v4.csv.cayenne.Table1;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @BQTest
@@ -46,15 +44,13 @@ public class LinkMoveCSVIT {
     @BQTestTool
     static final CayenneTester cayenne = CayenneTester.create().entities(Table1.class);
 
-    static final Map<String, String> urlMap = Map.of("data", "classpath:io/bootique/linkmove/v4/csv/data.csv");
-
     @BQApp(skipRun = true)
     static final BQRuntime app = Bootique
             .app("-c", "classpath:io/bootique/linkmove/v4/csv/test.yml")
             .autoLoadModules()
             .module(db.moduleWithTestDataSource("ds"))
             .module(cayenne.moduleWithTestHooks())
-            .module(b -> LinkMoveModule.extend(b).addConnectorFactory(new URLConnectorFactory(urlMap)))
+            .module(b -> LinkMoveModule.extend(b).addResourceConnector("data", "classpath:io/bootique/linkmove/v4/csv/data.csv"))
             .module(b -> CayenneModule.extend(b).addLocation("classpath:io/bootique/linkmove/v4/csv/cayenne-project.xml"))
             .createRuntime();
 

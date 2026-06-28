@@ -19,12 +19,17 @@
 
 package io.bootique.linkmove.v4;
 
+import com.nhl.link.move.connect.Connector;
+import com.nhl.link.move.connect.StreamConnector;
+import com.nhl.link.move.connect.URLConnector;
+import com.nhl.link.move.runtime.connect.ConnectorInstanceFactory;
 import com.nhl.link.move.runtime.connect.IConnectorFactory;
 import io.bootique.ModuleExtender;
 import io.bootique.di.Binder;
 import io.bootique.di.Key;
 import io.bootique.di.SetBuilder;
 import io.bootique.di.TypeLiteral;
+import io.bootique.resource.ResourceFactory;
 
 /**
  * @since 2.0
@@ -46,6 +51,29 @@ public class LinkMoveModuleExtender extends ModuleExtender<LinkMoveModuleExtende
         contributeConnectorFactories();
         contributeBuilderCallbacks();
         return this;
+    }
+
+    /**
+     * Registers a {@link StreamConnector} reading from the resource at the specified Bootique location
+     * (a "classpath:" URL, a file path, a regular URL, etc.), making it available to LinkMove tasks under
+     * the given connector id. This is a shortcut that frees the caller from having to implement a custom
+     * {@link IConnectorFactory}.
+     *
+     * @since 4.0
+     */
+    public LinkMoveModuleExtender addResourceConnector(String id, String location) {
+        StreamConnector connector = URLConnector.of(new ResourceFactory(location).getUrl());
+        return addConnector(StreamConnector.class, id, connector);
+    }
+
+    /**
+     * Registers a connector instance, making it available to LinkMove tasks under the given connector id.
+     * This is a shortcut that frees the caller from having to implement a custom {@link IConnectorFactory}.
+     *
+     * @since 4.0
+     */
+    public <C extends Connector> LinkMoveModuleExtender addConnector(Class<C> type, String id, C connector) {
+        return addConnectorFactory(new ConnectorInstanceFactory<>(type, id, connector));
     }
 
     /**
