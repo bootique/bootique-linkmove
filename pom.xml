@@ -51,9 +51,10 @@
         <linkmove4.version>4.0.0-M1</linkmove4.version>
         <!-- Keep in sync with bootique-cayenne -->
         <cayenne42.version>4.2.3</cayenne42.version>
-        <cayenne50.version>5.0-M2</cayenne50.version>
+        <cayenne50.version>5.0-M3</cayenne50.version>
         <velocity.version>2.4.1</velocity.version>
         <commons.lang.version>3.18.0</commons.lang.version>
+        <commons.io.version>2.21.0</commons.io.version>
     </properties>
 
     <scm>
@@ -123,6 +124,11 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

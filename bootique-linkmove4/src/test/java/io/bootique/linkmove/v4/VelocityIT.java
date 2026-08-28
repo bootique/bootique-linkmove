@@ -25,10 +25,10 @@ import io.bootique.junit.BQApp;
 import io.bootique.junit.BQTest;
 import io.bootique.junit.BQTestTool;
 import org.apache.cayenne.ObjectContext;
-import org.apache.cayenne.access.jdbc.SQLTemplateProcessor;
+import org.apache.cayenne.access.translator.SQLTemplateTranslator;
 import org.apache.cayenne.runtime.CayenneRuntime;
 import org.apache.cayenne.query.SQLSelect;
-import org.apache.cayenne.velocity.VelocitySQLTemplateProcessor;
+import org.apache.cayenne.velocity.VelocitySQLTemplateTranslator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -52,11 +52,11 @@ public class VelocityIT {
 
     @Test
     public void checkVelocity() {
-        SQLTemplateProcessor p = app.getInstance(CayenneRuntime.class)
+        SQLTemplateTranslator p = app.getInstance(CayenneRuntime.class)
                 .getInjector()
-                .getInstance(SQLTemplateProcessor.class);
+                .getInstance(SQLTemplateTranslator.class);
 
-        assertInstanceOf(VelocitySQLTemplateProcessor.class, p);
+        assertInstanceOf(VelocitySQLTemplateTranslator.class, p);
     }
 
     @Test

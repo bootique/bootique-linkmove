@@ -52,6 +52,10 @@
                         <groupId>org.slf4j</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>commons-io</groupId>
+                        <artifactId>commons-io</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -72,6 +76,10 @@
         <dependency>
             <groupId>com.nhl.link.move</groupId>
             <artifactId>link-move-csv</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
 
         <!-- Unit test dependencies -->
