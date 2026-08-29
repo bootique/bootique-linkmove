@@ -55,6 +55,7 @@
         <velocity.version>2.4.1</velocity.version>
         <commons.lang.version>3.20.0</commons.lang.version>
         <commons.io.version>2.21.0</commons.io.version>
+        <commons.codec.version>1.19.0</commons.codec.version>
     </properties>
 
     <scm>
@@ -129,6 +130,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
