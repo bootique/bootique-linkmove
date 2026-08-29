@@ -1,3 +1,7 @@
+## 4.0-M6
+
+* #74 Upgrade to LinkMove 4.0.0-M2
+
 ## 4.0-M4
 
 * #70 Upgrade Velocity to 2.4.1 to align with Cayenne

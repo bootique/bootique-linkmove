@@ -48,7 +48,7 @@
 
     <properties>
         <linkmove3.version>3.0.0</linkmove3.version>
-        <linkmove4.version>4.0.0-M1</linkmove4.version>
+        <linkmove4.version>4.0.0-M2</linkmove4.version>
         <!-- Keep in sync with bootique-cayenne -->
         <cayenne42.version>4.2.3</cayenne42.version>
         <cayenne50.version>5.0-M3</cayenne50.version>
