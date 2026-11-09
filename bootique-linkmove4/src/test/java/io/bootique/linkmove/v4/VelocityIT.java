@@ -26,7 +26,7 @@ import io.bootique.junit.BQTest;
 import io.bootique.junit.BQTestTool;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.access.translator.SQLTemplateTranslator;
-import org.apache.cayenne.runtime.CayenneRuntime;
+import org.apache.cayenne.CayenneRuntime;
 import org.apache.cayenne.query.SQLSelect;
 import org.apache.cayenne.velocity.VelocitySQLTemplateTranslator;
 import org.junit.jupiter.api.Test;

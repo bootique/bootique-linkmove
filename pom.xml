@@ -48,10 +48,10 @@
 
     <properties>
         <linkmove3.version>3.0.0</linkmove3.version>
-        <linkmove4.version>4.0.0-M2</linkmove4.version>
+        <linkmove4.version>4.0.0-M3</linkmove4.version>
         <!-- Keep in sync with bootique-cayenne -->
         <cayenne42.version>4.2.3</cayenne42.version>
-        <cayenne50.version>5.0-M3</cayenne50.version>
+        <cayenne50.version>5.0-RC1</cayenne50.version>
         <velocity.version>2.4.1</velocity.version>
         <commons.lang.version>3.20.0</commons.lang.version>
         <commons.io.version>2.21.0</commons.io.version>

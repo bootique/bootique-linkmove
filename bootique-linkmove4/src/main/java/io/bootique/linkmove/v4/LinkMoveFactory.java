@@ -29,7 +29,7 @@ import io.bootique.annotation.BQConfigProperty;
 import io.bootique.linkmove.v4.resource.BQUrlResourceResolver;
 import io.bootique.resource.FolderResourceFactory;
 import jakarta.inject.Inject;
-import org.apache.cayenne.runtime.CayenneRuntime;
+import org.apache.cayenne.CayenneRuntime;
 
 import java.io.File;
 import java.net.URISyntaxException;

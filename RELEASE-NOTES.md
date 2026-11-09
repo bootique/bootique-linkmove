@@ -1,3 +1,7 @@
+## 4.0-M7
+
+* #75 Upgrade to LinkMove 4.0.0-M3
+
 ## 4.0-M6
 
 * #74 Upgrade to LinkMove 4.0.0-M2
